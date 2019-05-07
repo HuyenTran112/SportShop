@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class tintuc extends Model
 {
-    //
+    protected $table="tintuc";
+	public function loaitin()
+	{
+		return $this->belongsTo('App\maloaitin','maloaitin','maloaitin');
+	}
 }

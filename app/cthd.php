@@ -9,7 +9,7 @@ class cthd extends Model
     protected $table="sanpham";
 	public function loaisanpham()
 	{
-		return $this->belongsTo('App\sanpham','maloaisp','maloaisp');
+		return $this->belongsTo('App\loaisanpham','maloaisp','maloaisp');
 	}
 	public function cthd()
 	{
