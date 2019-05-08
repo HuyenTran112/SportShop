@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{!! Assets::renderHeader() !!}
 	<title>@yield('title')</title>
 	<meta charset="UTF-8">
+	<base href="{{asset('')}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
@@ -32,7 +34,8 @@
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="{{URL::asset("css/main.css")}}">
+	<link rel="stylesheet" href="{{URL::asset("css/style.css")}}">
 <!--===============================================================================================-->
 
 
@@ -53,6 +56,7 @@
 	@yield('product')
 	<!-- Footer -->
 	@include('layout.footer')
+	{!! Assets::renderFooter() !!}
 	@yield('script')
 
 </body>

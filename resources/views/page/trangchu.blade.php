@@ -111,7 +111,7 @@ Trang chủ
 				</div>
 			@include('layout.filter')	
 			@include('layout.product')
-		</div>
+					</div>
 	</section>
 
 

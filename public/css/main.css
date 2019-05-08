@@ -33,12 +33,16 @@ Title           : 18px/1.6 '', Arial, sans-serif;
 Paragrap        : 18px/1.6 '', Arial, sans-serif;
 Input, textarea : 14px/1.6 '', Arial, sans-serif;
 -------------------------------------------------------------------*/
+h3
+{
+	color:#0033CC;
+}
 
 .button {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    padding: 5px 26px;
+    padding: 5px 12px;
     border: 1px solid #b3b3b3;
     border-radius: 8px;
     background: #ffffff;
@@ -2228,7 +2232,7 @@ input.num-product::-webkit-inner-spin-button {
 .cl2 {color: #333;}
 .cl3 {color: #666;}
 .cl4 {color: #999;}
-.cl5 {color: #222;}
+.cl5 {color: #223;}
 .cl6 {color: #888;}
 .cl7 {color: #b2b2b2;}
 .cl8 {color: #555;}
@@ -2459,10 +2463,11 @@ input.num-product::-webkit-inner-spin-button {
 
 .ltext-103 {
   font-family: Helvetica;
-  font-size: 36px;
+  font-size: 100px;
   line-height: 1.1;
   text-transform: uppercase;
   text-align: center;
+  color:#3333CC;
 }
 
 .ltext-104 {

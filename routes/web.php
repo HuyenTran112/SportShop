@@ -14,18 +14,26 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('trangchu', function () {
-    return view('page.trangchu');
-});
-Route::get('sanpham', function () {
-    return view('page.sanpham');
-});
+Route::get('index',['as'=>'trang-chu',
+'uses'=>'PageController@getIndex']);
+
+Route::get('loai-san-pham',[
+    'as'=>'loaisanpham',
+    'uses'=>'PageController@getLoaiSp'
+]);
 Route::get('blog', function () {
     return view('page.blog');
 });
-Route::get('gioithieu', function () {
-    return view('page.gioithieu');
-});
-Route::get('lienhe', function () {
-    return view('page.lienhe');
-});
+Route::get('lien-he',[
+    'as'=>'lienhe',
+    'uses'=>'PageController@getLienhe'
+]);
+Route::get('gioi-thieu',[
+    'as'=>'gioithieu',
+    'uses'=>'PageController@getGioithieu'
+]);
+Route::get('blog',[
+    'as'=>'blog',
+    'uses'=>'PageController@getBlog'
+]);
+

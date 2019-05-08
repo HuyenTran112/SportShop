@@ -42,12 +42,12 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="trangchu">Trang chủ</a>
+								<a href="{{route('trang-chu')}}">Trang chủ</a>
 								
 							</li>
 
 							<li>
-								<a href="sanpham">Sản phẩm</a>
+								<a href="{{route('loaisanpham')}}">Sản phẩm</a>
                                                                 <ul class="sub-menu">
 									<li><a href="#.html">Quần áo thể thao</a></li>
 									<li><a href="#.html">Giày thể thao</a></li>
@@ -60,15 +60,15 @@
 							</li>-->
 
 							<li>
-								<a href="blog">Blog</a>
+								<a href="{{route('blog')}}">Blog</a>
 							</li>
 
 							<li>
-								<a href="gioithieu">Giới thiệu</a>
+								<a href="{{route('gioithieu')}}">Giới thiệu</a>
 							</li>
 
 							<li>
-								<a href="lienhe">Liên hệ</a>
+								<a href="{{route('lienhe')}}">Liên hệ</a>
 							</li>
 						</ul>
 					</div>	
