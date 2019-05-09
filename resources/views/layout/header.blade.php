@@ -47,11 +47,11 @@
 							</li>
 
 							<li>
-								<a href="{{route('loaisanpham')}}">Sản phẩm</a>
+								<a >Sản phẩm</a>
                                                                 <ul class="sub-menu">
-									<li><a href="#.html">Quần áo thể thao</a></li>
-									<li><a href="#.html">Giày thể thao</a></li>
-									<li><a href="#.html">Dụng cụ thể thao</a></li>
+								@foreach($loai as $l)
+								<li><a href="{{route('loai-san-pham',$l->maloaisp)}}">{{$l->tenloaisp}}</a></li>
+								@endforeach
 								</ul>
 							</li>
 

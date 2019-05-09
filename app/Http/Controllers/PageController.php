@@ -5,35 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\sanpham;
 use App\loaisanpham;
+use App\nhacungcap;
 class PageController extends Controller
 {
     public function getIndex()
     {
-     	$sp_khuyenmai=sanpham::all();
-        return view('page.trangchu',compact('sp_khuyenmai'));
+     	$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(4);
+		$loai=loaisanpham::all();
+        return view('page.trangchu',compact('sp_khuyenmai','loai'));
     }
-    public function getLoaiSp()
+    public function getLoaiSp($maloaisp)
     {
-        //$sp_theoloai=Product::where('id_type',$type)->get();
-        
-        //$loai=ProductType::all();
-        //$loai_sp=ProductType::where('id',$type)->first();
-        return view('page.sanpham');
+        $loai=loaisanpham::all();
+		$sanpham=sanpham::where('trangthai','<>','0')->paginate(4);
+		$sp_theoloai=sanpham::where('maloaisp',$maloaisp)->get();
+		$sp_khac=sanpham::where('maloaisp','!=',$maloaisp)->paginate(4);
+        return view('page.sanpham',compact('loai','sanpham','sp_theoloai','sp_khac'));
     }
-    public function getChitiet()
-    {
-        return view('page.sanpham');
-    }
+
     public function getLienhe()
     {
-        return view('page.lienhe');
+		$loai=loaisanpham::all();
+        return view('page.lienhe',compact('loai'));
     }
     public function getGioithieu()
     {
-        return view('page.gioithieu');
+		$loai=loaisanpham::all();
+        return view('page.gioithieu',compact('loai'));
     }
 	public function getBlog()
     {
-        return view('page.blog');
+		$loai=loaisanpham::all();
+        return view('page.blog',compact('loai'));
     }
 }

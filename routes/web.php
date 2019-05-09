@@ -17,13 +17,17 @@ Route::get('/', function () {
 Route::get('index',['as'=>'trang-chu',
 'uses'=>'PageController@getIndex']);
 
-Route::get('loai-san-pham',[
-    'as'=>'loaisanpham',
-    'uses'=>'PageController@getLoaiSp'
-]);
+Route::get('loaisanpham/{maloaisp}',['as'=>'loai-san-pham',
+'uses'=>'PageController@getLoaiSp']);
+
 Route::get('blog', function () {
     return view('page.blog');
 });
+Route::get('san-pham',[
+    'as'=>'sanpham',
+    'uses'=>'PageController@getSanPham'
+]);
+
 Route::get('lien-he',[
     'as'=>'lienhe',
     'uses'=>'PageController@getLienhe'

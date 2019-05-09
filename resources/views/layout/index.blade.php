@@ -35,7 +35,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" href="{{URL::asset("css/main.css")}}">
-	<link rel="stylesheet" href="{{URL::asset("css/style.css")}}">
+	<link rel="stylesheet" href="{{URL::asset("css/style1.css")}}">
 <!--===============================================================================================-->
 
 
@@ -53,10 +53,8 @@
 	@yield('slide')
 	<!-- Content-->
 	@yield('content')
-	@yield('product')
 	<!-- Footer -->
 	@include('layout.footer')
-	{!! Assets::renderFooter() !!}
 	@yield('script')
 
 </body>
