@@ -14,6 +14,12 @@ class PageController extends Controller
 		$loai=loaisanpham::all();
         return view('page.trangchu',compact('sp_khuyenmai','loai'));
     }
+	public function getRegister()
+    {
+		$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(4);
+		$loai=loaisanpham::all();
+        return view('admin.register',compact('sp_khuyenmai','loai'));
+    }
     public function getLoaiSp($maloaisp)
     {
         $loai=loaisanpham::all();

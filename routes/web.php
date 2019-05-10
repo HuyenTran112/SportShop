@@ -27,6 +27,12 @@ Route::get('san-pham',[
     'as'=>'sanpham',
     'uses'=>'PageController@getSanPham'
 ]);
+Route::get('/login', function () {
+    return view('admin.login');
+});
+
+Route::get('register',['as'=>'register',
+'uses'=>'PageController@getRegister']);
 
 Route::get('lien-he',[
     'as'=>'lienhe',
@@ -40,4 +46,12 @@ Route::get('blog',[
     'as'=>'blog',
     'uses'=>'PageController@getBlog'
 ]);
+
+Route::get('master', function () {
+    return view('admin.master');
+});
+
+    
+
+
 
