@@ -134,7 +134,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href=""><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -193,16 +193,16 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Trang chủ</a>
+					<a href="{{route('trang-chu')}}">Trang chủ</a>
 					
 				</li>
 
 				<li>
-					<a href="product.html">Sản phẩm</a>
+					<a>Sản phẩm</a>
                                         <ul class="sub-menu-m">
-						<li><a href="index.html">Quần áo thể thao</a></li>
-						<li><a href="home-02.html">Giày thể thao</a></li>
-						<li><a href="home-03.html">Dụng cụ thể thao</a></li>
+						@foreach($loai as $l)
+								<li><a href="{{route('loai-san-pham',$l->maloaisp)}}">{{$l->tenloaisp}}</a></li>
+								@endforeach
 					</ul>
                                         <span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -214,15 +214,15 @@
 				</li>-->
 
 				<li>
-					<a href="blog.html">Blog</a>
+					<a href="{{route('blog')}}">Blog</a>
 				</li>
 
 				<li>
-					<a href="about.html">Giới thiệu</a>
+					<a href="{{route('gioithieu')}}">Giới thiệu</a>
 				</li>
 
 				<li>
-					<a href="contact.html">Liên hệ</a>
+					<a href="{{route('lienhe')}}">Liên hệ</a>
 				</li>
 			</ul>
 		</div>

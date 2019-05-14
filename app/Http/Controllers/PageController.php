@@ -28,7 +28,15 @@ class PageController extends Controller
 		$sp_khac=sanpham::where('maloaisp','!=',$maloaisp)->paginate(4);
         return view('page.sanpham',compact('loai','sanpham','sp_theoloai','sp_khac'));
     }
-
+	
+	public function getChiTiet(Request $req)
+    {
+		$loai=loaisanpham::all();
+		$sanpham=sanpham::where('masp',$req->masp)->first();
+        $sp_tuongtu=sanpham::where('maloaisp',$sanpham->maloaisp)->paginate(6);
+        return view('page.chitietsanpham',compact('loai','sanpham','sp_tuongtu'));
+    }
+	
     public function getLienhe()
     {
 		$loai=loaisanpham::all();

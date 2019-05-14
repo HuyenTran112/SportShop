@@ -20,9 +20,13 @@ Route::get('index',['as'=>'trang-chu',
 Route::get('loaisanpham/{maloaisp}',['as'=>'loai-san-pham',
 'uses'=>'PageController@getLoaiSp']);
 
-Route::get('blog', function () {
-    return view('page.blog');
-});
+
+
+Route::get('chi-tiet-san-pham/{masp}',[
+    'as'=>'chitietsanpham',
+    'uses'=>'PageController@getChiTiet'
+]);
+
 Route::get('san-pham',[
     'as'=>'sanpham',
     'uses'=>'PageController@getSanPham'
