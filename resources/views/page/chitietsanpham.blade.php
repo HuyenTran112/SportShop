@@ -19,7 +19,7 @@ Chi tiết sản phẩm
 							<div class="slick3 gallery-lb">
 								<div class="item-slick3" data-thumb="image/{{$sanpham->hinhanh}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="image/{{$sanpham->hinhanh}}" alt="IMG-PRODUCT" height="250px">
+										<img src="image/{{$sanpham->hinhanh}}" alt="IMG-PRODUCT">
 
 										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
 											<i class="fa fa-expand"></i>
@@ -356,7 +356,7 @@ Chi tiết sản phẩm
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" height="250px">
+								<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" >
 
 								<a href="{{route('chitietsanpham',$sp->masp)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Quick View

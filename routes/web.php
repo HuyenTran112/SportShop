@@ -27,6 +27,11 @@ Route::get('chi-tiet-san-pham/{masp}',[
     'uses'=>'PageController@getChiTiet'
 ]);
 
+Route::get('gio-hang',[
+    'as'=>'giohang',
+    'uses'=>'PageController@getGioHang'
+]);
+
 Route::get('san-pham',[
     'as'=>'sanpham',
     'uses'=>'PageController@getSanPham'
