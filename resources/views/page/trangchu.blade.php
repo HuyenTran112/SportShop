@@ -139,7 +139,7 @@ Trang chủ
                                 	<span class="flash-del" style="font-size:15px"><b>{{number_format($sp->dongia)}} đồng</b></span>
                             	@endif
 								</p>
-								<a class="button js-addcart"></a>&nbsp;&nbsp;
+								<a class="button js-addcart" href="{{route('themgiohang',$sp->masp)}}"></a>&nbsp;&nbsp;
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">

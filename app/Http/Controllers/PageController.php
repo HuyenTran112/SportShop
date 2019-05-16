@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\sanpham;
 use App\loaisanpham;
 use App\nhacungcap;
+use App\Cart;
+use Session;
 class PageController extends Controller
 {
     public function getIndex()
@@ -56,5 +58,16 @@ class PageController extends Controller
     {
 		$loai=loaisanpham::all();
         return view('page.blog',compact('loai'));
+    }
+	
+	 public function getAddtoCart(Request $req,$masp)
+    {
+        $sanpham=sanpham::where('masp',$masp)->first();
+        $oldCart=Session('cart')?Session::get('cart'):null;
+        $cart =new Cart($oldCart);
+        $cart->add($sanpham,$masp);
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
+
     }
 }

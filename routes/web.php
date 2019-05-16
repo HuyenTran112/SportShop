@@ -36,6 +36,13 @@ Route::get('san-pham',[
     'as'=>'sanpham',
     'uses'=>'PageController@getSanPham'
 ]);
+
+Route::get('add-to-cart/{masp}',[
+    'as'=>'themgiohang',
+    'uses'=>'PageController@getAddtoCart'
+]
+);
+
 Route::get('/login', function () {
     return view('admin.login');
 });

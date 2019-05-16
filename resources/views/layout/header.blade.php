@@ -116,7 +116,7 @@
                                                 
                                                 
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif ">
 							<a href="{{route('giohang')}}"><i class="zmdi zmdi-shopping-cart"></i></a>
 						</div>
 
