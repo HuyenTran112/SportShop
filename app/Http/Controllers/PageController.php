@@ -38,11 +38,6 @@ class PageController extends Controller
         $sp_tuongtu=sanpham::where('maloaisp',$sanpham->maloaisp)->paginate(6);
         return view('page.chitietsanpham',compact('loai','sanpham','sp_tuongtu'));
     }
-	public function getGioHang(Request $req)
-    {
-		$loai=loaisanpham::all();
-        return view('page.giohang',compact('loai'));
-    }
 	
     public function getLienhe()
     {
@@ -70,4 +65,11 @@ class PageController extends Controller
         return redirect()->back();
 
     }
+	
+	public function getCheckout()
+	{
+		$loai=loaisanpham::all();
+		return view('page.giohang',compact('loai'));
+	}
+	
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\loaisanpham;
 use Session;
+use App\Cart;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -29,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('loai',$loai);
 
         });
-		view()->composer('header',function($view){
+		view()->composer(['header','page.giohang'],function($view){
             if(Session('cart'))
             {
                 $oldCart=Session::get('cart');

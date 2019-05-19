@@ -29,7 +29,7 @@ Route::get('chi-tiet-san-pham/{masp}',[
 
 Route::get('gio-hang',[
     'as'=>'giohang',
-    'uses'=>'PageController@getGioHang'
+    'uses'=>'PageController@getCheckout'
 ]);
 
 Route::get('san-pham',[
@@ -63,9 +63,10 @@ Route::get('blog',[
     'uses'=>'PageController@getBlog'
 ]);
 
-Route::get('master', function () {
-    return view('admin.master');
-});
+Route::post('gio-hang',[
+	'as'=>'giohang',
+	'uses'=>'PageController@postCheckout'
+]);
 
     
 
