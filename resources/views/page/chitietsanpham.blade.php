@@ -356,7 +356,7 @@ Chi tiết sản phẩm
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" >
+								<img src="image/{{$sp->hinhanh}}"  height="300px" alt="IMG-PRODUCT" >
 
 								<a href="{{route('chitietsanpham',$sp->masp)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Quick View
@@ -377,6 +377,7 @@ Chi tiết sản phẩm
                                 	<span class="flash-del" style="font-size:14px"><b>{{number_format($sp->dongia)}} đồng</b></span>
                             	@endif
 									</span>
+									<a class="button js-addcart" href="{{route('themgiohang',$sp->masp)}}"></a>&nbsp;&nbsp;
 								</div>
 
 								<div class="block2-txt-child2 flex-r p-t-3">

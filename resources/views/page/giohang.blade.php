@@ -30,21 +30,25 @@ Giỏ hàng
 									</td>
 									
 									<td class="column-2">{{$cart['item']['tensp']}}</td>
-									<td class="column-3">{{number_format($cart['price'])}}</td>
+									@if ($cart['item']['giakhuyenmai']==0)
+                               	 	<td class="column-3"  id="{{$cart['item']['masp']}}">{{number_format($cart['item']['dongia'])}}</td>
+                           		 	@else
+								 	<td class="column-3" id="{{$cart['item']['masp']}}">{{number_format($cart['item']['giakhuyenmai'])}}</td>
+                            		@endif
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="{{$cart['qty']}}">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="{{$cart['qty']}}" id="">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
 									</td>
-									<td class="column-5">$ 36.00</td>
+									<td class="column-5">{{number_format($cart['price'])}}</td>
 								</tr>
 								@endforeach
 								@endif
@@ -53,14 +57,14 @@ Giỏ hàng
 
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 							<div class="flex-w flex-m m-r-20 m-tb-5">
-								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
+								<!--<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
 									
 								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
 									Apply coupon
-								</div>
+								</div>-->
 							</div>
 
-							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10" id="update-cart">
 								Update Cart
 							</div>
 						</div>
@@ -254,6 +258,13 @@ Giỏ hàng
 			$(window).on('resize', function(){
 				ps.update();
 			})
+		});
+		
+	</script>
+	<script>
+		$('#update-cart').click(function()
+		{
+			alert();
 		});
 	</script>
 <!--===============================================================================================-->

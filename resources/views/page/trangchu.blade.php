@@ -116,7 +116,7 @@ Trang chủ
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" height="250px">
+							<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" height="300px">
 
 							<a href="{{route('chitietsanpham',$sp->masp)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
 								Quick View
@@ -280,5 +280,7 @@ Trang chủ
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	
+	
 
 @endsection

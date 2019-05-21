@@ -264,7 +264,7 @@ Sản phẩm
 						<div class="block2-pic hov-img0">
 							<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" height="300px">
 
-							<a href="{{route('chitietsanpham',$sp->masp)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+							<a href="{{route('chitietsanpham',$sp->masp)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04  ">
 								Quick View
 							</a>
 						</div>
@@ -285,7 +285,7 @@ Sản phẩm
                                 	<span class="flash-del" style="font-size:15px"><b>{{number_format($sp->dongia)}} đồng</b></span>
                             	@endif
 								</p>
-								<a class="button js-addcart"></a>&nbsp;&nbsp;
+								<a class="button js-addcart" href="{{route('themgiohang',$sp->masp)}}"></a>&nbsp;&nbsp;
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
@@ -315,7 +315,7 @@ Sản phẩm
 						<div class="block2-pic hov-img0">
 							<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" height="300px">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{route('chitietsanpham',$sp->masp)}}"class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 								Quick View
 							</a>
 						</div>
@@ -330,10 +330,10 @@ Sản phẩm
 								</span>-->
 								<p class="single-item-price">
 								@if($sp->giakhuyenmai==0)
-                               	 	<span class="flash-sale" style="font-size:15px">{{number_format($sp->dongia)}} đồng</span>
+                               	 	<span class="flash-sale" style="font-size:15px"><b>{{number_format($sp->dongia)}} đồng</b>b></span>
                            		 @else
-                                	<span class="flash-del" style="font-size:15px">{{number_format($sp->dongia)}} đồng</span>
-                                	<span class="flash-sale" style="font-size:15px">{{number_format($sp->giakhuyenmai)}} đồng</span>
+                                	<span class="flash-del" style="font-size:15px"><b>{{number_format($sp->dongia)}} đồng</b></span>
+                                	<span class="flash-sale" style="font-size:15px"><b>{{number_format($sp->giakhuyenmai)}} đồng</b></span>
                             	@endif
 								</p>
 								<a class="button js-addcart"></a>&nbsp;&nbsp;
@@ -365,7 +365,7 @@ Sản phẩm
 	</section>
 @endsection
 @section('script')
-<!--===============================================================================================-->
+<!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
@@ -412,7 +412,10 @@ Sản phẩm
 <!--===============================================================================================-->
 	<script src="vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
-		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
+            
+            /*---------------------------------------------*/		
+            
+		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
 		});
 
@@ -445,7 +448,14 @@ Sản phẩm
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-
+//                --------
+                $('.js-addcart').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});     
+		});
+	
 	</script>
 <!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -466,4 +476,5 @@ Sản phẩm
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
 @endsection

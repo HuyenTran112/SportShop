@@ -33,19 +33,19 @@
                     <tbody>
                         @foreach($listItem as $item)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$item->id}}</td>
-                                <td>{{$item->name}}</td>
+                                <td>{{$item->masp}}</td>
+                                <td>{{$item->tensp}}</td>
                                 <td>
-                     <?php $cate = DB::table('type_products')->where('id',$item->id_type)->first(); ?>
-                                    @if(!empty($cate->name))
-                                        {!! $cate->name !!}
+                     <?php $cate = DB::table('loaisanpham')->where('maloaisp',$item->maloaisp)->first(); ?>
+                                    @if(!empty($cate->tenloaisp))
+                                        {!! $cate->tenloaisp !!}
                                     @endif
                                 </td>
                                 <td>
-                                @if($item->promotion == 0) 
-                                    {{number_format($item->price, 3)}} VND
+                                @if($item->giakhuyenmai == 0) 
+                                    {{number_format($item->dongia, 3)}} VND
                                 @else
-                                    {{number_format($item->promotion, 3)}} VND
+                                    {{number_format($item->giakhuyenmai, 3)}} VND
                                 @endif
                                 </td>
                                 <td>
@@ -53,8 +53,8 @@
                                         echo \Carbon\Carbon::createFromTimeStamp(strtotime($item->created_at))->diffForHumans();
                                      ?>
                                 </td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete', $item->id)}}">Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit', $item->id)}}">Edit</a></td>
+                                <!--<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete', $item->id)}}">Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit', $item->id)}}">Edit</a></td>-->
                             </tr>
                         @endforeach
                     </tbody>
