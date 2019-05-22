@@ -65,11 +65,30 @@ class PageController extends Controller
         return redirect()->back();
 
     }
+	public function getDelItemCart($masp)
+    {
+        $oldCart=Session::has('cart')?Session::get('cart'):null;
+        $cart=new Cart($oldCart);
+        $cart->removeItem($masp);
+        if(count($cart->items)>0)
+        {
+            Session::put('cart',$cart);
+        }
+        else {
+            Session::forget('cart');
+        }
+        return redirect()->back();
+
+    }
 	
 	public function getCheckout()
 	{
 		$loai=loaisanpham::all();
 		return view('page.giohang',compact('loai'));
+	}
+	public function postCheckout()
+	{
+		return redirect()->back();
 	}
 	
 }

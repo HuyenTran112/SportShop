@@ -31,6 +31,10 @@ Route::get('gio-hang',[
     'as'=>'giohang',
     'uses'=>'PageController@getCheckout'
 ]);
+Route::post('gio-hang',[
+    'as'=>'giohang',
+    'uses'=>'PageController@postCheckout'
+]);
 
 Route::get('san-pham',[
     'as'=>'sanpham',
@@ -87,6 +91,12 @@ Route::group(['prefix'=>'admin']/*,'middleware'=>'checkLoginAdmin']*/, function(
         //Route::post('edit/{id}', ['as'=>'admin.product.postEdit', 'uses'=>'ProductController@postEdit']);
     });
 });
+
+Route::get('del-cart/{masp}',[
+    'as'=>'xoagiohang',
+    'uses'=>'PageController@getDelItemCart'
+]);
+
 
 
 

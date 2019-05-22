@@ -4,8 +4,8 @@ Giỏ hàng
 @endsection
 @section('content')
 <!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85" action="route{{('gio-hang')}}" method="post">
-	<input type="hidden" name="_token" value="{{csrf_token()}}">
+	<form class="bg0 p-t-75 p-b-85" action="{{route('giohang')}}" method="post">
+	<input type="hidden" name="_token" value="{!!csrf_token()!!}">
 	<div class="row"> @if(Session::has('thongbao')) {{Session::get('thongbao')}} @endif</div>
 		<div class="container">
 			<div class="row">
@@ -14,13 +14,14 @@ Giỏ hàng
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-1">Product</th>
+									<th class="column-1">Sản phẩm</th>
 									<th class="column-2"></th>
-									<th class="column-3">Price</th>
-									<th class="column-4">Quantity</th>
-									<th class="column-5">Total</th>
+									<th class="column-3">Giá</th>
+									<th class="column-4">Số lượng</th>
+									<th class="column-5">Thành tiền</th>
+									<th class="column-6">Chức năng</th>
 								</tr>
-								 @if(Session::has('cart'))
+							 @if(Session::has('cart'))
                                  @foreach($product_cart as $cart)
 								<tr class="table_row">
 									<td class="column-1">
@@ -41,14 +42,20 @@ Giỏ hàng
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="{{$cart['qty']}}" id="">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="{{$cart['qty']}}" id="test">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
+												<i class="fs-16 zmdi zmdi-plus" ></i>
 											</div>
 										</div>
 									</td>
+									
 									<td class="column-5">{{number_format($cart['price'])}}</td>
+									<td class="column-6">
+										<button class="btn"><i class="fa fa-trash"id={{$cart['item']['masp']}}></i></button>
+										<button class="btn"><i class="fa fa-edit"></i></button>
+
+									</td>
 								</tr>
 								@endforeach
 								@endif
@@ -262,11 +269,25 @@ Giỏ hàng
 		
 	</script>
 	<script>
-		$('#update-cart').click(function()
+		$(document).ready(function()
 		{
-			alert();
+			$('.fa-trash').click(function()
+			{
+				var rowid=$(this).attr('id');
+				var qty=$(this).parent().parent().parent().find(".num-product").val();
+				var token=$("input[name='_token']").val();
+				$.ajax(
+				{
+					url:
+					type:
+					cache:
+					data:
+					success:
+				});
+			});
 		});
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="js/cart.js"></script>
 @endsection

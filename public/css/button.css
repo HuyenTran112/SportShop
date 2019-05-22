@@ -1,0 +1,20 @@
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over
+.btn:hover {
+  background-color: RoyalBlue;
+}*/
+.table-shopping-cart .column-6 {
+  width: 200px;
+  padding-right: 50px;
+  text-align: right;
+  font-size: 16px;
+}
+
