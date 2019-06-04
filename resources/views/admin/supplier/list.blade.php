@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Category
+                    <h1 class="page-header">Nhà cung cấp
                         <small>List</small>
                     </h1>
                 </div>
@@ -20,8 +20,12 @@
                         </div>
                     <thead>
                         <tr align="center">
-                            <th>ID</th>
-                            <th>Name</th>
+                            <th>Mã nhà cung cấp</th>
+                            <th>Tên nhà cung cấp</th>
+							<th>Địa chỉ</th>
+							<th>Điện thoại</th>
+							<th>Email</th>
+							<th>Trạng thái</th>
                             <th>Delete</th>
                             <th>Edit</th>
                         </tr>
@@ -29,8 +33,12 @@
                     <tbody>
                         @foreach($listItem as $item)
                         <tr class="even gradeC" align="center">
-                            <td>{{$item->maloaisp}}</td>
-                            <td>{{$item->tenloaisp}}</td>
+                            <td>{{$item->manhacungcap}}</td>
+                            <td>{{$item->tennhacungcap}}</td>
+							<td>{{$item->diachi}}</td>
+							<td>{{$item->dienthoai}}</td>
+							<td>{{$item->email}}</td>
+							<td>{{$item->trangthai}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a >Delete</a></td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href=>Edit</a></td>
                         </tr>

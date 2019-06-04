@@ -84,7 +84,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Loại sản phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Danh sách loại sản phẩm</a>
+                                    <a href="{{route('admin.cate.list')}}">Danh sách loại sản phẩm</a>
                                 </li>
                                 <li>
                                     <a href="">Thêm loại sản phẩm</a>
@@ -96,7 +96,7 @@
                             <a href="#"><i class="fa fa-cube fa-fw"></i>Product<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Danh sách sản phẩm</a>
+                                    <a href="{{route('admin.product.list')}}">Danh sách sản phẩm</a>
                                 </li>
                                 <li>
                                     <a href="">Thêm sản phẩm</a>
@@ -108,7 +108,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i>User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Danh sách User</a>
+                                    <a href="{{route('admin.user.list')}}">Danh sách User</a>
                                 </li>
                                 <li>
                                     <a href="">Thêm User</a>
@@ -120,7 +120,7 @@
                             <a href="#"><i class="glyphicon glyphicon-list-alt"></i> Bill<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Show Bill</a>
+                                    <a href="{{route('admin.bill.showBill')}}">Show Bill</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -129,7 +129,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i>User Admin<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">List User</a>
+                                    <a href="{{route('admin.user.list')}}">List User</a>
                                 </li>
                                 <li>
                                     <a href="">Add User</a>
@@ -141,7 +141,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i>Công ty<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Danh sách công ty</a>
+                                    <a href="{{route('admin.supplier.list')}}">Danh sách công ty</a>
                                 </li>
                                 <li>
                                     <a href="">Thêm công ty</a>

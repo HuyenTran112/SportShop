@@ -20,34 +20,34 @@
                         </div>
                     <thead>
                         <tr align="center">
-                            <th>ID</th>
+                            <th>Số hóa đơn</th>
                             <th>Tên khách hàng</th>
                             <th>Ngày đặt hàng</th>
+							<th>Địa chỉ giao hàng</th>
                             <th>Tổng giá</th>
-                            <th>Ghi chú</th>
                             <th>Đã thanh toán</th>
-                             <th>Trạng thái</th>
+                            <th>Trạng thái</th>
                              <th>Chi tiết </th>
                             <!-- <th>Edit</th>  -->
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($bill as $item)
+                        @foreach($listItem as $item)
                         <tr class="even gradeC" align="center">
-                            <td>{{$item->id}}</td>
-                            <?php $name = DB::table('customer')->where('id',$item->id_customer)->first(); ?>
-                            <td>{{$name->name}}</td>
-                            <td>{{$item->date_order}}</td>
-                            <td>{{$item->total}}</td>
-                            <td>{{$item->note}}</td>
+                            <td>{{$item->sohd}}</td>
+                            <td>{{$item->makh}}</td>
+                            <td>{{$item->ngayhd}}</td>
+                            <td>{{$item->diachigiaohang}}</td>
+                            <td>{{$item->tongtien}}</td>
+							<td>{{$item->trangthai}}</td>
                             <td>
-                                @if($item->checkout == 0)
+                                @if($item->trangthai == 0)
                                     Chưa thanh toán
                                     @else
                                     Đã thanh toán
                              @endif</td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.bill.getCheck', $item->id)}}">Thanh toán</a></td> 
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.bill.showDetail', $item->id)}}">Xem chi tiết</a></td> 
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Thanh toán</a></td> 
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Xem chi tiết</a></td> 
                         </tr>
                         @endforeach
                     </tbody>

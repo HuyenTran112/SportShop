@@ -21,11 +21,13 @@
                     </div>
                     <thead>
                         <tr align="center">
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Date </th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Giá khuyến mãi</th>
+							<th>Miêu tả</th>
+							<th>Trạng thái</th>
                             <th>Delete</th>
                             <th>Edit</th>
                         </tr>
@@ -35,26 +37,18 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$item->masp}}</td>
                                 <td>{{$item->tensp}}</td>
-                                <td>
-                     <?php $cate = DB::table('loaisanpham')->where('maloaisp',$item->maloaisp)->first(); ?>
-                                    @if(!empty($cate->tenloaisp))
-                                        {!! $cate->tenloaisp !!}
-                                    @endif
+                                <td>{{$item->tenloaisp}}</td>
+                                <td> 
+                                    {{number_format($item->dongia, 3)}} VND 
+                             
                                 </td>
                                 <td>
-                                @if($item->giakhuyenmai == 0) 
-                                    {{number_format($item->dongia, 3)}} VND
-                                @else
                                     {{number_format($item->giakhuyenmai, 3)}} VND
-                                @endif
                                 </td>
-                                <td>
-                                    <?php
-                                        echo \Carbon\Carbon::createFromTimeStamp(strtotime($item->created_at))->diffForHumans();
-                                     ?>
-                                </td>
-                                <!--<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete', $item->id)}}">Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit', $item->id)}}">Edit</a></td>-->
+                                <td>{{$item->mieuta}}</td>
+								<td>{{$item->trangthai}}</td>
+								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="" href="">Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Edit</a></td>
                             </tr>
                         @endforeach
                     </tbody>

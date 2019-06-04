@@ -53,8 +53,7 @@ Giỏ hàng
 									<td class="column-5">{{number_format($cart['price'])}}</td>
 									<td class="column-6">
 										<button class="btn"><i class="fa fa-trash"id={{$cart['item']['masp']}}></i></button>
-										<button class="btn"><i class="fa fa-edit"></i></button>
-
+										<button class="btn"><i class="fa fa-edit" id={{$cart['item']['masp']}}></i></button>
 									</td>
 								</tr>
 								@endforeach
@@ -271,18 +270,23 @@ Giỏ hàng
 	<script>
 		$(document).ready(function()
 		{
-			$('.fa-trash').click(function()
-			{
+			$('.fa-edit').click(function(){
 				var rowid=$(this).attr('id');
 				var qty=$(this).parent().parent().parent().find(".num-product").val();
 				var token=$("input[name='_token']").val();
 				$.ajax(
 				{
-					url:
-					type:
-					cache:
-					data:
-					success:
+					url:'cap-nhat/'+rowid+'/'+qty,
+					type:'GET',
+					cache:false,
+					data:{'_token':token,'masp':rowid,'qty':qty},
+					success:function(data)
+					{
+						if(data=="oke")
+						{
+							alert("Yes");
+						}
+					}
 				});
 			});
 		});
