@@ -31,8 +31,8 @@ class CateRequest extends FormRequest
 	public function messages()
 	{
 		 return [
-            'txtCateName.required'=>'Please Enter Name Category',
-			'txtCateName.unique'=>'This Name Category is Exist'
+            'txtCateName.required'=>'Vui lòng nhập tên loại sản phẩm',
+			'txtCateName.unique'=>'Tên loại sản phẩm đã tồn tại'
         ];
 		
 	}

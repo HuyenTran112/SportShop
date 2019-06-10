@@ -99,7 +99,7 @@
                                     <a href="{{route('admin.product.list')}}">Danh sách sản phẩm</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm sản phẩm</a>
+                                    <a href="{{route('admin.product.getAdd')}}">Thêm sản phẩm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -111,7 +111,7 @@
                                     <a href="{{route('admin.user.list')}}">Danh sách User</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm User</a>
+                                    <a href="{{route('admin.user.getAdd')}}">Thêm User</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -129,10 +129,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i>User Admin<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('admin.user.list')}}">List User</a>
+                                    <a href="{{route('admin.userAdmin.list')}}">List User</a>
                                 </li>
                                 <li>
-                                    <a href="">Add User</a>
+                                    <a href="{{route('admin.userAdmin.getAdd')}}">Add User</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

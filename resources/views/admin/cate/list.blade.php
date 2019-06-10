@@ -5,8 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Category
-                        <small>List</small>
+                    <h1 class="page-header">Loại sản phẩm
+                        <small>Danh sách loại sản phẩm</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -20,10 +20,10 @@
                         </div>
                     <thead>
                         <tr align="center">
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>Mã loại</th>
+                            <th>Tên loại</th>
+                            <th>Xóa</th>
+                            <th>Sửa</th>
                         </tr>
                     </thead>
                     <tbody>
