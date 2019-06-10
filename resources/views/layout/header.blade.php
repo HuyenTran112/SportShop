@@ -76,10 +76,10 @@
 
 							<li>
 								<a >Sản phẩm</a>
-                                                                <ul class="sub-menu">
-								@foreach($loai as $l)
-								<li><a href="{{route('loai-san-pham',$l->maloaisp)}}">{{$l->tenloaisp}}</a></li>
-								@endforeach
+                                <ul class="sub-menu">
+									@foreach($loai as $l)
+									<li><a href="{{route('loai-san-pham',$l->maloaisp)}}">{{$l->tenloaisp}}</a></li>
+									@endforeach
 								</ul>
 							</li>
 

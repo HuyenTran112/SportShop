@@ -37,6 +37,7 @@
 	<link rel="stylesheet" href="{{URL::asset("css/main.css")}}">
 	<link rel="stylesheet" href="{{URL::asset("css/style1.css")}}">
 	<link rel="stylesheet" href="{{URL::asset("css/button.css")}}">
+	<link rel="stylesheet" href="{{URL::asset("css/styleCart.css")}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	@yield('css')

@@ -15,4 +15,5 @@ class hoadon extends Model
 	{
 		return $this->belongsTo('App\khachhang','makh','makh');
 	}
+	public $timestamps = false;
 }

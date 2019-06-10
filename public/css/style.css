@@ -14,3 +14,19 @@ margin-right:10px;
 color:#FF0000 !important;
 }
 
+.table-shopping-cart .table_row td {
+  padding: 10px;
+}
+.txt-infocustomer{
+  font-family: Helvetica;
+  border: 2px solid rgb(43, 43, 43);
+  border-radius: 4px;
+}
+
+.mtext-101 {
+  font-family: Helvetica;
+  font-size: 18px;
+  line-height: 1.333333;
+}
+
+

@@ -14,11 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('index',['as'=>'trang-chu',
-'uses'=>'PageController@getIndex']);
+Route::get('index',[
+    'as'=>'trang-chu',
+    'uses'=>'PageController@getIndex'
+]);
 
-Route::get('loaisanpham/{maloaisp}',['as'=>'loai-san-pham',
-'uses'=>'PageController@getLoaiSp']);
+Route::get('loaisanpham/{maloaisp}',[
+    'as'=>'loai-san-pham',
+    'uses'=>'PageController@getLoaiSp'
+]);
 
 
 
@@ -78,7 +82,6 @@ Route::get('/setting',
 	'as'=>'setting',
 	'uses'=>'ProductController@getList'
 ]);
-    
 	
 //Route::group(['prefix'=>'admin']/*,'middleware'=>'checkLoginAdmin']*/, function(){
     // Manage products
@@ -122,6 +125,7 @@ Route::group(['prefix'=>'supplier'], function(){
 Route::group(['prefix'=>'bill'], function(){
         Route::get('list', ['as'=>'admin.bill.showBill', 'uses'=>'BillController@getList']);	
     });
+//Giỏ hàng
 Route::get('del-cart/{masp}',[
     'as'=>'xoagiohang',
     'uses'=>'PageController@getDelItemCart'

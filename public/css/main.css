@@ -1892,12 +1892,7 @@ button.mfp-close {
   overflow: hidden;
 }
 
-.btn-num-product-up,
-.btn-num-product-down {
-  width: 45px;
-  height: 100%;
-  cursor: pointer;
-}
+
 
 .num-product {
   width: calc(100% - 90px);
@@ -2017,6 +2012,7 @@ input.num-product::-webkit-inner-spin-button {
   border-collapse: collapse;
   width: 100%;
   min-width: 680px;
+  padding: 8px;
 }
 
 .table-shopping-cart tr {
@@ -2050,10 +2046,10 @@ input.num-product::-webkit-inner-spin-button {
   text-align: right;
   font-size: 16px;
 }
-.table-shopping-cart .column-5 {
+.table-shopping-cart .column-6 {
   width: 200px;
   padding-right: 50px;
-  text-align: right;
+  /* text-align: right; */
   font-size: 16px;
 }
 
@@ -2062,7 +2058,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .table_row td {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .table-shopping-cart .table_row td.column-1 {
@@ -2085,6 +2081,12 @@ input.num-product::-webkit-inner-spin-button {
   line-height: 1.6;
 }
 
+.btn-num-product-up1,
+.btn-num-product-down1 {
+  width: 45px;
+  height: 100%;
+  cursor: pointer;
+}
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -2616,8 +2618,9 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .size-116 {
-  width: 100%;
+
   height: 50px;
+  margin-left: 22%;
 }
 
 .size-117 {

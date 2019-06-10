@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class cthd extends Model
 {
-    protected $table="sanpham";
-	public function loaisanpham()
+    protected $table="cthd";
+	public function sanpham()
 	{
-		return $this->belongsTo('App\loaisanpham','maloaisp','maloaisp');
+		return $this->belongsTo('App\sanpham','masp','masp');
 	}
-	public function cthd()
+	public function hoadon()
 	{
-		return $this->hasMany('App\cthd','masp','masp');
+		return $this->belongsTo('App\hoadon','sohd','sohd');
 	}
+	public $timestamps = false;
 }

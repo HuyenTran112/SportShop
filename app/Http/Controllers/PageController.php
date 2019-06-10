@@ -7,13 +7,16 @@ use App\sanpham;
 use App\loaisanpham;
 use App\nhacungcap;
 use App\Cart;
+use App\khachhang;
+use App\hoadon;
+use App\cthd;
 use Session;
 class PageController extends Controller
 {
     public function getIndex()
     {
-     	$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(4);
-		$loai=loaisanpham::all();
+     	$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(8);
+        $loai=loaisanpham::all();
         return view('page.trangchu',compact('sp_khuyenmai','loai'));
     }
 	public function getRegister()
@@ -65,20 +68,19 @@ class PageController extends Controller
         return redirect()->back();
 
     }
-	public function getDelItemCart($masp)
-    {
-        $oldCart=Session::has('cart')?Session::get('cart'):null;
-        $cart=new Cart($oldCart);
-        $cart->removeItem($masp);
-        if(count($cart->items)>0)
+    public function getDelItemCart($id){
+        $oldCart = Session::has('cart') ? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if(count($cart->items) > 0)  
         {
-            Session::put('cart',$cart);
-        }
-        else {
+            Session::put('cart', $cart);
+        }     
+            
+        else{
             Session::forget('cart');
-        }
+        }   
         return redirect()->back();
-
     }
 	
 	public function getCheckout()
@@ -86,10 +88,47 @@ class PageController extends Controller
 		$loai=loaisanpham::all();
 		return view('page.giohang',compact('loai'));
 	}
-	public function postCheckout()
+	public function postCheckout(Request $req)
 	{
-		return redirect()->back();
-	}
+		$cart = Session::get('cart');
+        // dd($cart);
+
+        // $this->validate($req,
+        //     [
+        //         'name'=>'required',
+        //         'phone'=>'required',
+        //         'address'=>'required',
+
+        //     ],
+        //     [
+        //         'email.required'=>'Vui lòng nhập họ tên',
+        //         'phone.required'=>'Vui lòng nhập số điện thoại',
+        //         'address.required'=>'Vui lòng nhập địa chỉ',  
+        //     ]);
+
+        
+        $bill = new hoadon;
+        $bill->makh = 1;
+        $bill->ngayhd = date('Y-m-d');
+        $bill->diachigiaohang = $req->address;
+        $bill->tongtien = $cart->totalPrice;
+        $bill->trangthai = 0;
+        $bill->ghichu = "Họ tên: ". $req->name. ", SĐT: ".$req->phone. ", email: ".$req->email. ". Ghi chú: ".$req->note;
+        $bill->save();
+        
+
+        foreach ($cart->items as $key => $value) {
+            $bill_detail = new cthd;
+            $bill_detail->sohd = $bill->makh; //$bill->sohd; Lỗi ở đây, nếu để là $bill->makh thì k lỗi
+            $bill_detail->masp = $key;
+            $bill_detail->soluong = $value['qty'];
+            $bill_detail->thanhtien = $value['price']/$value['qty'];
+            $bill_detail->save();
+        }
+        Session::forget('cart');
+        return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
+    }
+
 	public function capnhat()
 	{
 		if(Request::ajax())

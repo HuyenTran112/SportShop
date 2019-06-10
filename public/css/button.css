@@ -11,10 +11,9 @@
 .btn:hover {
   background-color: RoyalBlue;
 }*/
-.table-shopping-cart .column-6 {
-  width: 200px;
-  padding-right: 50px;
-  text-align: right;
-  font-size: 16px;
+.btn-num-product-up1,
+.btn-num-product-down1 {
+  width: 45px;
+  height: 100%;
+  cursor: pointer;
 }
-
