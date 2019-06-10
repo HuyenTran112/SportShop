@@ -87,7 +87,7 @@
                                     <a href="{{route('admin.cate.list')}}">Danh sách loại sản phẩm</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm loại sản phẩm</a>
+                                    <a href="{{route('admin.cate.getAdd')}}">Thêm loại sản phẩm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -144,7 +144,7 @@
                                     <a href="{{route('admin.supplier.list')}}">Danh sách công ty</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm công ty</a>
+                                    <a href="{{route('admin.supplier.getAdd')}}">Thêm công ty</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -157,7 +157,14 @@
         </nav>
         
         @yield('content')
-    </div>
+    	<div class="col-lg-7">
+			@if(Session::has('flash_message'))
+				<div class="alert alert-{{Session::get('flash_level')}}">
+					{{Session::get('flash_message')}}
+				</div>
+			@endif
+		</div>
+	</div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -175,24 +182,8 @@
     <!-- DataTables JavaScript -->
     <script src="bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
     <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-
+<script type="text/javascript" src="{{url('public/admin/js/myscript.js')}}"></script>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-                responsive: true
-        });
-    });
-
-    function xacNhanXoa(msg) {
-        if(window.confirm(msg)) {
-            return true;
-        }
-        else
-            return false;
-    };
-
-    $("div.alert").delay(3000).slideUp();
-    </script>
+    
 </body>
 </html>

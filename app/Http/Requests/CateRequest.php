@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class CateRequest extends FormRequest
 {
     /**
@@ -13,7 +14,7 @@ class CateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,14 +25,14 @@ class CateRequest extends FormRequest
     public function rules()
     {
         return [
-            'txtCateName'=>'required|unique:loaisanpham,tenloaisanpham'
+            'txtCateName'=>'required|unique:loaisanpham,tenloaisp'
         ];
     }
 	public function messages()
 	{
 		 return [
             'txtCateName.required'=>'Please Enter Name Category',
-			'textCateName.unique'=>'This Name Category is Exist'
+			'txtCateName.unique'=>'This Name Category is Exist'
         ];
 		
 	}

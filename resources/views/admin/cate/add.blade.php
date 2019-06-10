@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+
 <body>
     <!-- Page Content -->
     <div id="page-wrapper">
@@ -15,9 +16,10 @@
                     @include('admin.blocks.error')
                     <form action="{{route('admin.cate.getAdd')}}" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
+						
                         <div class="form-group">
                             <label>Category Name</label>
-                            <input class="form-control" name="txtCateName" placeholder="Nhập tên loại sản phẩm" required/>
+                            <input class="form-control" name="txtCateName" placeholder="Nhập tên loại sản phẩm" />
                         </div>
                         <button type="submit" class="btn btn-default">Category Add</button>
                         <button type="reset" class="btn btn-default">Reset</button>

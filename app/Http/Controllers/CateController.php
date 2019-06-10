@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\loaisanpham;
-use App\Http\Request\CateRequest;
+use App\Http\Requests\CateRequest;
+use Illuminate\Support\Facades\DB;
 class CateController extends Controller
 {
      public function getList(){
@@ -17,6 +18,11 @@ class CateController extends Controller
     }
 	public function postAdd(CateRequest $request)
 	{
-		print_r($request->txtCateName);
+		$loaisp=new loaisanpham;
+		$loaisp->tenloaisp=$request->txtCateName;
+		DB::table('loaisanpham')->insert(
+		['tenloaisp' =>$request->txtCateName ]
+	);
+		return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>"Thêm loại sản phẩm thành công"]);
 	}
 }
