@@ -15,7 +15,8 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'nguoidung',
+        // 'passwords' => 'users',
     ],
 
     /*
@@ -38,12 +39,14 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'nguoidung',
+            // 'provider' => 'users',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            // 'provider' => 'users',
+            'provider' => 'nguoidung',
             'hash' => false,
         ],
     ],
@@ -66,9 +69,11 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'nguoidung' => [
+            // 'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\nguoidung::class,
+            // 'model' => App\User::class,
         ],
 
         // 'users' => [
@@ -93,8 +98,10 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'nguoidung' => [
+            // 'users' => [
+            'provider' => 'nguoidung',
+            // 'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
         ],

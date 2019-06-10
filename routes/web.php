@@ -45,18 +45,16 @@ Route::get('san-pham',[
     'uses'=>'PageController@getSanPham'
 ]);
 
-Route::get('add-to-cart/{masp}',[
-    'as'=>'themgiohang',
-    'uses'=>'PageController@getAddtoCart'
-]
-);
+
 
 Route::get('/login', function () {
     return view('admin.login');
 });
 
-Route::get('register',['as'=>'register',
-'uses'=>'PageController@getRegister']);
+// Route::get('register',[
+//     'as'=>'register',
+//     'uses'=>'PageController@getRegister'
+// ]);
 
 Route::get('lien-he',[
     'as'=>'lienhe',
@@ -131,10 +129,40 @@ Route::get('del-cart/{masp}',[
     'uses'=>'PageController@getDelItemCart'
 ]);
 
+Route::get('add-to-cart/{masp}',[
+    'as'=>'themgiohang',
+    'uses'=>'PageController@getAddtoCart'
+]
+);
+
+Route::get('reduce-cart/{masp}',[
+    'as'=>'giamgiohang',
+    'uses'=>'PageController@getReduceItemCart'
+]);
+
 Route::get('cap-nhat/{masp}/{qty}',
 [
 	'as'=>'capnhat',
 	'uses'=>'PageController@capnhat'
 ]);
+
+//đăng ký tài khoản
+Route::get('dang-ky',[
+    'as'=>'signin',
+    'uses'=>'UserController@getSignin'
+]);
+Route::post('dang-ky',[
+    'as'=>'signin',
+    'uses'=>'UserController@postSignin'
+]); 
+//đăng nhập
+Route::get('dang-nhap',[
+    'as'=>'login',
+    'uses'=>'UserController@getLogin'
+]);
+Route::post('dang-nhap',[
+    'as'=>'login',
+    'uses'=>'UserController@postLogin'
+]); 
 
 

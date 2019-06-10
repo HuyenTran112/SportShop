@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class khachang extends Model
+class khachhang extends Model
 {
     protected $table="khachhang";
 	public function hoadon()
@@ -14,6 +14,7 @@ class khachang extends Model
 
 	public function nguoidung()
 	{
-		return $this->belongsTo('App\nguoidung','manguoidung','manguoidung');
+		return $this->belongsTo('App\nguoidung', 'manguoidung', 'manguoidung');
 	}
+	public $timestamps = false;
 }

@@ -41,23 +41,23 @@ Giỏ hàng
 									<td class="column-4">
 									
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer">
+											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $cart['item']['masp'])}}" style="width: 45px; height: 100%; cursor: pointer">
 												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
+											</a>
 
 											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="{{$cart['qty']}}" id="test">
 
-											<div class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer">
+											<a class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('themgiohang', $cart['item']['masp'])}}" style="width: 45px; height: 100%; cursor: pointer">
 												<i class="fs-16 zmdi zmdi-plus" ></i>
-											</div>
+											</a>
 										</div>
 									
 									</td>
 									
 									<td class="column-5 TotalPrice">{{number_format($cart['price'])}}</td>
 									<td class="column-6">
-										<a class="cart-item-delete btn-DelCart" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
-										<!-- href="{{route('xoagiohang', $cart['item']['masp'])}}"  -->
+										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $cart['item']['masp'])}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
+										
 										<!-- <button class="btn"><i class="fa fa-edit" id={{$cart['item']['masp']}}></i></button> -->
 									</td>
 								</tr>
@@ -260,46 +260,46 @@ Giỏ hàng
 			// 	});
 			// });
 
-			$(".btn-num-product-down1").click(function(){
-				var numProduct = Number($(this).next().val());
-				if(numProduct > 1) $(this).next().val(numProduct - 1);
+			// $(".btn-num-product-down1").click(function(){
+			// 	var numProduct = Number($(this).next().val());
+			// 	if(numProduct > 1) $(this).next().val(numProduct - 1);
 
-				var t = $(this).parent().parent().parent().find(".gia").text();
-				var sl = Number($(this).parent().find(".num-product").val());
-				var res = Number(t.replace(/\,/g, ''));
-				$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
+			// 	var t = $(this).parent().parent().parent().find(".gia").text();
+			// 	var sl = Number($(this).parent().find(".num-product").val());
+			// 	var res = Number(t.replace(/\,/g, ''));
+			// 	$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
 				
-				var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
-				var Ttien = Number(tt.replace(/\,/g, ''));
-				if(numProduct > 1)
-					$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien - res)); // gán lại Tổng Tiền
-			});
+			// 	var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
+			// 	var Ttien = Number(tt.replace(/\,/g, ''));
+			// 	if(numProduct > 1)
+			// 		$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien - res)); // gán lại Tổng Tiền
+			// });
 
-			$('.btn-num-product-up1').click(function(){
-				var numProduct = Number($(this).prev().val());
-        		$(this).prev().val(numProduct + 1);
+			// $('.btn-num-product-up1').click(function(){
+			// 	var numProduct = Number($(this).prev().val());
+        	// 	$(this).prev().val(numProduct + 1);
 
-				var t = $(this).parent().parent().parent().find(".gia").text();
-				var sl = Number($(this).parent().find(".num-product").val());
-				var res = Number(t.replace(/\,/g, ''));
-				$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
+			// 	var t = $(this).parent().parent().parent().find(".gia").text();
+			// 	var sl = Number($(this).parent().find(".num-product").val());
+			// 	var res = Number(t.replace(/\,/g, ''));
+			// 	$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
 
-				var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
-				var Ttien = Number(tt.replace(/\,/g, '')); //bỏ tất cả dấu "," trong number-format
-				$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien + res)); // gán lại Tổng Tiền
-				// alert(tt.replace(/\,/g, ''));
-			});
+			// 	var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
+			// 	var Ttien = Number(tt.replace(/\,/g, '')); //bỏ tất cả dấu "," trong number-format
+			// 	$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien + res)); // gán lại Tổng Tiền
+			// 	alert(tt.replace(/\,/g, ''));
+			// });
 
-			$('.btn-DelCart').click(function(){
-				var Tht = $(this).parent().parent().find(".TotalPrice").text(); //gán lại thành tiền
-				var Thanhtien = Number(Tht.replace(/\,/g, ''));
+			// $('.btn-DelCart').click(function(){
+			// 	var Tht = $(this).parent().parent().find(".TotalPrice").text(); //gán lại thành tiền
+			// 	var Thanhtien = Number(Tht.replace(/\,/g, ''));
 
-				var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
-				var Tongtien = Number(tt.replace(/\,/g, '')); //bỏ tất cả dấu "," trong number-format
+			// 	var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
+			// 	var Tongtien = Number(tt.replace(/\,/g, '')); //bỏ tất cả dấu "," trong number-format
 
-				$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Tongtien - Thanhtien)); // gán lại Tổng Tiền
-				$(this).parent().parent().remove();
-			});
+			// 	$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Tongtien - Thanhtien)); // gán lại Tổng Tiền
+			// 	$(this).parent().parent().remove();
+			// });
 
 		});
 	//number-format

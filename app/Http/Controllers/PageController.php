@@ -19,12 +19,12 @@ class PageController extends Controller
         $loai=loaisanpham::all();
         return view('page.trangchu',compact('sp_khuyenmai','loai'));
     }
-	public function getRegister()
-    {
-		$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(4);
-		$loai=loaisanpham::all();
-        return view('admin.register',compact('sp_khuyenmai','loai'));
-    }
+	// public function getRegister()
+    // {
+	// 	$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(4);
+	// 	$loai=loaisanpham::all();
+    //     return view('admin.register',compact('sp_khuyenmai','loai'));
+    // }
     public function getLoaiSp($maloaisp)
     {
         $loai=loaisanpham::all();
@@ -57,17 +57,18 @@ class PageController extends Controller
 		$loai=loaisanpham::all();
         return view('page.blog',compact('loai'));
     }
-	
-	 public function getAddtoCart(Request $req,$masp)
+//giỏ hàng
+	 public function getAddtoCart(Request $req, $masp)
     {
-        $sanpham=sanpham::where('masp',$masp)->first();
-        $oldCart=Session('cart')?Session::get('cart'):null;
-        $cart =new Cart($oldCart);
+        $sanpham = sanpham::where('masp',$masp)->first();
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
         $cart->add($sanpham,$masp);
         $req->session()->put('cart',$cart);
         return redirect()->back();
 
     }
+    //xóa nhiều
     public function getDelItemCart($id){
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
         $cart = new Cart($oldCart);
@@ -82,6 +83,22 @@ class PageController extends Controller
         }   
         return redirect()->back();
     }
+
+    //giảm số lượng đi 1 (xóa 1)
+    public function getReduceItemCart($id){
+        $oldCart = Session::has('cart') ? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+        if(count($cart->items) > 1)  
+        {
+            Session::put('cart', $cart);
+        }     
+            
+        // else{
+        //     Session::forget('cart');
+        // }   
+        return redirect()->back();
+    }
 	
 	public function getCheckout()
 	{
@@ -91,22 +108,7 @@ class PageController extends Controller
 	public function postCheckout(Request $req)
 	{
 		$cart = Session::get('cart');
-        // dd($cart);
 
-        // $this->validate($req,
-        //     [
-        //         'name'=>'required',
-        //         'phone'=>'required',
-        //         'address'=>'required',
-
-        //     ],
-        //     [
-        //         'email.required'=>'Vui lòng nhập họ tên',
-        //         'phone.required'=>'Vui lòng nhập số điện thoại',
-        //         'address.required'=>'Vui lòng nhập địa chỉ',  
-        //     ]);
-
-        
         $bill = new hoadon;
         $bill->makh = 1;
         $bill->ngayhd = date('Y-m-d');
@@ -119,10 +121,10 @@ class PageController extends Controller
 
         foreach ($cart->items as $key => $value) {
             $bill_detail = new cthd;
-            $bill_detail->sohd = $bill->makh; //$bill->sohd; Lỗi ở đây, nếu để là $bill->makh thì k lỗi
+            $bill_detail->sohd = $bill->id; //$bill->sohd; Lỗi ở đây, nếu để là $bill->makh thì k lỗi
             $bill_detail->masp = $key;
             $bill_detail->soluong = $value['qty'];
-            $bill_detail->thanhtien = $value['price']/$value['qty'];
+            $bill_detail->thanhtien = $value['price'];
             $bill_detail->save();
         }
         Session::forget('cart');
@@ -135,6 +137,7 @@ class PageController extends Controller
 		{
 			echo "oke";
 		}
-	}
+    }
+    
 	
 }

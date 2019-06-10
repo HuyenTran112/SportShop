@@ -39,11 +39,11 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="login" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{route('login')}}" class="flex-c-m trans-04 p-lr-25">
                                                     Đăng nhập
 						</a>
 
-						<a href="register" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{route('signin')}}" class="flex-c-m trans-04 p-lr-25">
                                                     Đăng ký
 						</a>
 
