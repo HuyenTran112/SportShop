@@ -25,4 +25,14 @@ class CateController extends Controller
 	);
 		return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>"Thêm loại sản phẩm thành công"]);
 	}
+	public function getEdit($maloaisp){
+        $item = DB::table('loaisanpham')->where('maloaisp', '=',$maloaisp)->first();
+        return view('admin.cate.edit', compact('item'));
+    }
+	public function postEdit($maloaisp, Request $req){
+		DB::table('loaisanpham')
+            ->where('maloaisp', $maloaisp)
+            ->update(['tenloaisp' => $req->txtName]);
+        return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>'Successfully updated cate product']);
+    }
 }

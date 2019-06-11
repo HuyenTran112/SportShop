@@ -32,7 +32,7 @@
                             <td>{{$item->maloaisp}}</td>
                             <td>{{$item->tenloaisp}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a >Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href=>Edit</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.cate.getEdit', $item->maloaisp)}}">Edit</a></td>
                         </tr>
                         @endforeach
                     </tbody>

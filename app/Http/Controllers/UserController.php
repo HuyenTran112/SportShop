@@ -8,7 +8,6 @@ use App\Http\Requests\UserRequest;
 
 
 use App\khachhang;
-use App\nguoidung;
 use Hash;
 use Auth;
 use Session;

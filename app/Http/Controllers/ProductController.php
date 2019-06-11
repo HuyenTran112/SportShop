@@ -27,6 +27,17 @@ class ProductController extends Controller
 		return redirect()->route('admin.product.list')->with(['flash_level'=>'success','flash_message'=>"Thêm sản phẩm thành công"]);
 	
 	}
+	//Cập nhật sản phẩm
+	public function getEdit($masp)
+	{
+		$item=DB::table('sanpham')->join('loaisanpham','sanpham.maloaisp','=','loaisanpham.maloaisp')->where('masp','=',$masp)->first();
+		return view('admin.product.edit',compact('item'));
+	}
+	public function postEdit($masp, Request $req,ProductRequest $request){
+		$file_name = $request->file('fImages')->getClientOriginalName();
+		dd ($file_name);
+		
+		 }
 		 
 	
 	

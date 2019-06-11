@@ -12,13 +12,13 @@
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     @include('admin.blocks.error')
-                    <form action="{{route('admin.cate.getEdit', $item->id)}}" method="POST">
+                    <form action="{{route('admin.cate.getEdit', $item->maloaisp)}}" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label>Id</label>
-                            <input class="form-control" name="txtCateName" value="{{$item->id}}" readonly/>
+                            <input class="form-control" name="txtId" value="{{$item->maloaisp}}" readonly/>
                             <label>Category Name</label>
-                            <input class="form-control" name="txtCateName" value="{{$item->name }}" />
+                            <input class="form-control" name="txtName" value="{{$item->tenloaisp}}" />
                         </div>
                         <button type="submit" class="btn btn-default">Category Edit</button>
                         <button type="reset" class="btn btn-default">Reset</button>
