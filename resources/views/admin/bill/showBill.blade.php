@@ -5,8 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Bill
-                        <small>Show Bill</small>
+                    <h1 class="page-header">Hóa đơn
+                        <small>Danh sách hóa đơn</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -27,6 +27,7 @@
                             <th>Tổng giá</th>
                             <th>Đã thanh toán</th>
                             <th>Trạng thái</th>
+							<th>Thanh toán</th>
                              <th>Chi tiết </th>
                             <!-- <th>Edit</th>  -->
                         </tr>

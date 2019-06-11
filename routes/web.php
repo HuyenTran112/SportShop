@@ -110,6 +110,15 @@ Route::group(['prefix'=>'user'], function(){
         Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
         Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
     });
+	//quản lý  user admin
+Route::group(['prefix'=>'userAdmin'], function(){
+        Route::get('list', ['as'=>'admin.userAdmin.list', 'uses'=>'AdminController@getList']);	
+        Route::get('add', ['as'=>'admin.userAdmin.getAdd', 'uses'=>'AdminController@getAdd']);
+       	Route::post('add', ['as'=>'admin.userAdmin.postAdd', 'uses'=>'AdminController@postAdd']);
+        Route::get('delete/{id}', ['as'=>'adminAdmin.user.getDelete', 'uses'=>'AdminController@getDelete']);
+        Route::get('edit/{id}', ['as'=>'admin.userAdmin.getEdit', 'uses'=>'AdminController@getEdit']);
+        Route::post('edit/{id}', ['as'=>'admin.userAdmin.postEdit', 'uses'=>'AdminController@postEdit']);
+    });
 //quản lý nhà cung cấp
 Route::group(['prefix'=>'supplier'], function(){
         Route::get('list', ['as'=>'admin.supplier.list', 'uses'=>'SupplierController@getList']);	
