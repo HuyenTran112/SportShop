@@ -23,16 +23,16 @@
 
                         <div class="form-group">
                             <label>Loại sản phẩm</label>
-                                <select class="form-control" name="txtCategory">
+                                <select class="form-control loaisanpham" name="txtCategory">
                                     <?php  $cate = DB::table('loaisanpham')->select('maloaisp','tenloaisp')->get();  ?>
                                     @foreach($cate as $item)
                                         <option value="{{$item->maloaisp}}">{{$item->tenloaisp}}</option>
                                     @endforeach
                                 </select>
-                        </div>
+                        </div>					
 						<div class="form-group">
                             <label>Nhà cung cấp</label>
-                                <select class="form-control" name="txtSupplier">
+							<select class="form-control loaisanpham" name="txtCategory">
                                     <?php  $supplier = DB::table('nhacungcap')->select('manhacungcap','tennhacungcap')->get();  ?>
                                     @foreach($supplier as $item)
                                         <option value="{{$item->manhacungcap}}">{{$item->tennhacungcap}}</option>

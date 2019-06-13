@@ -25,7 +25,6 @@
                             <th>Ngày đặt hàng</th>
 							<th>Địa chỉ giao hàng</th>
                             <th>Tổng giá</th>
-                            <th>Đã thanh toán</th>
                             <th>Trạng thái</th>
 							<th>Thanh toán</th>
                              <th>Chi tiết </th>
@@ -36,11 +35,10 @@
                         @foreach($listItem as $item)
                         <tr class="even gradeC" align="center">
                             <td>{{$item->sohd}}</td>
-                            <td>{{$item->makh}}</td>
+                            <td>{{$item->tenkh}}</td>
                             <td>{{$item->ngayhd}}</td>
                             <td>{{$item->diachigiaohang}}</td>
                             <td>{{$item->tongtien}}</td>
-							<td>{{$item->trangthai}}</td>
                             <td>
                                 @if($item->trangthai == 0)
                                     Chưa thanh toán
@@ -48,7 +46,7 @@
                                     Đã thanh toán
                              @endif</td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Thanh toán</a></td> 
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Xem chi tiết</a></td> 
+                            <td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.bill.showBillDetail',$item->sohd)}}">Xem chi tiết</a></td> 
                         </tr>
                         @endforeach
                     </tbody>

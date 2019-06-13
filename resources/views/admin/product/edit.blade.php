@@ -37,6 +37,24 @@
                                     @endforeach
                                 </select>
                         </div>
+						{{--Nhà cung cấp--}}
+                        <div class="form-group">
+                            <label>Nhà cung cấp</label>
+                                <select class="form-control" name="txtSupplier" value="{{$item->tenloaisp}}" required>
+                                    <?php  $supplier = DB::table('nhacungcap')->select('manhacungcap','tennhacungcap')->get();  ?>
+                                    @foreach($supplier as $data)
+                                        @if($data->manhacungcap == $item->manhacungcap)
+                                             <option value="{{$data->manhacungcap}}" selected="selected">
+                                                {{$data->tennhacungcap}}
+                                             </option>
+                                        @else
+                                             <option value="{{$data->manhacungcap}}">
+                                                {{$data->tennhacungcap}}
+                                             </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                        </div>
 
                         {{--  Mô tả sản phẩm  --}}
                         <div class="form-group">
@@ -68,6 +86,15 @@
                         <div class="form-group">
                             <label>Hình ảnh mới</label>
                             <input type="file" name="fImages">
+                        </div>
+						{{--Trạng thái--}}
+						<div class="form-group">
+                            <label>Trạng thái  </label>
+							@if($item->trangthai==1)
+                           		<input  class="form-group"type="checkbox" id="myCheck" name='status' checked="checked">
+							@else
+								<input  class="form-group"type="checkbox"  name ="status" id="myCheck">
+							@endif	
                         </div>
                         <button type="submit" class="btn btn-default">Edit</button>
                         <button type="reset" class="btn btn-default">Cancel</button>

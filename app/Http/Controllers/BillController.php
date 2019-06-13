@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\hoadon;
+
 class BillController extends Controller
 {
     public function getList(){
@@ -11,4 +12,9 @@ class BillController extends Controller
 		$listItem = DB::table('hoadon')->join('khachhang', 'khachhang.makh', '=', 'hoadon.makh')->get();
         return view('admin.bill.showBill',compact('listItem'));
     }
+	public function getBillDetail($sohd)
+	{
+		$list=DB::table('cthd')->where('sohd',$sohd)->get();
+		return view('admin.bill.showDetail',compact('list'));
+	}
 }

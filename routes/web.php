@@ -131,6 +131,7 @@ Route::group(['prefix'=>'supplier'], function(){
 //quản lý hóa đơn
 Route::group(['prefix'=>'bill'], function(){
         Route::get('list', ['as'=>'admin.bill.showBill', 'uses'=>'BillController@getList']);	
+		 Route::get('showBillDetail/{id}', ['as'=>'admin.bill.showBillDetail', 'uses'=>'BillController@getBillDetail']);
     });
 //Giỏ hàng
 Route::get('del-cart/{masp}',[

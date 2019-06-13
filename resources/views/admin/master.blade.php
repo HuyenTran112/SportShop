@@ -184,6 +184,21 @@
     <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="{{url('public/admin/js/myscript.js')}}"></script>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+
+    function xacNhanXoa(msg) {
+        if(window.confirm(msg)) {
+            return true;
+        }
+        else
+            return false;
+    };
+	$("div.alert").delay(3000).slideUp();
+    </script>
 </body>
 </html>

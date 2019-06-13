@@ -28,6 +28,7 @@
 							<th>Trạng thái</th>
                             <th>Delete</th>
                             <th>Edit</th>
+							<th>View more</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,7 @@
 							<td>{{$item->trangthai}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a >Delete</a></td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href=>Edit</a></td>
+							<td class="center"><i class="fa fa-search fa-fw"></i> <a href=>View more</a></td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -47,7 +47,7 @@
                                 </td>
                                 <td>{{$item->mieuta}}</td>
 								<td>{{$item->trangthai}}</td>
-								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="" href="">Delete</a></td>
+								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete',$item->masp)}}">Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit',$item->masp)}}">Edit</a></td>
                             </tr>
                         @endforeach

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Category
+                    <h1 class="page-header">Loại sản phẩm
                         <small>Edit</small>
                     </h1>
                 </div>
@@ -15,12 +15,12 @@
                     <form action="{{route('admin.cate.getEdit', $item->maloaisp)}}" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
-                            <label>Id</label>
+                            <label>Mã loại sản phẩm</label>
                             <input class="form-control" name="txtId" value="{{$item->maloaisp}}" readonly/>
-                            <label>Category Name</label>
+                            <label>Tên loại sản phẩm</label>
                             <input class="form-control" name="txtName" value="{{$item->tenloaisp}}" />
                         </div>
-                        <button type="submit" class="btn btn-default">Category Edit</button>
+                        <button type="submit" class="btn btn-default">Edit</button>
                         <button type="reset" class="btn btn-default">Reset</button>
                     <form>
                 </div>
