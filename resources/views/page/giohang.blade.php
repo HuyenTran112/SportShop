@@ -238,8 +238,8 @@ Giỏ hàng
 		
 	</script>
 	<script>
-		$(document).ready(function()
-		{
+		// $(document).ready(function()
+		// {
 			// $('.fa-edit').click(function(){
 			// 	var rowid=$(this).attr('id');
 			// 	var qty=$(this).parent().parent().parent().find(".num-product").val();
@@ -301,7 +301,7 @@ Giỏ hàng
 			// 	$(this).parent().parent().remove();
 			// });
 
-		});
+		// });
 	//number-format
 	function addCommas(nStr)
 	{
