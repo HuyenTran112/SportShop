@@ -28,11 +28,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($list as $listUser)
+                            @foreach($listItem as $listUser)
                                     <tr class="odd gradeX" align="center">
-                                            <td>{{$listUser->manguoidung}}</td>
-                                            <td>{{$listUser->tendangnhap}}</td>
-                                            <td>{{$listUser->tennhomnguoidung}}</td>
+                                            <td>{{$listUser->id}}</td>
+                                            <td>{{$listUser->username}}</td>
+                                            <td>{{$listUser->name}}</td>
                                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i>Delete</a></td>
                                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a >Edit</a></td>
                                     </tr>

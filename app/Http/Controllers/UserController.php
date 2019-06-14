@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\nguoidung;
+use App\Http\Requests\UserRequest;
 
 
 use App\khachhang;
-use App\nguoidung;
 use Hash;
 use Auth;
 use Session;
@@ -18,6 +19,10 @@ class UserController extends Controller
 		$listItem = DB::table('nguoidung')->join('nhomnguoidung', 'nguoidung.manhomnguoidung', '=', 'nhomnguoidung.manhomnguoidung')->get();
         return view('admin.user.list',compact('listItem'));
     }
+	public function getAdd()
+	{
+		return view('admin.user.add');
+	}
 
     //đăng ký tài khoản
     public function getSignin(){

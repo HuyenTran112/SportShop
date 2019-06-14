@@ -5,8 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Product
-                        <small>List</small>
+                    <h1 class="page-header">Sản phẩm
+                        <small>Danh sách sản phẩm</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -47,8 +47,8 @@
                                 </td>
                                 <td>{{$item->mieuta}}</td>
 								<td>{{$item->trangthai}}</td>
-								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="" href="">Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Edit</a></td>
+								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete',$item->masp)}}">Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit',$item->masp)}}">Edit</a></td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -20,23 +20,18 @@
                         </div>
                     <thead>
                         <tr align="center">
-                            <th>ID</th>
-                            <th>ID Bill</th>
                             <th>Tên Sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($bill_detail as $item)
+                        @foreach($list as $item)
                         <tr class="even gradeC" align="center">
-                            <td>{{$item->id}}</td>
-                            <td>{{$item->id_bill}}</td>
-                            <?php $name = DB::table('products')->where('id',$item->id_product)->first(); ?>
-                            <td>{{$name->name}}</td>
-                            <td>{{$item->quantity}}</td>
-                            <td>{{$item->price}}</td>
-                           
+                            <?php $name = DB::table('sanpham')->where('masp',$item->masp)->first(); ?>
+                            <td>{{$name->tensp}}</td>
+                            <td>{{$item->soluong}}</td>
+                           	<td>{{$item->thanhtien}}</td>
                         </tr>
                         @endforeach
                     </tbody>

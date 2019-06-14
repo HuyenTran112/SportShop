@@ -87,7 +87,7 @@
                                     <a href="{{route('admin.cate.list')}}">Danh sách loại sản phẩm</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm loại sản phẩm</a>
+                                    <a href="{{route('admin.cate.getAdd')}}">Thêm loại sản phẩm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -99,7 +99,7 @@
                                     <a href="{{route('admin.product.list')}}">Danh sách sản phẩm</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm sản phẩm</a>
+                                    <a href="{{route('admin.product.getAdd')}}">Thêm sản phẩm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -111,7 +111,7 @@
                                     <a href="{{route('admin.user.list')}}">Danh sách User</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm User</a>
+                                    <a href="{{route('admin.user.getAdd')}}">Thêm User</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -129,10 +129,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i>User Admin<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('admin.user.list')}}">List User</a>
+                                    <a href="{{route('admin.userAdmin.list')}}">List User</a>
                                 </li>
                                 <li>
-                                    <a href="">Add User</a>
+                                    <a href="{{route('admin.userAdmin.getAdd')}}">Add User</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -144,7 +144,7 @@
                                     <a href="{{route('admin.supplier.list')}}">Danh sách công ty</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm công ty</a>
+                                    <a href="{{route('admin.supplier.getAdd')}}">Thêm công ty</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -157,7 +157,14 @@
         </nav>
         
         @yield('content')
-    </div>
+    	<div class="col-lg-7">
+			@if(Session::has('flash_message'))
+				<div class="alert alert-{{Session::get('flash_level')}}">
+					{{Session::get('flash_message')}}
+				</div>
+			@endif
+		</div>
+	</div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -175,7 +182,7 @@
     <!-- DataTables JavaScript -->
     <script src="bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
     <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-
+<script type="text/javascript" src="{{url('public/admin/js/myscript.js')}}"></script>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
@@ -191,8 +198,7 @@
         else
             return false;
     };
-
-    $("div.alert").delay(3000).slideUp();
+	$("div.alert").delay(3000).slideUp();
     </script>
 </body>
 </html>

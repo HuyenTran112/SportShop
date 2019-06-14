@@ -5,8 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Product
-                        <small>Add</small>
+                    <h1 class="page-header">Sản phẩm
+                        <small>Thêm</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -17,44 +17,51 @@
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Tên</label>
                             <input class="form-control" name="txtName" placeholder="Nhập tên sản phẩm" value="{!! old('txtName') !!}" />
                         </div>
 
                         <div class="form-group">
-                            <label>Category</label>
-                                <select class="form-control" name="txtCategory">
-                                    {{--  <option selected value="1">Áo Thun</option>
-                                    <option value="2">Áo Sơ Mi</option>  --}}
-                                    <?php  $cate = DB::table('type_products')->select('id','name')->get();  ?>
+                            <label>Loại sản phẩm</label>
+                                <select class="form-control loaisanpham" name="txtCategory">
+                                    <?php  $cate = DB::table('loaisanpham')->select('maloaisp','tenloaisp')->get();  ?>
                                     @foreach($cate as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        <option value="{{$item->maloaisp}}">{{$item->tenloaisp}}</option>
+                                    @endforeach
+                                </select>
+                        </div>					
+						<div class="form-group">
+                            <label>Nhà cung cấp</label>
+							<select class="form-control loaisanpham" name="txtCategory">
+                                    <?php  $supplier = DB::table('nhacungcap')->select('manhacungcap','tennhacungcap')->get();  ?>
+                                    @foreach($supplier as $item)
+                                        <option value="{{$item->manhacungcap}}">{{$item->tennhacungcap}}</option>
                                     @endforeach
                                 </select>
                         </div>
-
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" name="txtDescription">{{old('txtDescription')}}</textarea>
-                        </div>
-                        <script type="text/javascript">CKEDITOR.replace('txtDescription');</script>
-
-                        <div class="form-group">
-                            <label>Price</label>
+						<div class="form-group">
+                            <label>Đơn giá</label>
                             <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm" value="{!! old('txtPrice') !!}" />
                         </div>
 
                         <div class="form-group">
-                            <label>Promotion</label>
-                            <input class="form-control" name="txtPromotion" placeholder="Nhập giá khuyến mãi" value="{!! old('txtPromotion') !!}"/>
+                            <label>Giá khuyến mãi</label>
+                            <input class="form-control" name="txtPromotion" placeholder="Nhập giá khuyến mãi" value="0"/>
                         </div>
+                        <div class="form-group">
+                            <label>Mô tả</label>
+                            <textarea class="form-control" name="txtDescription">{{old('txtDescription')}}</textarea>
+                        </div>
+                        <script type="text/javascript">CKEDITOR.replace('txtDescription');</script>
+
+                  
 
                         <div class="form-group">
-                            <label>Images</label>
+                            <label>Hình ảnh</label>
                             <input type="file" name="fImages">
                         </div>
 
-                        <button type="submit" class="btn btn-default">Add</button>
+                        <button type="submit" class="btn btn-default">Thêm</button>
                         <button type="reset" class="btn btn-default">Cancel</button>
                     <form>
                 </div>
