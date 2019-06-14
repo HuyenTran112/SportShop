@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('content')
     <!-- Page Content -->
+	<form method="get">
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -26,7 +27,9 @@
 							<th>Địa chỉ giao hàng</th>
                             <th>Tổng giá</th>
                             <th>Trạng thái</th>
+							<th>Xác nhận</th>
 							<th>Thanh toán</th>
+							<th>Hủy</th>
                              <th>Chi tiết </th>
                             <!-- <th>Edit</th>  -->
                         </tr>
@@ -39,13 +42,19 @@
                             <td>{{$item->ngayhd}}</td>
                             <td>{{$item->diachigiaohang}}</td>
                             <td>{{$item->tongtien}}</td>
-                            <td>
-                                @if($item->trangthai == 0)
-                                    Chưa thanh toán
-                                    @else
-                                    Đã thanh toán
-                             @endif</td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Thanh toán</a></td> 
+                            <td >
+                                @if($item->trangthai == 1)
+                                    Đã xác nhận
+                                 @endif
+								 @if($item->trangthai==0)
+                                    Chờ xác nhận
+								@else
+									Đã thanh toán
+                             	@endif
+							 </td>
+							<td class="center"><i class="fa fa-check-square"></i> <a href={{route('admin.bill.getUpdateBill',$item->sohd)}}>Xác nhận</a></td> 
+							 <td class="center"><i class="fa fa-money"></i> <a href={{route('admin.bill.getCheckBill',$item->sohd)}}>Thanh toán</a></td>
+							 <td class="center"><i class="fa fa-trash-o"></i> <a href={{route('admin.bill.getDeleteBill',$item->sohd)}}>Hủy</a></td>
                             <td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.bill.showBillDetail',$item->sohd)}}">Xem chi tiết</a></td> 
                         </tr>
                         @endforeach
@@ -57,4 +66,5 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
+	</form>
 @endsection

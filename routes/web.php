@@ -127,11 +127,15 @@ Route::group(['prefix'=>'supplier'], function(){
         Route::get('delete/{id}', ['as'=>'admin.supplier.getDelete', 'uses'=>'SupplierController@getDelete']);
         Route::get('edit/{id}', ['as'=>'admin.supplier.getEdit', 'uses'=>'SupplierController@getEdit']);
         Route::post('edit/{id}', ['as'=>'admin.supplier.postEdit', 'uses'=>'SupplierController@postEdit']);
+		Route::get('showProduct/{id}', ['as'=>'admin.supplier.showProduct', 'uses'=>'SupplierController@showProduct']);
     });
 //quản lý hóa đơn
 Route::group(['prefix'=>'bill'], function(){
-        Route::get('list', ['as'=>'admin.bill.showBill', 'uses'=>'BillController@getList']);	
-		 Route::get('showBillDetail/{id}', ['as'=>'admin.bill.showBillDetail', 'uses'=>'BillController@getBillDetail']);
+        Route::get('list', ['as'=>'admin.bill.showBill', 'uses'=>'BillController@getList']);
+		Route::get('update/{id}', ['as'=>'admin.bill.getUpdateBill', 'uses'=>'BillController@getUpdateBill']);
+		Route::get('check/{id}', ['as'=>'admin.bill.getCheckBill', 'uses'=>'BillController@getCheckBill']);
+		Route::get('delete/{id}', ['as'=>'admin.bill.getDeleteBill', 'uses'=>'BillController@getDeleteBill']);
+		Route::get('showBillDetail/{id}', ['as'=>'admin.bill.showBillDetail', 'uses'=>'BillController@getBillDetail']);
     });
 //Giỏ hàng
 Route::get('del-cart/{masp}',[
