@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="signin-form">
-					@if(Session::has('flag'))
+					@if(Session::has('message'))
 						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
 					@endif
                         <h2 class="form-title">Đăng nhập</h2>

@@ -77,7 +77,7 @@ class UserController extends Controller
             'password.max'=>'Mật khẩu không quá 20 kí tự'
         ]
         );
-        $credentials = array('tendangnhap'=>$req->email, 'matkhau'=>$req->password);
+        $credentials = array('tendangnhap'=>$req->username, 'matkhau'=>$req->password);
         if(Auth::attempt($credentials)){
             return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
         }
@@ -85,5 +85,7 @@ class UserController extends Controller
             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
         }
     }
+
+    
 
 }

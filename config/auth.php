@@ -15,8 +15,8 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'nguoidung',
-        // 'passwords' => 'users',
+        //'passwords' => 'nguoidung',
+        'passwords' => 'users',
     ],
 
     /*
@@ -39,15 +39,15 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'nguoidung',
-            // 'provider' => 'users',
+            //'provider' => 'nguoidung',
+            'provider' => 'users',
         ],
 
         'api' => [
             'driver' => 'token',
-            // 'provider' => 'users',
-            'provider' => 'nguoidung',
-            'hash' => false,
+            'provider' => 'users',
+            // 'provider' => 'nguoidung',
+            // 'hash' => false,
         ],
     ],
 
@@ -69,17 +69,18 @@ return [
     */
 
     'providers' => [
-        'nguoidung' => [
-            // 'users' => [
+        // 'nguoidung' => [
+            'users' => [
             'driver' => 'eloquent',
-            'model' => App\nguoidung::class,
-            // 'model' => App\User::class,
+            // 'model' => App\nguoidung::class,
+            'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'nguoidung',
+            // 'table' => 'users',
+        ],
     ],
 
     /*
@@ -98,10 +99,10 @@ return [
     */
 
     'passwords' => [
-        'nguoidung' => [
-            // 'users' => [
-            'provider' => 'nguoidung',
-            // 'provider' => 'users',
+        // 'nguoidung' => [
+        'users' => [
+            // 'provider' => 'nguoidung',
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
         ],
