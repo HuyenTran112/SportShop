@@ -61,7 +61,7 @@ class SupplierController extends Controller
 	//Lấy danh sách sản phẩm của nhà cung cấp
 	public function showProduct($manhacungcap)
 	{
-		$list=DB::table('sanpham')->join('nhacungcap','nhacungcap.manhacungcap','=','sanpham.manhacungcap')->get();
+		$list=DB::table('sanpham')->join('nhacungcap','nhacungcap.manhacungcap','=','sanpham.manhacungcap')->where('sanpham.manhacungcap',$manhacungcap)->get();
 		return view('admin.supplier.showProduct',compact('list'));
 	}
 }

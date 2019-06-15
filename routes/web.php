@@ -100,6 +100,8 @@ Route::get('/setting',
         Route::get('delete/{id}', ['as'=>'admin.cate.getDelete', 'uses'=>'CateController@getDelete']);
         Route::get('edit/{id}', ['as'=>'admin.cate.getEdit', 'uses'=>'CateController@getEdit']);
         Route::post('edit/{id}', ['as'=>'admin.cate.postEdit', 'uses'=>'CateController@postEdit']);
+		Route::get('show/{id}', ['as'=>'admin.cate.showProduct', 'uses'=>'CateController@getshowProduct']);
+        
     });
 //quản lý  user
 Route::group(['prefix'=>'user'], function(){

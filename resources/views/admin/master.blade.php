@@ -93,7 +93,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i>Product<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i>Sản phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{route('admin.product.list')}}">Danh sách sản phẩm</a>
@@ -145,6 +145,18 @@
                                 </li>
                                 <li>
                                     <a href="{{route('admin.supplier.getAdd')}}">Thêm công ty</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						 <li>
+                            <a href="#"><i class="fa fa-book"></i>Báo cáo<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('admin.supplier.list')}}">Báo cáo doanh thu</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('admin.supplier.getAdd')}}">Sản phẩm bán chạy</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
