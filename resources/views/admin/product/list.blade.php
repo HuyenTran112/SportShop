@@ -27,6 +27,7 @@
                             <th>Đơn giá</th>
                             <th>Giá khuyến mãi</th>
 							<th>Miêu tả</th>
+							<th>Nhà cung cấp</th>
 							<th>Trạng thái</th>
                             <th>Delete</th>
                             <th>Edit</th>
@@ -46,6 +47,10 @@
                                     {{number_format($item->giakhuyenmai, 3)}} VND
                                 </td>
                                 <td>{{$item->mieuta}}</td>
+								<?php
+									$name=DB::table('nhacungcap')->where('manhacungcap',$item->manhacungcap)->first();
+									echo "<td>".$name->tennhacungcap."</td>";
+								?>
 								<td>{{$item->trangthai}}</td>
 								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete',$item->masp)}}">Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit',$item->masp)}}">Edit</a></td>
