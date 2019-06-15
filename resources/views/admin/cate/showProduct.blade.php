@@ -5,8 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Nhà cung cấp
-                        <small>List</small>
+                    <h1 class="page-header">Sản phẩm
+                        <small>Danh sách sản phẩm</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -20,29 +20,26 @@
                         </div>
                     <thead>
                         <tr align="center">
-                            <th>Mã nhà cung cấp</th>
-                            <th>Tên nhà cung cấp</th>
-							<th>Địa chỉ</th>
-							<th>Điện thoại</th>
-							<th>Email</th>
-							<th>Trạng thái</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
-							<th>View more</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Giá khuyến mãi</th>
+							<th>Miêu tả</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($listItem as $item)
+                        @foreach($list as $item)
                         <tr class="even gradeC" align="center">
-                            <td>{{$item->manhacungcap}}</td>
-                            <td>{{$item->tennhacungcap}}</td>
-							<td>{{$item->diachi}}</td>
-							<td>{{$item->dienthoai}}</td>
-							<td>{{$item->email}}</td>
-							<td>{{$item->trangthai}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.supplier.getDelete',$item->manhacungcap)}}">Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.supplier.getEdit',$item->manhacungcap)}}">Edit</a></td>
-							<td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.supplier.showProduct',$item->manhacungcap)}}">View more</a></td>
+                            <td>{{$item->masp}}</td>
+                            <td>{{$item->tensp}}</td>
+							<?php
+								$name=DB::table('loaisanpham')->where('maloaisp',$item->maloaisp)->first();
+                           		echo "<td>{$name->tenloaisp}</td>";
+							?>
+							<td>{{$item->dongia}}</td>
+							<td>{{$item->giakhuyenmai}}</td>
+							<td>{{$item->mieuta}}</td>
                         </tr>
                         @endforeach
                     </tbody>

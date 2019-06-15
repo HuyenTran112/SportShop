@@ -22,8 +22,9 @@
                         <tr align="center">
                             <th>Mã loại</th>
                             <th>Tên loại</th>
-                            <th>Xóa</th>
-                            <th>Sửa</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+							<th>View more</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,6 +34,7 @@
                             <td>{{$item->tenloaisp}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.cate.getDelete', $item->maloaisp)}}">Delete</a></td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.cate.getEdit', $item->maloaisp)}}">Edit</a></td>
+							<td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.cate.showProduct', $item->maloaisp)}}">View</a></td>
                         </tr>
                         @endforeach
                     </tbody>

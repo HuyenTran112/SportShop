@@ -12,15 +12,28 @@
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     @include('admin.blocks.error')
-                    <form action="{{route('admin.cate.getEdit', $item->id)}}" method="POST">
+                    <form action="{{route('admin.supplier.getEdit', $item->manhacungcap)}}" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
-                            <label>Id</label>
-                            <input class="form-control" name="txtCateName" value="{{$item->id}}" readonly/>
+                            <label>Mã nhà cung cấp</label>
+                            <input class="form-control" name="txtId" value="{{$item->manhacungcap}}" readonly/>
                             <label>Category Name</label>
-                            <input class="form-control" name="txtCateName" value="{{$item->name }}" />
+                            <input class="form-control" name="txtName" value="{{$item->tennhacungcap }}" />
+							<label>Địa chỉ</label>
+                            <input class="form-control" name="txtAddress" value="{{$item->diachi }}" />
+							<label>Điện thoại</label>
+                            <input class="form-control" name="txtPhone" value="{{$item->dienthoai }}" />
+							<label>Email</label>
+                            <input class="form-control" name="txtEmail" value="{{$item->email }}" />
+                            <label>Trạng thái  </label>
+							@if($item->trangthai==1)
+                           		<input  class="form-group"type="checkbox" id="myCheck" name='status' checked="checked">
+							@else
+								<input  class="form-group"type="checkbox"  name ="status" id="myCheck">
+							@endif	
+  
                         </div>
-                        <button type="submit" class="btn btn-default">Category Edit</button>
+                        <button type="submit" class="btn btn-default">Edit</button>
                         <button type="reset" class="btn btn-default">Reset</button>
                     <form>
                 </div>
