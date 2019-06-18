@@ -54,4 +54,12 @@ class CateController extends Controller
      
         }    
     }
+	//Xem danh sách sản phẩm của loại sản phẩm
+	public function getshowProduct($maloaisp)
+	{
+		$list=DB::table('sanpham')->where('maloaisp',$maloaisp)->get();
+		$tenloaisp=DB::table('loaisanpham')->where('maloaisp',$maloaisp)->select('tenloaisp')->first();
+		//dd($tenloaisp);
+		return view('admin.cate.showProduct',compact('list','tenloaisp'));
+	}
 }

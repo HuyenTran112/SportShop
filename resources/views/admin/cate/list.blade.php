@@ -1,3 +1,6 @@
+@section('title')
+Loại sản phẩm
+@endsection
 @extends('admin.master')
 @section('content')
     <!-- Page Content -->
@@ -22,7 +25,7 @@
                         <tr align="center">
                             <th>Mã loại</th>
                             <th>Tên loại</th>
-                            <th>Delete</th>
+                            <th>Xóa</th>
                             <th>Edit</th>
 							<th>View more</th>
                         </tr>

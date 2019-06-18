@@ -145,6 +145,10 @@ Route::group(['prefix'=>'bill'], function(){
 		Route::get('delete/{id}', ['as'=>'admin.bill.getDeleteBill', 'uses'=>'BillController@getDeleteBill']);
 		Route::get('showBillDetail/{id}', ['as'=>'admin.bill.showBillDetail', 'uses'=>'BillController@getBillDetail']);
     });
+//Đăng nhập vào trang quản lý
+Route::get('auth/login', ['as'=>'admin.login', 'uses'=>'LoginAdminController@getLogin']);
+Route::post('auth/login', ['as'=>'admin.login', 'uses'=>'LoginAdminController@postLogin']);
+Route::get('auth/logout', ['as'=>'admin.logout', 'uses'=>'LoginAdminController@getLogout']);
 //Giỏ hàng
 Route::get('del-cart/{masp}',[
     'as'=>'xoagiohang',

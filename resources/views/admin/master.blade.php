@@ -117,10 +117,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-list-alt"></i> Bill<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-list-alt"></i>Đơn hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('admin.bill.showBill')}}">Show Bill</a>
+                                    <a href="{{route('admin.bill.showBill')}}">Danh sách đơn hàng</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

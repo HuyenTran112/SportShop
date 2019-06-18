@@ -1,3 +1,6 @@
+@section('title')
+Chi tiết loại sản phẩm
+@endsection
 @extends('admin.master')
 @section('content')
     <!-- Page Content -->
@@ -6,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Sản phẩm
-                        <small>Danh sách sản phẩm</small>
+                        <small>Danh sách sản phẩm của nhóm {{$tenloaisp->tenloaisp}}</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->

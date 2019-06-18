@@ -1,3 +1,6 @@
+@section('title')
+Thêm nhà cung cấp
+@endsection
 @extends('admin.master')
 @section('content')
 <body>

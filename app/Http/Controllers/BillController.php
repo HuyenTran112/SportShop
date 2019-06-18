@@ -16,7 +16,9 @@ class BillController extends Controller
 	public function getBillDetail($sohd)
 	{
 		$list=DB::table('cthd')->where('sohd',$sohd)->get();
-		return view('admin.bill.showDetail',compact('list'));
+		$customer=DB::table('khachhang')->join('hoadon','hoadon.makh','=','khachhang.makh')->where('sohd',$sohd)->first();
+		$bill=DB::table('hoadon')->where('sohd',$sohd)->first();
+		return view('admin.bill.showDetail',compact('list','customer','bill'));
 	}
 	//Xác nhận đơn hàng
 	public function getUpdateBill($sohd)

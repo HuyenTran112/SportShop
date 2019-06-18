@@ -1,3 +1,6 @@
+@section('title')
+Báo cáo doanh thu
+@endsection
 @extends('admin.master')
 @section('content')
     <!-- Page Content -->
@@ -32,7 +35,7 @@
                         </div>
 						<div align="center">
 						<button type="button" class="btn btn-default" id="thongke">Thống kê</button>&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-default">In báo cáo</button>
+                        <button type="button" class="btn btn-default" onclick="window.print();return false;">In báo cáo</button>
 						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 						<script>
 						$(document).ready(function(){
@@ -49,11 +52,10 @@
 						  });
 						});
 						</script>
-
-                        </div>
-						<br />
-						<div class="baocao">
+						</br>
+						<div class="col-lg-12 baocao">
 						</div>
+                        </div>
                     <form>
                 </div>
             </div>
