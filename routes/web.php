@@ -69,10 +69,10 @@ Route::get('blog',[
     'uses'=>'PageController@getBlog'
 ]);
 
-Route::post('gio-hang',[
-	'as'=>'giohang',
-	'uses'=>'PageController@postCheckout'
-]);
+// Route::post('gio-hang',[
+// 	'as'=>'giohang',
+// 	'uses'=>'PageController@postCheckout'
+// ]);
 
 
 Route::get('/setting',
@@ -150,27 +150,20 @@ Route::get('auth/login', ['as'=>'admin.login', 'uses'=>'LoginAdminController@get
 Route::post('auth/login', ['as'=>'admin.login', 'uses'=>'LoginAdminController@postLogin']);
 Route::get('auth/logout', ['as'=>'admin.logout', 'uses'=>'LoginAdminController@getLogout']);
 //Giỏ hàng
-Route::get('del-cart/{masp}',[
-    'as'=>'xoagiohang',
-    'uses'=>'PageController@getDelItemCart'
-]);
+Route::group(['prefix'=>'cart'], function(){
+    Route::get('delete/{masp}',['as'=>'xoagiohang', 'uses'=>'PageController@getDelItemCart']);
+    Route::get('add/{masp}',['as'=>'themgiohang', 'uses'=>'PageController@getAddtoCart']);
+    Route::get('increase/{masp}',['as'=>'tangiohang', 'uses'=>'PageController@getIncreaseItemCart']);
+    Route::get('reduce/{masp}',['as'=>'giamgiohang', 'uses'=>'PageController@getReduceItemCart']);
+});
 
-Route::get('add-to-cart/{masp}',[
-    'as'=>'themgiohang',
-    'uses'=>'PageController@getAddtoCart'
-]
-);
 
-Route::get('reduce-cart/{masp}',[
-    'as'=>'giamgiohang',
-    'uses'=>'PageController@getReduceItemCart'
-]);
 
-Route::get('cap-nhat/{masp}/{qty}',
-[
-	'as'=>'capnhat',
-	'uses'=>'PageController@capnhat'
-]);
+// Route::get('cap-nhat/{masp}/{qty}',
+// [
+// 	'as'=>'capnhat',
+// 	'uses'=>'PageController@capnhat'
+// ]);
 
 //đăng ký tài khoản
 Route::get('dang-ky',[
@@ -190,5 +183,11 @@ Route::post('dang-nhap',[
     'as'=>'login',
     'uses'=>'UserController@postLogin'
 ]); 
+
+//Tìm kiếm
+Route::get('search',[
+    'as'=>'search',
+    'uses'=>'PageController@getSearch'
+]);
 
 

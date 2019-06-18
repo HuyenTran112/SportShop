@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\nguoidung;
-use App\Http\Requests\UserRequest;
+// use App\Http\Requests\UserRequest;
+use App\Http\Requests\LoginRequest;
 
 
 use App\khachhang;
@@ -77,13 +78,13 @@ class UserController extends Controller
             'password.max'=>'Mật khẩu không quá 20 kí tự'
         ]
         );
-        $credentials = array('tendangnhap'=>$req->email, 'matkhau'=>$req->password);
+        $credentials = array('tendangnhap'=>$req->username, 'matkhau'=>$req->password);
+        // $credentials = array('tendangnhap'=>$req->username, 'matkhau'=>$req->password);
         if(Auth::attempt($credentials)){
-            return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
+            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
         }
         else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
         }
     }
-
 }

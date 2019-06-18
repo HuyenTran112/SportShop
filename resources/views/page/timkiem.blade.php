@@ -1,130 +1,30 @@
 @extends('layout.index')
 @section('title')
-Trang chủ
+Tìm kiếm
 @endsection
 @section('content')
-<!-- Slider -->
+
+
+
 	
-	@include('layout.slide')
-
-	<!-- Banner -->
-	<div class="sec-banner bg0 p-t-80 p-b-50">
-		<div class="container">
-			<div class="row">
-									
-			@foreach($loai as $l)
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-					@if($l->maloaisp == 1)
-						<img src="image/banner-01.jpg" alt="IMG-BANNER" height="250px">
-					@elseif($l->maloaisp == 2)
-						<img src="image/banner-02.jpg" alt="IMG-BANNER">
-					@else
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
-					@endif 
-
-						<a href="{{route('loai-san-pham',$l->maloaisp)}}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-								{{$l->tenloaisp}}
-								</span>
-								@if($l->maloaisp == 1)
-									<span class="block1-info stext-102 trans-04">thời trang</span>
-								@elseif($l->maloaisp == 2)
-									<span class="block1-info stext-102 trans-04">năng động</span>
-								@else
-									<span class="block1-info stext-102 trans-04">đa dạng</span>
-								@endif 
-								
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Mua ngay
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-			@endforeach
-
-				<!-- <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-02.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Giày
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									năng động
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Mua ngay
-								</div>
-							</div>
-						</a>
-					</div>
-				</div> -->
-
-
-				<!-- <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Dụng cụ
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									đa dạng
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Mua ngay
-								</div>
-							</div>
-						</a>
-					</div>
-				</div> -->
-				
-			</div>
-		</div>
-	</div>
-
 
 	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-140">
+	<section class="bg0 p-t-23 p-b-140" style="margin-top:100px">
 		<div class="container">                                
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
-					Sản phẩm khuyến mãi hot
+					Sản phẩm tìm kiếm
 				</h3>
 			</div>
+			<p class="pull-left">Tìm thấy {{count($product)}} sản phẩm</p>
 
 			<div class="flex-w flex-sb-m p-b-52">
 				
 
-				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
-					</div>
-				</div>
+				
 			@include('layout.filter')	
 			<div class="row isotope-grid">
-				@foreach($sp_khuyenmai as $sp)
+				@foreach($product as $sp)
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					<div class="block2">
@@ -168,18 +68,11 @@ Trang chủ
 				</div>
 				@endforeach
 			</div>
-			<div class="row isotope-grid">{{$sp_khuyenmai->links()}}</div>
+			<div class="row isotope-grid">{{$product->links()}}</div>
 
-			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="{{route('loai-san-pham',1)}}" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
-			</div>
 		</div>
-					</div>
-	</section>
-
+	</div>
+</section>
 
 @endsection
 @section('script')
@@ -247,26 +140,6 @@ Trang chủ
 			});
 		});
 
-		// $('.js-addwish-detail').each(function(){
-		// 	var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-		// 	$(this).on('click', function(){
-		// 		swal(nameProduct, "is added to wishlist !", "success");
-
-		// 		$(this).addClass('js-addedwish-detail');
-		// 		$(this).off('click');
-		// 	});
-		// });
-
-		/*---------------------------------------------*/
-
-		// $('.js-addcart-detail').each(function(){
-		// 	var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-		// 	$(this).on('click', function(){
-		// 		swal(nameProduct, "is added to cart !", "success");
-		// 	});
-		// });
-//                --------
             $('.js-addcart').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-b2').html();
 			$(this).on('click', function(){
@@ -277,7 +150,7 @@ Trang chủ
 				sl++;
 				$(this).parent().parent().parent().parent().parent().parent().parent().parent().find('.js-show-cart').attr('data-notify', sl);
 				$.ajax({
-					url: 'cart/add/' + id,
+					url: 'add-to-cart/' + id,
 					type: 'GET',
 					cache: false,
 					data: {"_token":token, "id": id},

@@ -15,8 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'nguoidung',
-        // 'passwords' => 'users',
+        'passwords' => 'users',
     ],
 
     /*
@@ -36,20 +35,31 @@ return [
     |
     */
 
+    // 'guards' => [
+    //     'web' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+
+    //     'api' => [
+    //         'driver' => 'token',
+    //         'provider' => 'users',
+    //         'hash' => false,
+    //     ],
+    // ],
+
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'nguoidung',
-            // 'provider' => 'users',
+            'provider' => 'users',
         ],
-
         'api' => [
             'driver' => 'token',
-            // 'provider' => 'users',
-            'provider' => 'nguoidung',
+            'provider' => 'users',
             'hash' => false,
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -68,18 +78,28 @@ return [
     |
     */
 
+    // 'providers' => [
+    //         'users' => [
+    //         'driver' => 'eloquent',
+    //         'model' => App\User::class,
+    //     ],
+
+    //     'users' => [
+    //         'driver' => 'database',
+    //         'table' => 'users',
+    //     ],
+    // ],
+
     'providers' => [
-        'nguoidung' => [
-            // 'users' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\nguoidung::class,
-            // 'model' => App\User::class,
+            'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'dangnhap',
+        ],
     ],
 
     /*
@@ -98,13 +118,12 @@ return [
     */
 
     'passwords' => [
-        'nguoidung' => [
-            // 'users' => [
-            'provider' => 'nguoidung',
-            // 'provider' => 'users',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
         ],
     ],
+
 
 ];

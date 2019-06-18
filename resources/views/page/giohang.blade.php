@@ -6,7 +6,13 @@ Giỏ hàng
 <!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85" action="{{route('giohang')}}" method="post">
 	<input type="hidden" name="_token" value="{!!csrf_token()!!}">
-	<div class="row"> @if(Session::has('thongbao')) <div class="alert alert-success">{{Session::get('thongbao')}}</div> @endif</div>
+	<div class="container">
+		<div class="row" style="text-align:center"> 
+			@if(Session::has('thongbao')) 
+				<div class="alert alert-success">{{Session::get('thongbao')}}</div> 
+			@endif
+		</div>
+	</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -42,12 +48,14 @@ Giỏ hàng
 									
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $cart['item']['masp'])}}" style="width: 45px; height: 100%; cursor: pointer">
+											<!-- <a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer"> -->
+											
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</a>
 
 											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="{{$cart['qty']}}" id="test">
 
-											<a class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('themgiohang', $cart['item']['masp'])}}" style="width: 45px; height: 100%; cursor: pointer">
+											<a class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('tangiohang', $cart['item']['masp'])}}" style="width: 45px; height: 100%; cursor: pointer">
 												<i class="fs-16 zmdi zmdi-plus" ></i>
 											</a>
 										</div>
@@ -144,6 +152,10 @@ Giỏ hàng
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
+
+  
+
+
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -238,6 +250,40 @@ Giỏ hàng
 		
 	</script>
 	<script>
+
+		// $(document).ready(function(){
+		// 	$(".btn-num-product-down1").click(function(){
+		// 		var id = $(this).parent().parent().parent().find(".gia").attr('id');
+		// 		var token = $("input[name='_token']").val();
+		// 		$.ajax({
+		// 			url: 'reduce-cart/' + id,
+		// 			type: 'GET',
+		// 			cache: false,
+		// 			data: {"_token":token, "id": id},
+		// 				success:function (data){
+		// 					if(data == 'oke'){
+		// 						var numProduct = Number($(this).next().val());
+		// 						if(numProduct > 1) 
+		// 							$(this).next().val(numProduct - 1);
+
+		// 						var t = $(this).parent().parent().parent().find(".gia").text();
+		// 						var sl = Number($(this).parent().find(".num-product").val());
+		// 						var res = Number(t.replace(/\,/g, ''));
+		// 						$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
+				
+		// 						var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
+		// 						var Ttien = Number(tt.replace(/\,/g, ''));
+		// 						if(numProduct > 1)
+		// 							$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien - res)); // gán lại Tổng Tiền
+		// 					}
+
+		// 				}
+		// 		});
+		// 	});
+
+		// });
+
+
 		// $(document).ready(function()
 		// {
 			// $('.fa-edit').click(function(){

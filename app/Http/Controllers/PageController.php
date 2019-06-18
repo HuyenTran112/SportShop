@@ -58,13 +58,25 @@ class PageController extends Controller
         return view('page.blog',compact('loai'));
     }
 //giỏ hàng
-	 public function getAddtoCart(Request $req, $masp)
+	public function getAddtoCart(Request $req, $masp)
     {
         $sanpham = sanpham::where('masp',$masp)->first();
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->add($sanpham,$masp);
         $req->session()->put('cart',$cart);
+        echo 'oke';   
+        // return redirect()->back();
+
+    }
+    
+    public function getIncreaseItemCart(Request $req, $masp)
+    {
+        $sanpham = sanpham::where('masp',$masp)->first();
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($sanpham,$masp);
+        $req->session()->put('cart',$cart); 
         return redirect()->back();
 
     }
@@ -96,7 +108,8 @@ class PageController extends Controller
             
         // else{
         //     Session::forget('cart');
-        // }   
+        // }
+        // echo 'oke';   
         return redirect()->back();
     }
 	
@@ -138,6 +151,16 @@ class PageController extends Controller
 			echo "oke";
 		}
     }
+
+    //Tìm kiếm
+    public function getSearch(Request $req){
+        $product = sanpham::where('tensp', 'like', '%'.$req->key.'%' )
+                            ->orwhere('dongia', $req->key)
+                            // ->get();
+                            ->paginate(12);
+        $loai=loaisanpham::all();
+        return view('page.timkiem', compact('product', 'loai'));
+    }
+
     
-	
 }
