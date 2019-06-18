@@ -105,8 +105,8 @@
 					<div class="wrap-icon-header flex-w flex-r-m">
                                             <!--<input class ="search_top_menu" type="text" name="search">-->
                                             
-                                            <form class="example" style="margin:auto;max-width:700px">
-                                              <input type="text" placeholder="Search.." name="search2">
+                                            <form class="example" style="margin:auto;max-width:700px" method="get" action="{{route('search')}}">
+                                              <input type="text" placeholder="Search.." name="key">
                                               <button type="submit"><i class="fa fa-search"></i></button>
                                             </form>
                                             
@@ -129,7 +129,7 @@
 				</nav>
 			</div>	
 		</div>
-
+<!-- *************************************************************************************************** -->
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
@@ -143,7 +143,7 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
@@ -238,7 +238,7 @@
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
+					<input class="plh3" type="text" name="key" placeholder="Search...">
 				</form>
 			</div>
 		</div>

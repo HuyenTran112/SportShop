@@ -26,12 +26,16 @@
                     </div>
 
                     <div class="signin-form">
-					@if(Session::has('message'))
-						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
-					@endif
+					
                         <h2 class="form-title">Đăng nhập</h2>
                         <form method="POST" class="register-form" id="login-form" action="{{route('login')}}">
 			            <input type="hidden" name="_token" value="{{csrf_token()}}" >
+                        <div class="row">
+                        @if(Session::has('message'))
+						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
+					    @endif
+                        </div>
+
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 Tên đăng nhập <input type="text" name="username" required placeholder="Email"/>
@@ -45,7 +49,7 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập"/>
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập"/>                  
                             </div>
                         </form>
                     </div>
