@@ -1,4 +1,7 @@
 @extends('admin.master')
+@section('title')
+Thêm sản phẩm
+@endsection
 @section('content')
     <!-- Page Content -->
     <div id="page-wrapper">

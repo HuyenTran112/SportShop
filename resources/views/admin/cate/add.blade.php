@@ -1,3 +1,6 @@
+@section('title')
+Thêm loại sản phẩm
+@endsection
 @extends('admin.master')
 @section('content')
 

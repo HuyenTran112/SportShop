@@ -62,6 +62,7 @@ class SupplierController extends Controller
 	public function showProduct($manhacungcap)
 	{
 		$list=DB::table('sanpham')->join('nhacungcap','nhacungcap.manhacungcap','=','sanpham.manhacungcap')->where('sanpham.manhacungcap',$manhacungcap)->get();
-		return view('admin.supplier.showProduct',compact('list'));
+		$supplier=DB::table('nhacungcap')->where('manhacungcap',$manhacungcap)->first();
+		return view('admin.supplier.showProduct',compact('list','supplier'));
 	}
 }
