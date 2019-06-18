@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-    <title>Admin</title>
+    <title>@yield('title')</title>
     <base href="{{asset('')}}">
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -156,7 +156,7 @@
                                     <a href="{{route('admin.report.BaoCaoDoanhThu')}}">Báo cáo doanh thu</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.supplier.getAdd')}}">Sản phẩm bán chạy</a>
+                                    <a href="{{route('admin.report.BaoCaoSanPham')}}">Sản phẩm bán chạy</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

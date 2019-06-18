@@ -47,8 +47,9 @@
                                     Đã xác nhận
                                  @endif
 								 @if($item->trangthai==0)
-                                    Chờ xác nhận
-								@else
+								 	Chờ xác nhận
+                             	@endif
+								@if($item->trangthai==2)
 									Đã thanh toán
                              	@endif
 							 </td>
