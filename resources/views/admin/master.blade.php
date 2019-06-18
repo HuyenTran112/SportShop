@@ -153,7 +153,7 @@
                             <a href="#"><i class="fa fa-book"></i>Báo cáo<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('admin.supplier.list')}}">Báo cáo doanh thu</a>
+                                    <a href="{{route('admin.report.BaoCaoDoanhThu')}}">Báo cáo doanh thu</a>
                                 </li>
                                 <li>
                                     <a href="{{route('admin.supplier.getAdd')}}">Sản phẩm bán chạy</a>
