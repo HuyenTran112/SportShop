@@ -99,6 +99,36 @@ Cập nhật sản phẩm
 								<input  class="form-group"type="checkbox"  name ="status" id="myCheck">
 							@endif	
                         </div>
+						{{--Màu sắc--}}
+						<div class="form-group">
+                            <label>Màu</label><br />
+							@foreach($mausac as $color)
+							<?php
+								$count=DB::table('sanpham_mausac')->where('mamau','=',$color->mamau)->Where('masp','=',$item->masp)->count();
+								if($count>0)
+									echo "<input type ='checkbox' name='color{{$color->mamau}}' checked='checked' value='{{$color->mamau}}'/>{$color->tenmau}<br />
+							";
+								else
+									echo "<input type ='checkbox' name='color{{$color->mamau}}' value='{{$color->mamau}}'/>{$color->tenmau}<br />
+							";
+							?>
+                            @endforeach
+                        </div>
+						{{--Size--}}
+						<div class="form-group">
+                            <label>Size</label><br />
+							@foreach($size as $s)
+							<?php
+								$count=DB::table('sanpham_size')->where('masize','=',$s->masize)->Where('masp','=',$item->masp)->count();
+								if($count>0)
+									echo "<input type ='checkbox' name='size{{$s->masize}}' checked='checked' value='{{$s->masize}}'/>{$s->tensize}<br />
+							";
+								else
+									echo "<input type ='checkbox' name='size{{$s->masize}}' value='{{$s->masize}}'/>{$s->tensize}<br />
+							";
+							?>
+                            @endforeach
+							                        </div>
                         <button type="submit" class="btn btn-default">Edit</button>
                         <button type="reset" class="btn btn-default">Cancel</button>
                     <form>

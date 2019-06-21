@@ -35,8 +35,8 @@ Thêm sản phẩm
                         </div>					
 						<div class="form-group">
                             <label>Nhà cung cấp</label>
-							<select class="form-control loaisanpham" name="txtCategory">
-                                    <?php  $supplier = DB::table('nhacungcap')->select('manhacungcap','tennhacungcap')->get();  ?>
+							<select class="form-control loaisanpham" name="txtSupplier">
+                                    <?php  $supplier = DB::table('nhacungcap')->get();  ?>
                                     @foreach($supplier as $item)
                                         <option value="{{$item->manhacungcap}}">{{$item->tennhacungcap}}</option>
                                     @endforeach
@@ -63,7 +63,22 @@ Thêm sản phẩm
                             <label>Hình ảnh</label>
                             <input type="file" name="fImages">
                         </div>
-
+						 <div class="form-group">
+						 	@if($count>0)
+                            <label>Màu</label></br>
+							@foreach($mausac as $item)
+                            <input type ="checkbox" name="color{{$item->mamau}}" value="{{$item->mamau}}"/>{{$item->tenmau}}<br />
+							@endforeach
+							@endif
+                        </div>
+						<div class="form-group">
+						 	@if($count_size>0)
+                            <label>Size</label></br>
+							@foreach($size as $item)
+                            <input type ="checkbox" name="size{{$item->masize}}" value="{{$item->masize}}"/>{{$item->tensize}}<br />
+							@endforeach
+							@endif
+                        </div>
                         <button type="submit" class="btn btn-default">Thêm</button>
                         <button type="reset" class="btn btn-default">Cancel</button>
                     <form>

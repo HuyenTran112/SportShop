@@ -24,7 +24,6 @@ class ProductRequest extends FormRequest
         return [
             'txtName'=>'required|unique:sanpham,tensp',
 			'txtCategory'=>'required:sanpham, maloaisp',
-			'txtSupplier'=>'required: sanpham, manhacungcap',
 			'txtPrice'=>'required|integer: sanpham,dongia',
 			'txtPromotion'=>'integer: sanpham, giakhuyenmai',
 			'fImages' => 'required|image'
@@ -37,7 +36,6 @@ class ProductRequest extends FormRequest
             'txtName.required'=>'Vui lòng nhập tên sản phẩm',
 			'txtName.unique'=>'Tên loại sản phẩm đã tồn tại',
 			'txtCategory.required'=>'Vui lòng chọn loại sản phẩm',
-			'txtSupplier.required'=>'Vui lòng chọn nhà cung ấp',
 			'txtPrice.required'=>'Vui lòng nhập giá sản phẩm',
 			'txtPrice.integer'=>'Đơn giá phải là số',
 			'txtPromotion.required'=>'Giá khuyến mãi phải là số',

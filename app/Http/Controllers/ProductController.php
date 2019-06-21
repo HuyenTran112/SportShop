@@ -15,24 +15,47 @@ class ProductController extends Controller
         return view('admin.product.list',compact('listItem'));
     }
 	public function getAdd(){
-        return view('admin.product.add');
+		$count=DB::table('mausac')->where('mamau','!=','1')->count();
+		$mausac=DB::table('mausac')->where('mamau','!=','1')->get();
+		$count_size=DB::table('size')->where('masize','!=','1')->count();
+		$size=DB::table('size')->where('masize','!=','1')->get();
+        return view('admin.product.add',compact('mausac','count','count_size','size'));
     }
 	//Thêm sản phẩm
     public function postAdd(ProductRequest $request){
 		$file_name = $request->file('fImages')->getClientOriginalName();
-	//	dd($file_name);
 		$request->file('fImages')->move('../public/image', $file_name);
+		//Thêm sản phẩm
      	DB::table('sanpham')->insert(
 		['tensp' =>$request->txtName, 'dongia' =>$request->txtPrice, 'giakhuyenmai' =>$request->txtPromotion, 'manhacungcap' =>$request->txtSupplier,'mieuta' =>$request->txtDescription,'hinhanh' =>$file_name,'trangthai'=>'1','maloaisp'=>$request->txtCategory ]
 	);
+		$product=DB::table('sanpham')->where('tensp',$request->txtName)->first();
+		$mausac=DB::table('mausac')->where('mamau','!=','1')->get();
+		//Thêm chi tiết sản phẩm, màu sắc
+		foreach($mausac as $item_color)
+		{
+			$color="color".$item_color->mamau;
+			if($request->$color != "")
+				DB::table('sanpham_mausac')->insert(['masp'=>$product->masp,'mamau'=>$item_color->mamau,'trangthai'=>1]);
+		}
+		//Thêm chi tiết sản phẩm, size
+		$size=DB::table('size')->where('masize','!=','1')->get();
+		foreach($size as $item_size)
+		{
+			$size="size".$item_size->masize;
+			//echo $size;
+			if($request->$size != "")
+				DB::table('sanpham_size')->insert(['masp'=>$product->masp,'masize'=>$item_size->masize,'trangthai'=>1]);
+		}
 		return redirect()->route('admin.product.list')->with(['flash_level'=>'success','flash_message'=>"Thêm sản phẩm thành công"]);
-	
 	}
 	//Cập nhật sản phẩm
 	public function getEdit($masp)
 	{
+		$mausac=DB::table('mausac')->where('mamau','!=','1')->get();
+		$size=DB::table('size')->where('masize','!=','1')->get();
 		$item=DB::table('sanpham')->join('loaisanpham','sanpham.maloaisp','=','loaisanpham.maloaisp')->where('masp','=',$masp)->first();
-		return view('admin.product.edit',compact('item'));
+		return view('admin.product.edit',compact('item','mausac','size'));
 	}
 	public function postEdit($masp, Request $req){
 		if(($req->status)=="on")
