@@ -73,41 +73,65 @@ Chi tiết sản phẩm
 						<!--  -->
 						<div class="p-t-33">
 							<div class="flex-w flex-r-m p-b-10">
+								<?php
+									$count_color=DB::table('mausac')->join('sanpham_mausac','mausac.mamau','=','sanpham_mausac.mamau')->where('masp','=',$sanpham->masp)->count();
+								?>
+								@if($count_color>0)
+								
+								<div class="size-203 flex-c-m respon6">
+									Màu sắc
+								</div>
+
+								<div class="size-204 respon6-next">
+									<div class="rs1-select2 bor8 bg0">
+									<?php
+										$color=DB::table('mausac')->join('sanpham_mausac','mausac.mamau','=','sanpham_mausac.mamau')->where('masp','=',$sanpham->masp)->get();
+									?>
+										<select class="js-select2" name="time">
+											<option>Choose an option</option>
+											@foreach($color as $item)
+											{
+												<option>{{$item->tenmau}}</option>	
+											}
+											@endforeach
+											
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+								</div>
+								
+								@endif
+							</div>
+
+							<div class="flex-w flex-r-m p-b-10">
+							<?php
+									$count_size=DB::table('size')->join('sanpham_size','size.masize','=','sanpham_size.masize')->where('masp','=',$sanpham->masp)->count();
+								?>
+								@if($count_size>0)
+								
 								<div class="size-203 flex-c-m respon6">
 									Size
 								</div>
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
+										<?php
+										$size=DB::table('size')->join('sanpham_size','size.masize','=','sanpham_size.masize')->where('masp','=',$sanpham->masp)->get();
+									?>
 										<select class="js-select2" name="time">
 											<option>Choose an option</option>
-											<option>Size S</option>
-											<option>Size M</option>
-											<option>Size L</option>
-											<option>Size XL</option>
+											@foreach($size as $item)
+											{
+												<option>{{$item->tensize}}</option>	
+											}
+											@endforeach
+											
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
 								</div>
-							</div>
-
-							<div class="flex-w flex-r-m p-b-10">
-								<div class="size-203 flex-c-m respon6">
-									Color
-								</div>
-
-								<div class="size-204 respon6-next">
-									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
-											<option>Red</option>
-											<option>Blue</option>
-											<option>White</option>
-											<option>Grey</option>
-										</select>
-										<div class="dropDownSelect2"></div>
-									</div>
-								</div>
+								
+								@endif
 							</div>
 
 							<div class="flex-w flex-r-m p-b-10">
