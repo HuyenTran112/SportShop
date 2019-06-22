@@ -87,7 +87,57 @@ class ProductController extends Controller
 			'manhacungcap'=>$req->txtSupplier,
 			'hinhanh'=>$file_name]);
 		}
-				
+		$mausac=DB::table('mausac')->where('mamau','!=','1')->get();
+		//Thêm chi tiết sản phẩm, màu sắc
+		foreach($mausac as $item_color)
+		{
+			$count=DB::table('sanpham_mausac')->where('masp',$masp)->where('mamau',$item_color->mamau)->count();
+			if($count>0)
+			{
+				$color="color".$item_color->mamau;
+				//echo $req->$color;
+				if($req->$color != "")
+				{
+					DB::table('sanpham_mausac')->where('masp',$masp)->where('mamau',$item_color->mamau)->update(['trangthai'=>1]);		
+				}
+				else
+				{
+					DB::table('sanpham_mausac')->where('mamau',$item_color->mamau)->where('masp',$masp)->update(['trangthai'=>'0']);				
+				}
+			}
+			else
+			{
+				$color="color".$item_color->mamau;
+				if($req->$color != "")
+				{
+					DB::table('sanpham_mausac')->insert(['masp'=>$masp,'mamau'=>$item_color->mamau,'trangthai'=>1]);
+				}
+			}
+		}
+		//Thêm chi tiết sản phẩm, size
+		$size=DB::table('size')->where('masize','!=','1')->get();
+		foreach($size as $item_size)
+		{
+			$count=DB::table('sanpham_size')->where('masp',$masp)->where('masize',$item_size->masize)->count();
+			if($count>0)
+			{
+				$s="size".$item_size->masize;
+				if($req->$s != "")
+				{
+					DB::table('sanpham_size')->where('masp',$masp)->where('masize',$item_size->masize)->update(['trangthai'=>1]);		
+				}
+				else
+					DB::table('sanpham_size')->where('masp',$masp)->where('masize',$item_size->masize)->update(['trangthai'=>0]);			
+			}
+			else
+			{
+				$s="size".$item_size->masize;
+				if($req->$s != "")
+				{
+					DB::table('sanpham_size')->insert(['masp'=>$masp,'masize'=>$item_size->masize,'trangthai'=>1]);
+				}
+			}
+		}
         return redirect()->route('admin.product.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật sản phẩm thành công']);
    
 		 }

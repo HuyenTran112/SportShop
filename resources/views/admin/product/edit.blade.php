@@ -104,12 +104,12 @@ Cập nhật sản phẩm
                             <label>Màu</label><br />
 							@foreach($mausac as $color)
 							<?php
-								$count=DB::table('sanpham_mausac')->where('mamau','=',$color->mamau)->Where('masp','=',$item->masp)->count();
+								$count=DB::table('sanpham_mausac')->where('mamau','=',$color->mamau)->Where('masp','=',$item->masp)->where('trangthai',1)->count();
 								if($count>0)
-									echo "<input type ='checkbox' name='color{{$color->mamau}}' checked='checked' value='{{$color->mamau}}'/>{$color->tenmau}<br />
+									echo "<input type ='checkbox' name='color$color->mamau' checked='checked' value='{{$color->mamau}}'/>{$color->tenmau}<br />
 							";
 								else
-									echo "<input type ='checkbox' name='color{{$color->mamau}}' value='{{$color->mamau}}'/>{$color->tenmau}<br />
+									echo "<input type ='checkbox' name='color$color->mamau' value='{{$color->mamau}}'/>{$color->tenmau}<br />
 							";
 							?>
                             @endforeach
@@ -119,12 +119,12 @@ Cập nhật sản phẩm
                             <label>Size</label><br />
 							@foreach($size as $s)
 							<?php
-								$count=DB::table('sanpham_size')->where('masize','=',$s->masize)->Where('masp','=',$item->masp)->count();
+								$count=DB::table('sanpham_size')->where('masize','=',$s->masize)->Where('masp','=',$item->masp)->where('trangthai',1)->count();
 								if($count>0)
-									echo "<input type ='checkbox' name='size{{$s->masize}}' checked='checked' value='{{$s->masize}}'/>{$s->tensize}<br />
+									echo "<input type ='checkbox' name='size$s->masize' checked='checked' value='{{$s->masize}}'/>{$s->tensize}<br />
 							";
 								else
-									echo "<input type ='checkbox' name='size{{$s->masize}}' value='{{$s->masize}}'/>{$s->tensize}<br />
+									echo "<input type ='checkbox' name='size$s->masize' value='{{$s->masize}}'/>{$s->tensize}<br />
 							";
 							?>
                             @endforeach
