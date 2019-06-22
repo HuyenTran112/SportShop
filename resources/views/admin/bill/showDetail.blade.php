@@ -68,6 +68,8 @@ Thông tin đơn hàng
                         <tr class="even gradeC" align="center">
 							<th align="center">STT</th>
                             <th align="center">Tên Sản phẩm</th>
+							<th align="center">Màu</th>
+							<th align="center">Size</th>
                             <th align="center">Số lượng</th>
                             <th align="center">Thành tiền</th>
                         </tr>
@@ -75,24 +77,42 @@ Thông tin đơn hàng
                     <tbody>
 						<?php $stt=1;?>
                         @foreach($list as $item)
-                        <tr class="even gradeC" align="center">
+                        <tr class="even gradeC" >
                             <?php $name = DB::table('sanpham')->where('masp',$item->masp)->first(); 
 							echo "<td>".$stt."</td>";
-							$stt++;?>
-                            <td>{{$name->tensp}}</td>
-                            <td>{{$item->soluong}}</td>
-                           	<td>{{$item->thanhtien}}</td>
+							$stt++;
+							echo "<td>".$name->tensp."</td>";
+							?>
+                            
+							<?php
+								$color=DB::table('mausac')->where('mamau',$item->mamau)->first();
+								echo "<td>".$color->tenmau."</td>";
+							?>
 							
+							<?php
+								$size=DB::table('size')->where('masize',$item->masize)->first();
+								echo "<td>".$size->tensize."</td>";
+							?>
+                            <td>{{$item->soluong}}</td>
+                           	<td>{{number_format($item->thanhtien)}}</td>
                         </tr>
                         @endforeach
 						<tr class="even gradeC" align="center">
-							<td colspan="3" align="right"><b>Tổng tiền</b></td>
-							<td>{{$bill->tongtien}}</td>
+							<td colspan="5" align="right"><b>Tổng tiền</b></td>
+							<td>{{number_format($bill->tongtien)}}</td>
+						</tr>
+						<tr class="even gradeC" align="center">
+							<td colspan="5" align="right"><b>Phí giao hàng</b></td>
+							<td>{{number_format($bill->phigiaohang)}}</td>
+						</tr>
+						<tr class="even gradeC" align="center">
+							<td colspan="5" align="right"><b>Tổng thanh toán</b></td>
+							<td><b>{{number_format($bill->tongthanhtoan)}}</b></td>
 						</tr>
                     </tbody>
                 </table>
 				<div align="right">
-				 <button type="button" class="btn btn-default"  onclick="window.print();return false;">In đơn hàng</button>
+				 <a href="{{route('admin.bill.printBill', $bill->sohd)}}"><button type="button" class="btn btn-default">In đơn hàng</button></a>
 				</div>
 				</br>
             </div>

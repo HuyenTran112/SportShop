@@ -140,6 +140,7 @@ Route::group(['prefix'=>'report'], function(){
 //quản lý hóa đơn
 Route::group(['prefix'=>'bill'], function(){
         Route::get('list', ['as'=>'admin.bill.showBill', 'uses'=>'BillController@getList']);
+		 Route::get('print/{id}', ['as'=>'admin.bill.printBill', 'uses'=>'BillController@printBill']);
 		Route::get('update/{id}', ['as'=>'admin.bill.getUpdateBill', 'uses'=>'BillController@getUpdateBill']);
 		Route::get('check/{id}', ['as'=>'admin.bill.getCheckBill', 'uses'=>'BillController@getCheckBill']);
 		Route::get('delete/{id}', ['as'=>'admin.bill.getDeleteBill', 'uses'=>'BillController@getDeleteBill']);
