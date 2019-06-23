@@ -135,7 +135,7 @@ Route::group(['prefix'=>'supplier'], function(){
 Route::group(['prefix'=>'report'], function(){
         Route::get('bcdoanhthu', ['as'=>'admin.report.BaoCaoDoanhThu', 'uses'=>'ReportController@BaoCaoDoanhThu']);	
 		Route::get('bcsanpham', ['as'=>'admin.report.BaoCaoSanPham', 'uses'=>'ReportController@BaoCaoSanPham']);	
-  
+		
   });
 //quản lý hóa đơn
 Route::group(['prefix'=>'bill'], function(){
