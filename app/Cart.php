@@ -17,30 +17,30 @@ class Cart
 	}
 
 	public function add($item, $masp){
-		$giohang = ['qty'=>0, 'price' => $item->dongia_or_giakhuyenmai, 'dongia' => $item->dongia, 'giakhuyenmai' => $item->giakhuyenmai, 'item' => $item];
+		if($item->giakhuyenmai == 0) {
+            $item->dongia_or_giakhuyenmai = $item->dongia;
+        } else {
+            $item->dongia_or_giakhuyenmai = $item->giakhuyenmai;
+        }
+		$giohang = ['qty'=>0, 'price' => $item->dongia_or_giakhuyenmai, 'dongia' => $item->dongia, 'giakhuyenmai' => $item->giakhuyenmai,'mamau'=>$item->mamau,'masize'=>$item->masize,'hinhanh'=>$item->hinhanh, 'item' => $item];
         if($this->items){
             if(array_key_exists($masp, $this->items)){
                 $giohang = $this->items[$masp];
             }
         }
         $giohang['qty']++;
-        if($item->giakhuyenmai == 0) {
-            $item->dongia_or_giakhuyenmai = $item->dongia;
-        } else {
-            $item->dongia_or_giakhuyenmai = $item->giakhuyenmai;
-        }
+        
         $giohang['price'] = $item->dongia_or_giakhuyenmai * $giohang['qty'];
         $this->items[$masp] = $giohang;
         $this->totalQty++;
         $this->totalPrice += $item->dongia_or_giakhuyenmai;
-       
 	}
 	//xóa 1
 	public function reduceByOne($masp){
 		$this->items[$masp]['qty']--;
-		$this->items[$masp]['price'] -= $this->items[$masp]['item']['dongia_or_giakhuyenmai'];
+		$this->items[$masp]['price'] -= $this->items[$masp]['item']->dongia_or_giakhuyenmai;
 		$this->totalQty--;
-		$this->totalPrice -= $this->items[$masp]['item']['dongia_or_giakhuyenmai'];
+		$this->totalPrice -= $this->items[$masp]['item']->dongia_or_giakhuyenmai;
 		if($this->items[$masp]['qty']<=0){
 			unset($this->items[$masp]);
 		}

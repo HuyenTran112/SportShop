@@ -24,6 +24,8 @@ Giỏ hàng
 									<th class="column-2"></th>
 									<th class="column-3">Giá</th>
 									<th class="column-4">Số lượng</th>
+									<th class="column-4">Màu</th>
+									<th class="column-4">Size</th>
 									<th class="column-5">Thành tiền</th>
 									<th class="column-6">Chức năng</th>
 								</tr>
@@ -32,22 +34,25 @@ Giỏ hàng
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="image/{{$cart['item']['hinhanh']}}" alt="IMG">
+										<?php
+										 $sp=DB::table('sanpham')->where('masp',$cart['item']->masp)->first();
+										?>
+											<img src="image/{{$sp->hinhanh}}" alt="IMG">
 										</div>
 									</td>
 									
-									<td class="column-2">{{$cart['item']['tensp']}}</td>
+									<td class="column-2">{{$cart['item']->tensp}}</td>
 									
-									@if ($cart['item']['giakhuyenmai']==0)
+									@if ($cart['item']->giakhuyenmai==0)
 									<!-- <td style="width: 100px"></td> -->
-                               	 	<td class="column-3 gia"  id="{{$cart['item']['masp']}}">{{number_format($cart['item']['dongia'])}}</td>
+                               	 	<td class="column-3 gia"  id="{{$cart['item']->masp}}">{{number_format($cart['item']->dongia)}}</td>
                            		 	@else
-								 	<td class="column-3 gia" id="{{$cart['item']['masp']}}">{{number_format($cart['item']['giakhuyenmai'])}}</td>
+								 	<td class="column-3 gia" id="{{$cart['item']->masp}}">{{number_format($cart['item']->giakhuyenmai)}}</td>
                             		@endif
 									<td class="column-4">
 									
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $cart['item']['masp'])}}" style="width: 45px; height: 100%; cursor: pointer">
+											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $cart['item']->masp)}}" style="width: 45px; height: 100%; cursor: pointer">
 											<!-- <a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer"> -->
 											
 												<i class="fs-16 zmdi zmdi-minus"></i>
@@ -55,19 +60,23 @@ Giỏ hàng
 
 											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="{{$cart['qty']}}" id="test">
 
-											<a class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('tangiohang', $cart['item']['masp'])}}" style="width: 45px; height: 100%; cursor: pointer">
+											<a class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('tangiohang', $cart['item']->masp)}}" style="width: 45px; height: 100%; cursor: pointer">
 												<i class="fs-16 zmdi zmdi-plus" ></i>
 											</a>
 										</div>
 									
 									</td>
-									
+									<?php
+										$color=DB::table('mausac')->where('mamau',$cart['item']->mamau)->first();
+										$size=DB::table('size')->where('masize',$cart['item']->masize)->first();
+									?>
+									<td class="column-4">{{$color->tenmau}}</td>
+									<td class="column-4">{{$size->tensize}}</td>
 									<td class="column-5 TotalPrice">{{number_format($cart['price'])}}</td>
 									<td class="column-6">
-										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $cart['item']['masp'])}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
+										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $cart['item']->masp)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
 										
-										<!-- <button class="btn"><i class="fa fa-edit" id={{$cart['item']['masp']}}></i></button> -->
-									</td>
+										</td>
 								</tr>
 								@endforeach
 								@endif

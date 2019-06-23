@@ -147,10 +147,9 @@ Chi tiết sản phẩm
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div>
-
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+									<a href="{{route('themgiohang',[$sanpham->masp,'2','2'])}}"><button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Add to cart
-									</button>
+									</button></a>
 								</div>
 							</div>
 						</div>
@@ -401,7 +400,7 @@ Chi tiết sản phẩm
                                 	<span class="flash-del" style="font-size:14px"><b>{{number_format($sp->dongia)}} đồng</b></span>
                             	@endif
 									</span>
-									<a class="button js-addcart" href="{{route('themgiohang',$sp->masp)}}"></a>&nbsp;&nbsp;
+									
 								</div>
 
 								<div class="block2-txt-child2 flex-r p-t-3">
