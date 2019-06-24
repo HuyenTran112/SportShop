@@ -135,11 +135,12 @@ Route::group(['prefix'=>'supplier'], function(){
 Route::group(['prefix'=>'report'], function(){
         Route::get('bcdoanhthu', ['as'=>'admin.report.BaoCaoDoanhThu', 'uses'=>'ReportController@BaoCaoDoanhThu']);	
 		Route::get('bcsanpham', ['as'=>'admin.report.BaoCaoSanPham', 'uses'=>'ReportController@BaoCaoSanPham']);	
-  
+		
   });
 //quản lý hóa đơn
 Route::group(['prefix'=>'bill'], function(){
         Route::get('list', ['as'=>'admin.bill.showBill', 'uses'=>'BillController@getList']);
+		 Route::get('print/{id}', ['as'=>'admin.bill.printBill', 'uses'=>'BillController@printBill']);
 		Route::get('update/{id}', ['as'=>'admin.bill.getUpdateBill', 'uses'=>'BillController@getUpdateBill']);
 		Route::get('check/{id}', ['as'=>'admin.bill.getCheckBill', 'uses'=>'BillController@getCheckBill']);
 		Route::get('delete/{id}', ['as'=>'admin.bill.getDeleteBill', 'uses'=>'BillController@getDeleteBill']);

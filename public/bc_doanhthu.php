@@ -59,5 +59,5 @@
 		echo "<b>Tổng doanh thu</b></td>";
 		echo "<td>".$tong."</td>";
 		echo "</tbody> </table>";
-    
+
 ?>

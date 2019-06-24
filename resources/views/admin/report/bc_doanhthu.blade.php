@@ -33,9 +33,11 @@ Báo cáo doanh thu
 								</select>
 								
                         </div>
+						
+						
 						<div align="center">
 						<button type="button" class="btn btn-default" id="thongke">Thống kê</button>&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-default" onclick="window.print();return false;">In báo cáo</button>
+					    <button type="button" class="btn btn-default"  onclick="window.print();return false;">In báo cáo</button>
 						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 						<script>
 						$(document).ready(function(){
@@ -50,6 +52,7 @@ Báo cáo doanh thu
 							
 							});
 						  });
+						 
 						});
 						</script>
 						</br>

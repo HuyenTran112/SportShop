@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\hoadon;
+use App\cthd;
 
 class BillController extends Controller
 {
@@ -12,6 +13,14 @@ class BillController extends Controller
 		$listItem = DB::table('hoadon')->join('khachhang', 'khachhang.makh', '=', 'hoadon.makh')->get();
         return view('admin.bill.showBill',compact('listItem'));
     }
+	//In đơn hàng
+	public function printBill($sohd)
+	{
+		$bill=DB::table('hoadon')->where('sohd',$sohd)->first();
+		$customer=DB::table('khachhang')->join('hoadon','hoadon.makh','=','khachhang.makh')->where('sohd',$sohd)->first();
+		$bill_detail=DB::table('cthd')->where('sohd',$sohd)->get();
+		return view('admin.bill.printBill',compact('bill','customer','bill_detail'));
+	}
 	//Hiện thi danh sách chi tiết hóa đơn
 	public function getBillDetail($sohd)
 	{

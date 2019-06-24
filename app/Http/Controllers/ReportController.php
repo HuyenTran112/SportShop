@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\loaisanpham;
+use App\bc_doanhthu;
 class ReportController extends Controller
 {
     public function BaoCaoDoanhThu()
@@ -16,4 +17,6 @@ class ReportController extends Controller
 		$list=DB::table('loaisanpham')->get();
 		return view('admin.report.bc_sanpham',compact('list'));
 	}
+	
+	
 }
