@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\sanpham;
 use App\loaisanpham;
@@ -58,15 +58,31 @@ class PageController extends Controller
         return view('page.blog',compact('loai'));
     }
 //giỏ hàng
-	public function getAddtoCart(Request $req, $masp)
+	public function getAddtoCart(Request $req, $masp,$mamau,$masize)
     {
-        $sanpham = sanpham::where('masp',$masp)->first();
+		$count_color=DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->where('sanpham.masp',$masp)->count();
+		$count_size=DB::table('sanpham')->join('sanpham_size','sanpham.masp','=','sanpham_size.masp')->where('sanpham.masp',$masp)->count();
+		if($count_color!=0 and $count_size!=0)
+        {
+			$sanpham =DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->join('sanpham_size','sanpham.masp','=','sanpham_size.masp')->where('sanpham.masp',$masp)->where('mamau',$mamau)->where('masize',$masize)->select('sanpham.masp','tensp','dongia','giakhuyenmai','mamau','masize','hinhanh')->first();
+		}
+		else
+		{
+			if($count_color==0)
+				$sanpham =DB::table('sanpham')->join('sanpham_size','sanpham.masp','=','sanpham_size.masp')->where('sanpham.masp',$masp)->where('masize',$masize)->select('sanpham.masp','tensp','dongia','giakhuyenmai','masize','hinhanh')->first();
+			if($count_size==0)
+				$sanpham =DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->where('sanpham.masp',$masp)->where('mamau',$mamau)->select('sanpham.masp','tensp','dongia','giakhuyenmai','hinhanh')->first();
+			if($count_color==0 and $count_size==0)
+				$sanpham =DB::table('sanpham')->where('sanpham.masp',$masp)->select('sanpham.masp','tensp','dongia','giakhuyenmai','hinhanh')->first();
+		}
+		//dd($sanpham);
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->add($sanpham,$masp);
         $req->session()->put('cart',$cart);
-        echo 'oke';   
-        // return redirect()->back();
+		//dd($cart);
+       // echo 'oke';   
+        return redirect()->back();
 
     }
     

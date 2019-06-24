@@ -153,7 +153,7 @@ Route::get('auth/logout', ['as'=>'admin.logout', 'uses'=>'LoginAdminController@g
 //Giỏ hàng
 Route::group(['prefix'=>'cart'], function(){
     Route::get('delete/{masp}',['as'=>'xoagiohang', 'uses'=>'PageController@getDelItemCart']);
-    Route::get('add/{masp}',['as'=>'themgiohang', 'uses'=>'PageController@getAddtoCart']);
+    Route::get('add/{masp}/{mamau}/{masize}',['as'=>'themgiohang', 'uses'=>'PageController@getAddtoCart']);
     Route::get('increase/{masp}',['as'=>'tangiohang', 'uses'=>'PageController@getIncreaseItemCart']);
     Route::get('reduce/{masp}',['as'=>'giamgiohang', 'uses'=>'PageController@getReduceItemCart']);
 });
