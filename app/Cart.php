@@ -22,6 +22,10 @@ class Cart
         } else {
             $item->dongia_or_giakhuyenmai = $item->giakhuyenmai;
         }
+		if(empty($item->mamau))
+			$item->mamau=1;
+		if(empty($item->masize))
+			$item->masize=1;
 		$giohang = ['qty'=>0, 'price' => $item->dongia_or_giakhuyenmai, 'dongia' => $item->dongia, 'giakhuyenmai' => $item->giakhuyenmai,'mamau'=>$item->mamau,'masize'=>$item->masize,'hinhanh'=>$item->hinhanh, 'item' => $item];
         if($this->items){
             if(array_key_exists($masp, $this->items)){
