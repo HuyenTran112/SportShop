@@ -38,7 +38,7 @@
 
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                Tên đăng nhập <input type="text" name="username" required placeholder="Email"/>
+                                Tên đăng nhập <input type="text" name="email" required placeholder="Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>

@@ -35,30 +35,30 @@ return [
     |
     */
 
-    // 'guards' => [
-    //     'web' => [
-    //         'driver' => 'session',
-    //         'provider' => 'users',
-    //     ],
-
-    //     'api' => [
-    //         'driver' => 'token',
-    //         'provider' => 'users',
-    //         'hash' => false,
-    //     ],
-    // ],
-
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
         ],
     ],
+
+    // 'guards' => [
+    //     'web' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+    //     'api' => [
+    //         'driver' => 'token',
+    //         'provider' => 'users',
+    //         'hash' => false,
+    //     ],
+    // ],
 
 
     /*
@@ -96,10 +96,10 @@ return [
             'model' => App\User::class,
         ],
 
-        'users' => [
-            'driver' => 'database',
-            'table' => 'dangnhap',
-        ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*

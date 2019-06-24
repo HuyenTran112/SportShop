@@ -39,13 +39,23 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="{{route('login')}}" class="flex-c-m trans-04 p-lr-25">
-                                                    Đăng nhập
+					@if(Auth::check())
+						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
+							Chào bạn ({{Auth::user()->tenkh}}) 							
 						</a>
 
-						<a href="{{route('signin')}}" class="flex-c-m trans-04 p-lr-25">
-                                                    Đăng ký
+						<a href="{{route('logout')}}" class="flex-c-m p-lr-10 trans-04">
+							Đăng xuất
 						</a>
+					@else
+						<a href="{{route('login')}}" class="flex-c-m p-lr-10 trans-04">
+							Đăng nhập
+						</a>
+
+						<a href="{{route('signin')}}" class="flex-c-m p-lr-10 trans-04">
+							Đăng ký
+						</a>
+					@endif
 
 <!--						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
@@ -172,14 +182,25 @@
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+					@if(Auth::check())
+						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
+							Chào bạn ({{Auth::user()->tenkh}}) 							
+						</a>
+
+						<a href="{{route('logout')}}" class="flex-c-m p-lr-10 trans-04">
+							Đăng xuất
+						</a>
+					@else
+						<a href="{{route('login')}}" class="flex-c-m p-lr-10 trans-04">
 							Đăng nhập
 						</a>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+						<a href="{{route('signin')}}" class="flex-c-m p-lr-10 trans-04">
 							Đăng ký
 						</a>
-
+					@endif
+					
+					
 <!--						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							EN
 						</a>

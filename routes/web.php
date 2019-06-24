@@ -166,28 +166,15 @@ Route::group(['prefix'=>'cart'], function(){
 // ]);
 
 //đăng ký tài khoản
-Route::get('dang-ky',[
-    'as'=>'signin',
-    'uses'=>'UserController@getSignin'
-]);
-Route::post('dang-ky',[
-    'as'=>'signin',
-    'uses'=>'UserController@postSignin'
-]); 
+Route::get('dang-ky',['as'=>'signin', 'uses'=>'UserController@getSignin']);
+Route::post('dang-ky',['as'=>'signin', 'uses'=>'UserController@postSignin']); 
 //đăng nhập
-Route::get('dang-nhap',[
-    'as'=>'login',
-    'uses'=>'UserController@getLogin'
-]);
-Route::post('dang-nhap',[
-    'as'=>'login',
-    'uses'=>'UserController@postLogin'
-]); 
+Route::get('dang-nhap',['as'=>'login', 'uses'=>'UserController@getLogin']);
+Route::post('dang-nhap',['as'=>'login', 'uses'=>'UserController@postLogin']); 
+//đăng xuất
+Route::get('dang-xuat',['as'=>'logout', 'uses'=>'UserController@getLogout']);
 
 //Tìm kiếm
-Route::get('search',[
-    'as'=>'search',
-    'uses'=>'PageController@getSearch'
-]);
+Route::get('search',['as'=>'search', 'uses'=>'PageController@getSearch']);
 
 
