@@ -41,7 +41,7 @@
 					<div class="right-top-bar flex-w h-full">
 					@if(Auth::check())
 						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
-							Chào bạn ({{Auth::user()->tenkh}}) 							
+							Chào bạn ({{Auth::user()->tenhienthi}}) 							
 						</a>
 
 						<a href="{{route('logout')}}" class="flex-c-m p-lr-10 trans-04">

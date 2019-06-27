@@ -129,7 +129,7 @@ class PageController extends Controller
         $masize1 = (string)$masize;
         $id = $masp1.$mamau1.$masize1;
         $ma = (int)$id;
-        $cart->add($sanpham, $ma);
+        $cart->increase($sanpham, $ma);
         $req->session()->put('cart',$cart);
 		// dd($cart);
         // echo 'oke';   

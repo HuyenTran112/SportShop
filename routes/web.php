@@ -148,7 +148,7 @@ Route::group(['prefix'=>'bill'], function(){
     });
 //Đăng nhập vào trang quản lý
 Route::get('auth/login', ['as'=>'admin.login', 'uses'=>'LoginAdminController@getLogin']);
-Route::post('auth/login', ['as'=>'admin.login', 'uses'=>'LoginAdminController@postLogin']);
+Route::post('auth/login', ['as'=>'admin.login', 'uses'=>'UserController@postLogin']);
 Route::get('auth/logout', ['as'=>'admin.logout', 'uses'=>'LoginAdminController@getLogout']);
 //Giỏ hàng
 Route::group(['prefix'=>'cart'], function(){

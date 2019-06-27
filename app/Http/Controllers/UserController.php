@@ -57,8 +57,8 @@ class UserController extends Controller
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->level = 0;
-        $user->tenkh = $customer->tenkh;
-        $user->makh = $customer->makh;
+        $user->tenhienthi = $customer->tenkh;
+        $user->manguoidung = $customer->id;
         $user->save();
 
         return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công');
@@ -83,14 +83,22 @@ class UserController extends Controller
             'password.max'=>'Mật khẩu không quá 20 kí tự'
         ]
         );
-        $credentials = array('email'=>$req->email, 'password'=>$req->password);
+        $credentials = array('email'=>$req->email, 'password'=>$req->password, 'level' => 0);
+        $credentialsAdmin = array('email'=>$req->email, 'password'=>$req->password, 'level' => 1);
         if(Auth::attempt($credentials)){
             // return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
             return redirect()->route('trang-chu');
         }
+        else if (Auth::attempt($credentialsAdmin)){
+            // return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
+            return redirect()->route('admin.bill.showBill');
+        }
         else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
         }
+        // else{
+        //     return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+        // }
     }
     //đăng xuất
     public function getLogout(){
