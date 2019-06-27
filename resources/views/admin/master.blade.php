@@ -53,11 +53,12 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                       
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>&nbsp;{{Auth::user()->tenhienthi}}</a>
+                        </li>
+                        <li><a href="{{route('trang-chu')}}"><i class="fa fa-gear fa-fw"></i>Trang chủ</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -105,34 +106,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i>User<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route('admin.user.list')}}">Danh sách User</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('admin.user.getAdd')}}">Thêm User</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
                             <a href="#"><i class="glyphicon glyphicon-list-alt"></i>Đơn hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{route('admin.bill.showBill')}}">Danh sách đơn hàng</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i>User Admin<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route('admin.userAdmin.list')}}">List User</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('admin.userAdmin.getAdd')}}">Add User</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -157,6 +134,30 @@
                                 </li>
                                 <li>
                                     <a href="{{route('admin.report.BaoCaoSanPham')}}">Sản phẩm bán chạy</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i>Khách hàng<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('admin.customer.list')}}">Danh sách khách hàng</a>
+                                </li>
+                                <li>
+                                    <a href="">Thêm user</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i>User admin<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('admin.user.list')}}">Danh sách admin</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('admin.user.getAdd')}}">Thêm admin</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

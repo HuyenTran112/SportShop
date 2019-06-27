@@ -3,28 +3,90 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-// use App\nguoidung;
 use App\User;
-// use App\Http\Requests\UserRequest;
 use App\Http\Requests\LoginRequest;
 
 
-use App\khachhang;
-use Hash;
+use App\khachhang;use Hash;
 use Auth;
 use Session;
 
 class UserController extends Controller
 {
+	//Hiện thị danh sách user admin
     public function getList(){
-        //$listItem = nguoidung::select('*')->get();
-		$listItem = DB::table('nguoidung')->join('nhomnguoidung', 'nguoidung.manhomnguoidung', '=', 'nhomnguoidung.manhomnguoidung')->get();
+        $listItem = DB::table('users')->where('level','!=','0')->get();
         return view('admin.user.list',compact('listItem'));
     }
-	public function getAdd()
-	{
-		return view('admin.user.add');
-	}
+	//Thêm user admin
+	public function getAdd(){
+        return view('admin.user.add');
+    }
+
+    public function postAdd(Request $req){
+	$this->validate($req,
+            [
+                'txtEmail'=>'email|unique:users,email',
+                'txtPass'=>'min:6|max:20',
+                'txtRepass'=>'same:password',
+                'txtName'=>'min:3'
+            ],
+            [
+                'txtEmail.email'=>'Không đúng định dạng email',
+                'txtEmail.unique'=>'Email đã có người sử dụng',
+                'txtRepass.same'=>'Mật khẩu không giống nhau',
+                'txtPass.min'=>'Mật khẩu ít nhất 6 kí tự',
+                'phone.max'=>'Số điện thoại không hợp lệ'
+            ]);
+        $username = new user();
+        $username->email = $req->txtEmail;
+        $username->password = Hash::make($req->txtPass);
+        $username->level = $req->rdoLevel;
+        $username->tenhienthi=$req->txtTenHienThi;
+		DB::table('users')->insert(['email'=>$req->txtEmail,'password'=>Hash::make($req->txtPass),'level'=>$req->rdoLevel,'tenhienthi'=>$req->TenHienThi]);
+        return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Thêm user admin thành công']);
+    }
+	//Xóa user
+	public function getDelete($id){
+        $user_current_login = Auth::user()->id;
+		$level_current_login = Auth::user()->level;
+        $username = DB::table('users')->where('id',$id)->first();
+        if(($user_current_login == $id) || ($level_current_login !=1 && $username->level ==1)){
+            return redirect()->route('admin.user.list')->with(['flash_level'=>'danger','flash_message'=>'Bạn không thể xóa user này']);
+        }
+        else{
+    		DB::table('users')->where('id',$id)->delete();
+    		return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Xóa user thành công']);
+    	}
+    }
+	//Cập nhật user
+	public function getEdit($id){
+        $username = DB::table('users')->where('id',$id)->first();
+        if ($username->level == 0 || Auth::user()->id != $id ){
+            return redirect()->route('admin.user.list')->with(['flash_level'=>'danger','flash_message'=>'You cant updated this Username']);
+        }
+    	return view('admin.user.edit',compact('username'));
+    }
+
+    public function postEdit($id,Request $req){
+        $username = DB::table('users')->where('id',$id)->first();
+    	if($req->input('txtPass')) {
+            $this->validate($req,
+            [
+                'txtRePass' => 'same:txtRePass'
+            ],
+            [
+                'txtRePass.same' => 'Mật khẩu không trùng khớp'
+            ]);
+            $pass = $req->input('txtPass');
+            $username->password = Hash::make($pass);
+        }
+        $username->tenhienthi = $req->txtName;
+        DB::table('users')->where('id',$id)->update(['password' => $req->txtPass,'tenhienthi'=>$req->txtName]);
+        return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật user thành công']);
+    }
+
+
 
     //đăng ký tài khoản
     public function getSignin(){

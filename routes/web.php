@@ -81,7 +81,7 @@ Route::get('/setting',
 	'uses'=>'ProductController@getList'
 ]);
 	
-//Route::group(['prefix'=>'admin']/*,'middleware'=>'checkLoginAdmin']*/, function(){
+Route::group(['prefix'=>'admin','middleware'=>'checkAdminLogin'], function(){
     // Manage products
     Route::group(['prefix'=>'product'], function(){
         Route::get('list', ['as'=>'admin.product.list', 'uses'=>'ProductController@getList']);	
@@ -91,7 +91,7 @@ Route::get('/setting',
         Route::get('edit/{id}', ['as'=>'admin.product.getEdit', 'uses'=>'ProductController@getEdit']);
         Route::post('edit/{id}', ['as'=>'admin.product.postEdit', 'uses'=>'ProductController@postEdit']);
     });
-//});
+
 // quản lý loại sản phẩm
  Route::group(['prefix'=>'cate'], function(){
         Route::get('list', ['as'=>'admin.cate.list', 'uses'=>'CateController@getList']);	
@@ -112,14 +112,11 @@ Route::group(['prefix'=>'user'], function(){
         Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
         Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
     });
-	//quản lý  user admin
-Route::group(['prefix'=>'userAdmin'], function(){
-        Route::get('list', ['as'=>'admin.userAdmin.list', 'uses'=>'AdminController@getList']);	
-        Route::get('add', ['as'=>'admin.userAdmin.getAdd', 'uses'=>'AdminController@getAdd']);
-       	Route::post('add', ['as'=>'admin.userAdmin.postAdd', 'uses'=>'AdminController@postAdd']);
-        Route::get('delete/{id}', ['as'=>'adminAdmin.user.getDelete', 'uses'=>'AdminController@getDelete']);
-        Route::get('edit/{id}', ['as'=>'admin.userAdmin.getEdit', 'uses'=>'AdminController@getEdit']);
-        Route::post('edit/{id}', ['as'=>'admin.userAdmin.postEdit', 'uses'=>'AdminController@postEdit']);
+	//quản lý  khách hàng
+Route::group(['prefix'=>'customer'], function(){
+        Route::get('list', ['as'=>'admin.customer.list', 'uses'=>'CustomerController@getList']);	
+        Route::get('showBill/{id}', ['as'=>'admin.customer.showBill', 'uses'=>'CustomerController@showBill']);
+  
     });
 //quản lý nhà cung cấp
 Route::group(['prefix'=>'supplier'], function(){
@@ -146,6 +143,7 @@ Route::group(['prefix'=>'bill'], function(){
 		Route::get('delete/{id}', ['as'=>'admin.bill.getDeleteBill', 'uses'=>'BillController@getDeleteBill']);
 		Route::get('showBillDetail/{id}', ['as'=>'admin.bill.showBillDetail', 'uses'=>'BillController@getBillDetail']);
     });
+});
 //Đăng nhập vào trang quản lý
 Route::get('auth/login', ['as'=>'admin.login', 'uses'=>'LoginAdminController@getLogin']);
 Route::post('auth/login', ['as'=>'admin.login', 'uses'=>'UserController@postLogin']);
