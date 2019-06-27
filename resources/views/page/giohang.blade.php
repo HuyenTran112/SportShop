@@ -49,10 +49,30 @@ Giỏ hàng
                            		 	@else
 								 	<td class="column-3 gia" id="{{$cart['item']->masp}}">{{number_format($cart['item']->giakhuyenmai)}}</td>
                             		@endif
+									<?php
+										$color=DB::table('mausac')->where('mamau',$cart['item']->mamau)->first();
+										$size=DB::table('size')->where('masize',$cart['item']->masize)->first();
+
+										$numcolor=DB::table('mausac')->where('mamau',$cart['item']->mamau)->count();
+										$numsize=DB::table('size')->where('masize',$cart['item']->masize)->count();
+
+										$masp1 = (string)$cart['item']->masp;
+										if($numcolor > 0)
+											$mamau1 = (string)$color->mamau;
+										else
+											$mamau1 = 1;
+
+										if($numsize > 0)
+											$masize1 = (string)$size->masize;
+										else
+											$masize1 = 1;
+        								$id = $masp1.$mamau1.$masize1;
+										$ma = (int)$id;
+									?>
 									<td class="column-4">
 									
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $cart['item']->masp)}}" style="width: 45px; height: 100%; cursor: pointer">
+											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $ma)}}" style="width: 45px; height: 100%; cursor: pointer">
 											<!-- <a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer"> -->
 											
 												<i class="fs-16 zmdi zmdi-minus"></i>
@@ -60,21 +80,20 @@ Giỏ hàng
 
 											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="{{$cart['qty']}}" id="test">
 
-											<a class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('tangiohang', $cart['item']->masp)}}" style="width: 45px; height: 100%; cursor: pointer">
+											<a class="btn-num-product-up1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('tangiohang', [$cart['item']->masp, $cart['item']->mamau, $cart['item']->masize])}}" style="width: 45px; height: 100%; cursor: pointer">
 												<i class="fs-16 zmdi zmdi-plus" ></i>
 											</a>
 										</div>
 									
 									</td>
-									<?php
-										$color=DB::table('mausac')->where('mamau',$cart['item']->mamau)->first();
-										$size=DB::table('size')->where('masize',$cart['item']->masize)->first();
-									?>
+									
 									<td class="column-4">{{$color->tenmau}}</td>
 									<td class="column-4">{{$size->tensize}}</td>
 									<td class="column-5 TotalPrice">{{number_format($cart['price'])}}</td>
 									<td class="column-6">
-										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $cart['item']->masp)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
+									
+										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $ma)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
+										<!-- <a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $cart['item']->masp)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a> -->
 										
 										</td>
 								</tr>

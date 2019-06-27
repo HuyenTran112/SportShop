@@ -58,7 +58,7 @@ class PageController extends Controller
         return view('page.blog',compact('loai'));
     }
 //giỏ hàng
-	public function getAddtoCart(Request $req, $masp,$mamau,$masize)
+	public function getAddtoCart(Request $req, $masp, $mamau, $masize, $soluong)
     {
 		$count_color=DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->where('sanpham.masp',$masp)->count();
 		$count_size=DB::table('sanpham')->join('sanpham_size','sanpham.masp','=','sanpham_size.masp')->where('sanpham.masp',$masp)->count();
@@ -78,24 +78,65 @@ class PageController extends Controller
 		//dd($sanpham);
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->add($sanpham,$masp);
+        // $cart->add($sanpham, $masp, $mamau, $masize);
+        $masp1 = (string)$masp;
+        $mamau1 = (string)$mamau;
+        $masize1 = (string)$masize;
+        $id = $masp1.$mamau1.$masize1;
+        $ma = (int)$id;
+        $cart->add($sanpham, $ma, $soluong);
         $req->session()->put('cart',$cart);
-		//dd($cart);
-       // echo 'oke';   
-        return redirect()->back();
+		// dd($cart);
+        echo 'oke';   
+        // return redirect()->back();
 
     }
     
-    public function getIncreaseItemCart(Request $req, $masp)
+    // public function getIncreaseItemCart(Request $req, $masp)
+    // {
+    //     $sanpham = sanpham::where('masp',$masp)->first();
+    //     $oldCart = Session('cart')?Session::get('cart'):null;
+    //     $cart = new Cart($oldCart);
+    //     $cart->add($sanpham,$masp);
+    //     $req->session()->put('cart',$cart); 
+    //     return redirect()->back();
+
+    // }
+
+    public function getIncreaseItemCart(Request $req, $masp, $mamau, $masize)
     {
-        $sanpham = sanpham::where('masp',$masp)->first();
+		$count_color=DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->where('sanpham.masp',$masp)->count();
+		$count_size=DB::table('sanpham')->join('sanpham_size','sanpham.masp','=','sanpham_size.masp')->where('sanpham.masp',$masp)->count();
+		if($count_color!=0 and $count_size!=0)
+        {
+			$sanpham =DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->join('sanpham_size','sanpham.masp','=','sanpham_size.masp')->where('sanpham.masp',$masp)->where('mamau',$mamau)->where('masize',$masize)->select('sanpham.masp','tensp','dongia','giakhuyenmai','mamau','masize','hinhanh')->first();
+		}
+		else
+		{
+			if($count_color==0)
+				$sanpham =DB::table('sanpham')->join('sanpham_size','sanpham.masp','=','sanpham_size.masp')->where('sanpham.masp',$masp)->where('masize',$masize)->select('sanpham.masp','tensp','dongia','giakhuyenmai','masize','hinhanh')->first();
+			if($count_size==0)
+				$sanpham =DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->where('sanpham.masp',$masp)->where('mamau',$mamau)->select('sanpham.masp','tensp','dongia','giakhuyenmai','hinhanh')->first();
+			if($count_color==0 and $count_size==0)
+				$sanpham =DB::table('sanpham')->where('sanpham.masp',$masp)->select('sanpham.masp','tensp','dongia','giakhuyenmai','hinhanh')->first();
+		}
+		//dd($sanpham);
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->add($sanpham,$masp);
-        $req->session()->put('cart',$cart); 
+        // $cart->add($sanpham, $masp, $mamau, $masize);
+        $masp1 = (string)$masp;
+        $mamau1 = (string)$mamau;
+        $masize1 = (string)$masize;
+        $id = $masp1.$mamau1.$masize1;
+        $ma = (int)$id;
+        $cart->add($sanpham, $ma);
+        $req->session()->put('cart',$cart);
+		// dd($cart);
+        // echo 'oke';   
         return redirect()->back();
 
     }
+
     //xóa nhiều
     public function getDelItemCart($id){
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
@@ -111,6 +152,21 @@ class PageController extends Controller
         }   
         return redirect()->back();
     }
+
+    // public function getDelItemCart($id){
+    //     $oldCart = Session::has('cart') ? Session::get('cart'):null;
+    //     $cart = new Cart($oldCart);
+    //     $cart->removeItem($id);
+    //     if(count($cart->items) > 0)  
+    //     {
+    //         Session::put('cart', $cart);
+    //     }     
+            
+    //     else{
+    //         Session::forget('cart');
+    //     }   
+    //     return redirect()->back();
+    // }
 
     //giảm số lượng đi 1 (xóa 1)
     public function getReduceItemCart($id){

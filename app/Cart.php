@@ -16,7 +16,31 @@ class Cart
 		}
 	}
 
-	public function add($item, $masp){
+	// public function add($item, $masp){
+	// 	if($item->giakhuyenmai == 0) {
+    //         $item->dongia_or_giakhuyenmai = $item->dongia;
+    //     } else {
+    //         $item->dongia_or_giakhuyenmai = $item->giakhuyenmai;
+    //     }
+	// 	if(empty($item->mamau))
+	// 		$item->mamau=1;
+	// 	if(empty($item->masize))
+	// 		$item->masize=1;
+	// 	$giohang = ['qty'=>0, 'price' => $item->dongia_or_giakhuyenmai, 'dongia' => $item->dongia, 'giakhuyenmai' => $item->giakhuyenmai,'mamau'=>$item->mamau,'masize'=>$item->masize,'hinhanh'=>$item->hinhanh, 'item' => $item];
+    //     if($this->items){
+    //         if(array_key_exists($masp, $this->items)){
+    //             $giohang = $this->items[$masp];
+    //         }
+    //     }
+    //     $giohang['qty']++;
+        
+    //     $giohang['price'] = $item->dongia_or_giakhuyenmai * $giohang['qty'];
+    //     $this->items[$masp] = $giohang;
+    //     $this->totalQty++;
+    //     $this->totalPrice += $item->dongia_or_giakhuyenmai;
+    // }
+
+    public function add($item, $masp, $soluong){
 		if($item->giakhuyenmai == 0) {
             $item->dongia_or_giakhuyenmai = $item->dongia;
         } else {
@@ -32,13 +56,21 @@ class Cart
                 $giohang = $this->items[$masp];
             }
         }
-        $giohang['qty']++;
+        // $giohang['qty']++;
+        
+        // $giohang['price'] = $item->dongia_or_giakhuyenmai * $giohang['qty'];
+        // $this->items[$masp] = $giohang;
+        // $this->totalQty++;
+        // $this->totalPrice += $item->dongia_or_giakhuyenmai;
+        $giohang['qty'] += $soluong;
         
         $giohang['price'] = $item->dongia_or_giakhuyenmai * $giohang['qty'];
         $this->items[$masp] = $giohang;
-        $this->totalQty++;
-        $this->totalPrice += $item->dongia_or_giakhuyenmai;
-	}
+        $this->totalQty += $soluong;
+        $this->totalPrice += ($item->dongia_or_giakhuyenmai * $soluong);
+    }
+        
+
 	//xóa 1
 	public function reduceByOne($masp){
 		$this->items[$masp]['qty']--;

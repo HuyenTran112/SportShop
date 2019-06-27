@@ -87,11 +87,11 @@ Chi tiết sản phẩm
 									<?php
 										$color=DB::table('mausac')->join('sanpham_mausac','mausac.mamau','=','sanpham_mausac.mamau')->where('masp','=',$sanpham->masp)->get();
 									?>
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
+										<select class="color" name="color">
+											
 											@foreach($color as $item)
 											{
-												<option>{{$item->tenmau}}</option>	
+												<option value="{{$item->mamau}}">{{$item->tenmau}}</option>	
 											}
 											@endforeach
 											
@@ -118,11 +118,11 @@ Chi tiết sản phẩm
 										<?php
 										$size=DB::table('size')->join('sanpham_size','size.masize','=','sanpham_size.masize')->where('masp','=',$sanpham->masp)->get();
 									?>
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
+										<select class="size" name="size">
+											
 											@foreach($size as $item)
 											{
-												<option>{{$item->tensize}}</option>	
+												<option value="{{$item->masize}}">{{$item->tensize}}</option>	
 											}
 											@endforeach
 											
@@ -137,18 +137,19 @@ Chi tiết sản phẩm
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
 									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer">
 											<i class="fs-16 zmdi zmdi-minus"></i>
 										</div>
 
 										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
 
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer">
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div>
-									<a href="{{route('themgiohang',[$sanpham->masp,'2','2'])}}"><button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-										Add to cart
+									
+									<a ><button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" id = "{{$sanpham->masp}}">
+										Thêm vào giỏ hàng
 									</button></a>
 								</div>
 							</div>
@@ -430,7 +431,13 @@ Chi tiết sản phẩm
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 	<script>
-		$(".js-select2").each(function(){
+		$(".color").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		});
+		$(".size").each(function(){
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
@@ -467,6 +474,18 @@ Chi tiết sản phẩm
 <!--===============================================================================================-->
 	<script src="vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
+
+	$(document).ready(function(){
+		$(".btn-num-product-down").click(function(){
+			var numProduct = Number($(this).next().val());
+			if(numProduct > 1) $(this).next().val(numProduct - 1);
+		});
+
+		$('.btn-num-product-up').click(function(){
+			var numProduct = Number($(this).prev().val());
+        	$(this).prev().val(numProduct + 1);
+		});
+	});
 		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
 			e.preventDefault();
 		});
@@ -495,11 +514,42 @@ Chi tiết sản phẩm
 		/*---------------------------------------------*/
 
 		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			var nameProduct = $(this).parent().parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
+				// swal(nameProduct, "is added to cart !", "success");
+
+				var id = $(this).attr('id');		
+				var token = $("input[name='_token']").val();
+				var mamau = $(".color option:selected").val();
+				if (typeof mamau == "undefined")
+					mamau = 1;	
+				var masize = $(".size option:selected").val();
+				if (typeof masize == "undefined")
+					masize = 1;	
+				// alert(mamau + ","+ masize);
+				var soluongsp = Number($(this).parent().parent().find('.num-product').val());
+				// alert(soluongsp);
+
+				var sl = Number($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.js-show-cart').attr('data-notify'));
+				sl += soluongsp;
+				$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.js-show-cart').attr('data-notify', sl);
+				$.ajax({
+					
+					url: 'cart/add/' + id +'/' + mamau + '/' + masize + '/' + soluongsp,
+					type: 'GET',
+					cache: false,
+					data: {"_token":token, "id": id},
+						success:function (data){
+							if(data == 'oke'){
+								swal({title: nameProduct,text: "đã được thêm vào giỏ hàng",type: "success",timer: 1500});	
+							}
+
+						}
+				});
 			});
 		});
+
+		
 
 	</script>
 <!--===============================================================================================-->
