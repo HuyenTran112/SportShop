@@ -179,11 +179,11 @@ Chi tiết sản phẩm
 				</div>
 			</div>
 
-			<div class="bor10 m-t-50 p-t-43 p-b-40">
+			<!--<div class="bor10 m-t-50 p-t-43 p-b-40">
                     <!-- Tab01 -->
-                    <div class="tab01">
+                    <!--<div class="tab01">
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
+                       <!-- <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item p-b-10">
                                 <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
                             </li>
@@ -198,9 +198,9 @@ Chi tiết sản phẩm
                         </ul>
 
                         <!-- Tab panes -->
-                        <div class="tab-content p-t-43">
+                       <!-- <div class="tab-content p-t-43">
                             <!-- - -->
-                            <div class="tab-pane fade show active" id="description" role="tabpanel">
+                            <!--<div class="tab-pane fade show active" id="description" role="tabpanel">
                                 <div class="how-pos2 p-lr-15-md">
                                     <p class="stext-102 cl6">
                                         Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
@@ -209,7 +209,7 @@ Chi tiết sản phẩm
                             </div>
 
                             <!-- - -->
-                            <div class="tab-pane fade" id="information" role="tabpanel">
+                           <!-- <div class="tab-pane fade" id="information" role="tabpanel">
                                 <div class="row">
                                     <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                         <ul class="p-lr-28 p-lr-15-sm">
@@ -268,12 +268,12 @@ Chi tiết sản phẩm
                             </div>
 
                             <!-- - -->
-                            <div class="tab-pane fade" id="reviews" role="tabpanel">
+                            <!--<div class="tab-pane fade" id="reviews" role="tabpanel">
                                 <div class="row">
                                     <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                         <div class="p-b-30 m-lr-15-sm">
                                             <!-- Review -->
-                                            <div class="flex-w flex-t p-b-68">
+                                           <!-- <div class="flex-w flex-t p-b-68">
                                                 <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
                                                     <img src="images/avatar-01.jpg" alt="AVATAR">
                                                 </div>
@@ -300,7 +300,7 @@ Chi tiết sản phẩm
                                             </div>
 
                                             <!-- Add review -->
-                                            <form class="w-full">
+                                            <!--<form class="w-full">
                                                 <h5 class="mtext-108 cl2 p-b-7">
                                                     Add a review
                                                 </h5>
@@ -362,7 +362,7 @@ Chi tiết sản phẩm
 			<span class="stext-107 cl6 p-lr-25">
 				Categories: Jacket, Men
 			</span>
-		</div>
+		</div>-->
 	</section>
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">

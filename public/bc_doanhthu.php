@@ -13,14 +13,16 @@
 		$str="select sanpham.masp,tensp, dongia, giakhuyenmai, sum(cthd.soluong) soluongban, sum(thanhtien) as thanhtien
 		from sanpham, loaisanpham, cthd, hoadon
 		where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd and sanpham.maloaisp='$maloaisp' and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
-		group by sanpham.masp";
+		group by sanpham.masp
+		limit 10";
 	}
 	else
 	{
 		$str="select sanpham.masp,tensp, dongia, giakhuyenmai, sum(cthd.soluong) soluongban, sum(thanhtien) as thanhtien
 		from sanpham, loaisanpham, cthd, hoadon
 		where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
-		group by sanpham.masp";
+		group by sanpham.masp
+		limit 10";
 	}
 	$rs=$conn->query($str);
 	echo "  <table class='table table-striped table-bordered table-hover' id='dataTables-example'>

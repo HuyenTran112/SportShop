@@ -1,3 +1,6 @@
+@section('title')
+Danh sách user admin
+@endsection
 @extends('admin.master')
 @section('content')
         <!-- Page Content -->
@@ -22,14 +25,25 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Email Address</th>
-                                <th>Name</th>
-                                <th>Gender</th>
-                                <th>Address</th>
-                                <th>Number</th>
+                                <th>Level</th>
+                                <th>Tên hiện thị</th>
+                                <th>Delete</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+                                @foreach($listItem as $item)
+                        <tr class="even gradeC" align="center">
+                            <td>{{$item->id}}</td>
+                            <td>{{$item->email}}</td>
+							 <td>{{$item->level}}</td>
+							<td>{{$item->tenhienthi}}</td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.user.getDelete', $item->id)}}" >Delete</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.user.getEdit', $item->id)}}">Edit</a></td>
+							
+                        </tr>
+                        @endforeach
+                    
                         </tbody>
                     </table>
                 </div>

@@ -1,3 +1,6 @@
+@section('title')
+Danh sách user khách hàng
+@endsection
 @extends('admin.master')
 @section('content')
         <!-- Page Content -->
@@ -5,8 +8,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">User
-                            <small>List</small>
+                        <h1 class="page-header">Khách hàng
+                            <small>Danh sách khách hàng</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -20,23 +23,27 @@
                                 </div>
                         <thead>
                             <tr align="center">
-                                <th>Mã người dùng</th>
-                                <th>Tên đăng nhập</th>
-                                <th>Tên nhóm người dùng</th>
-                                <th>Delete</th>
-                                <th>Edit</th>
+                                <th>Mã khách hàng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+								<th>View more</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($listItem as $listUser)
-                                    <tr class="odd gradeX" align="center">
-                                            <td>{{$listUser->id}}</td>
-                                            <td>{{$listUser->username}}</td>
-                                            <td>{{$listUser->name}}</td>
-                                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i>Delete</a></td>
-                                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a >Edit</a></td>
-                                    </tr>
-                            @endforeach
+                                @foreach($listItem as $item)
+                        <tr class="even gradeC" align="center">
+                            <td>{{$item->makh}}</td>
+                            <td>{{$item->tenkh}}</td>
+							<td>{{$item->diachi}}</td>
+							 <td>{{$item->sodt}}</td>
+							<td>{{$item->email}}</td>
+							<td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.customer.showBill', $item->makh)}}">View more</a></td>
+							
+                        </tr>
+                        @endforeach
+                    
                         </tbody>
                     </table>
                 </div>
