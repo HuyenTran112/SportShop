@@ -1,4 +1,4 @@
-@section('title')
+﻿@section('title')
 Cập nhật nhà cung cấp
 @endsection
 @extends('admin.master')
@@ -8,7 +8,7 @@ Cập nhật nhà cung cấp
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Category
+                    <h1 class="page-header">Nhà cung cấp
                         <small>Edit</small>
                     </h1>
                 </div>
