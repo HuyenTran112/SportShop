@@ -42,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="navbar-brand">Admin Area</div>
+               <div class="navbar-brand"></div>
             </div>
             <!-- /.navbar-header -->
 
@@ -71,14 +71,14 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
+                            <!--<div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
-                            </div>
+                            </div>-->
                             <!-- /input-group -->
                         </li>
                         <li>
@@ -145,7 +145,7 @@
                                     <a href="{{route('admin.customer.list')}}">Danh sách khách hàng</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm user</a>
+                                    <a href="{{route('admin.customer.kh_tiemnang')}}">Khách hàng tiềm năng</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

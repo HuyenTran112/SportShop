@@ -1,5 +1,5 @@
 @section('title')
-Danh sách user admin
+Danh sách user khách hàng
 @endsection
 @extends('admin.master')
 @section('content')
@@ -8,8 +8,8 @@ Danh sách user admin
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">User
-                            <small>List</small>
+                        <h1 class="page-header">Khách hàng
+                            <small>Danh sách khách hàng</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -28,7 +28,6 @@ Danh sách user admin
                                 <th>Địa chỉ</th>
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
-                                <th>Edit</th>
 								<th>View more</th>
                             </tr>
                         </thead>
@@ -40,7 +39,6 @@ Danh sách user admin
 							<td>{{$item->diachi}}</td>
 							 <td>{{$item->sodt}}</td>
 							<td>{{$item->email}}</td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a >Edit</a></td>
 							<td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.customer.showBill', $item->makh)}}">View more</a></td>
 							
                         </tr>

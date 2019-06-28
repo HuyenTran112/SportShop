@@ -116,6 +116,9 @@ Route::group(['prefix'=>'user'], function(){
 Route::group(['prefix'=>'customer'], function(){
         Route::get('list', ['as'=>'admin.customer.list', 'uses'=>'CustomerController@getList']);	
         Route::get('showBill/{id}', ['as'=>'admin.customer.showBill', 'uses'=>'CustomerController@showBill']);
+		Route::get('khtiemnang', ['as'=>'admin.customer.kh_tiemnang', 'uses'=>'CustomerController@KhachHangTiemNang']);
+		//Route::get('edit/{id}',['as'=>'admin.customer.getEdit', 'uses'=>'CustomerController@getEdit']);
+		//Route::post('edit/{id}', ['as'=>'admin.post.postEdit', 'uses'=>'CustomerController@postEdit']);
   
     });
 //quản lý nhà cung cấp

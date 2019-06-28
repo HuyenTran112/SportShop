@@ -36,10 +36,10 @@ Cập nhật user
                             {{--  Tên hiện thị  --}}
                             <div class="form-group">
                                 <label>Tên hiện thị</label>
-                                <input type="text" class="form-control" name="txtName" placeholder="Please Enter Name" />
+                                <input type="text" class="form-control" name="txtName" value="{{$username->tenhienthi}}" placeholder="Please Enter Name" />
                             </div>
                             
-                            <button type="submit" class="btn btn-default">User Add</button>
+                            <button type="submit" class="btn btn-default">User Edit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

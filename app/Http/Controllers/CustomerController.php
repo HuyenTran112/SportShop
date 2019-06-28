@@ -23,4 +23,9 @@ class CustomerController extends Controller
 		$bill=DB::table('hoadon')->where('makh',$makh)->get();
 		return view('admin.customer.showBill',compact('bill'));
 	}
+	public function KhachHangTiemNang()
+	{
+		return view('admin.customer.kh_tiemnang');
+	}
+	
 }

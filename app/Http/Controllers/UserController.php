@@ -36,7 +36,7 @@ class UserController extends Controller
                 'txtEmail.unique'=>'Email đã có người sử dụng',
                 'txtRepass.same'=>'Mật khẩu không giống nhau',
                 'txtPass.min'=>'Mật khẩu ít nhất 6 kí tự',
-                'phone.max'=>'Số điện thoại không hợp lệ'
+                'txtName.min'=>'Tên hiện thị ít nhất 3 ký tự'
             ]);
         $username = new user();
         $username->email = $req->txtEmail;
@@ -63,12 +63,26 @@ class UserController extends Controller
 	public function getEdit($id){
         $username = DB::table('users')->where('id',$id)->first();
         if ($username->level == 0 || Auth::user()->id != $id ){
-            return redirect()->route('admin.user.list')->with(['flash_level'=>'danger','flash_message'=>'You cant updated this Username']);
+            return redirect()->route('admin.user.list')->with(['flash_level'=>'danger','flash_message'=>'Bạn không thể cập nhật user này']);
         }
     	return view('admin.user.edit',compact('username'));
     }
 
     public function postEdit($id,Request $req){
+	$this->validate($req,
+            [
+                'txtEmail'=>'email|unique:users,email',
+                'txtPass'=>'min:6|max:20',
+                'txtRePass'=>'same:txtPass',
+                'txtName'=>'min:3'
+            ],
+            [
+                'txtEmail.email'=>'Không đúng định dạng email',
+                'txtEmail.unique'=>'Email đã có người sử dụng',
+                'txtRePass.same'=>'Mật khẩu không giống nhau',
+                'txtPass.min'=>'Mật khẩu ít nhất 6 kí tự',
+				'txtName.min'=>'Tên hiện thị ít nhất 3 ký tự'
+            ]);
         $username = DB::table('users')->where('id',$id)->first();
     	if($req->input('txtPass')) {
             $this->validate($req,
@@ -82,7 +96,7 @@ class UserController extends Controller
             $username->password = Hash::make($pass);
         }
         $username->tenhienthi = $req->txtName;
-        DB::table('users')->where('id',$id)->update(['password' => $req->txtPass,'tenhienthi'=>$req->txtName]);
+        DB::table('users')->where('id',$id)->update(['password' => Hash::make($pass),'tenhienthi'=>$req->txtName]);
         return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật user thành công']);
     }
 
@@ -147,11 +161,12 @@ class UserController extends Controller
         );
         $credentials = array('email'=>$req->email, 'password'=>$req->password, 'level' => 0);
         $credentialsAdmin = array('email'=>$req->email, 'password'=>$req->password, 'level' => 1);
+		 $credentialsAdmin1 = array('email'=>$req->email, 'password'=>$req->password, 'level' => 2);
         if(Auth::attempt($credentials)){
             // return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
             return redirect()->route('trang-chu');
         }
-        else if (Auth::attempt($credentialsAdmin)){
+        else if (Auth::attempt($credentialsAdmin) or Auth::attempt($credentialsAdmin1)){
             // return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
             return redirect()->route('admin.bill.showBill');
         }

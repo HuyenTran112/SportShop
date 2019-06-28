@@ -36,7 +36,7 @@ class CateController extends Controller
 		DB::table('loaisanpham')
             ->where('maloaisp', $maloaisp)
             ->update(['tenloaisp' => $req->txtName]);
-        return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>'Successfully updated cate product']);
+        return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật loại sản phẩm thành công']);
     }
 	//Xóa sản phẩm
 	public function getDelete($maloaisp){
