@@ -1,4 +1,44 @@
 <?php
+	$host="localhost";
+    $username="root";
+    $password="";
+    $databasename="sportshop";
+    $conn = new mysqli($host,$username,$password,$databasename); 
+    $conn->set_charset("utf8");
+	$maloaisp=$_GET['maloaisp'];
+	$ngaybd=$_GET['ngaybd'];
+	$ngaykt=$_GET['ngaykt'];
+	$ngaybd1=date('d-m-Y', strtotime($ngaybd));
+	$ngaykt1=date('d-m-Y', strtotime($ngaykt));
+	if($maloaisp==0)
+		$loaisp="Tất cả loại sản phẩm";
+	else
+	{
+		$str="select tenloaisp from loaisanpham where maloaisp='$maloaisp'";
+		$rs=$conn->query($str);
+		while($row=$rs->fetch_row())
+			$loaisp=$row[0];
+	}
+	if($maloaisp!=0)
+		{
+			$str="select sanpham.masp,tensp, tenmau, tensize,sum(cthd.soluong) soluongban
+			from sanpham, loaisanpham, cthd, hoadon, mausac,size
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and sanpham.maloaisp='$maloaisp'
+			group by sanpham.masp
+			order by soluongban desc
+			limit 10";
+		}
+	else
+		{
+			$str="select sanpham.masp,tensp, tenmau, tensize, sum(cthd.soluong) soluongban
+			from sanpham, loaisanpham, cthd, hoadon, mausac,size
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau
+			group by sanpham.masp
+			order by soluongban desc
+			limit 10";
+		}
+		$rs=$conn->query($str);
+		
 echo"<style>
 	body {
     margin: 0;
@@ -159,7 +199,7 @@ button {
 <body onLoad='window.print();'>
 <div id='page' class='page'>
     <div class='header'>
-        <div class='logo'><img src='../../../public/image/logo.png'/></div>
+        <div class='logo'><img src='image/logo.png'/></div>
         <div class='company'>Cửa hàng SportShop TY<br>
 		Khu phố 6, phường Linh Trung<br>
 		Quận Thủ Đức, TPHCM<br>
@@ -168,34 +208,44 @@ button {
     </div>
   <br/>
   <div class='title'>
-        BÁO CÁO DOANH THU
+        BÁO CÁO SẢN PHẨM BÁN CHẠY
         <br/>
         -------oOo-------
   </div>
   <br/>
   <br/>
-  <b>Thông tin khách hàng:</b>
-  <table>	
-	 <tr >
-	</tr>
-
-</table>
+  <b>Ngày bắt đầu: </b>$ngaybd1
 <br>
-	<b>Thông tin đơn hàng</b><br>
-	<br>
+	<b>Ngày kết thúc: </b> $ngaykt1<br>
+	 <b>Loại sản phẩm: </b>$loaisp
+</br></br>
+	<u><b>Thông tin báo cáo:</b></u>
+	</br>
+</br>
   <table class='TableData'>
     <tr align='center'>
 		<th align='center'>STT</th>
+		<th align='center'>Mã sản phẩm</th>
 		<th align='center'>Tên Sản phẩm</th>
 		<th align='center'>Màu</th>
 		<th align='center'>Size</th>
 		<th align='center'>Số lượng</th>
-		<th align='center'>Thành tiền</th>
-	</tr>
+	</tr>";
+	$stt=1;
+		while($row=$rs->fetch_row())
+		{            
+		echo"<tr class='odd gradeX' align='center'>
+						<td>".$stt."</td>
+						<td>".$row[0]."</td>
+						<td>".$row[1]."</td>";
+						echo "<td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td>
+					</tr>";
+		}
+			echo "</tbody> </table>";
 	
-	</table>
-  <div class='footer-right'>TPHCM,ngày   , tháng   , năm   <br/>
+  echo "<div class='footer-right'>TPHCM,ngày   , tháng   , năm   <br/>
     Người làm báo cáo</div>
 </div>
-</body>"
+</body>";
+
 ?>
