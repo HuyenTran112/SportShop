@@ -6,13 +6,13 @@ class Cart
 {
 	public $items = null;
 	public $totalQty = 0;
-	public $totalPrice = 0;
-
+    public $totalPrice = 0;
+    
 	public function __construct($oldCart){
 		if($oldCart){
 			$this->items = $oldCart->items;
 			$this->totalQty = $oldCart->totalQty;
-			$this->totalPrice = $oldCart->totalPrice;
+            $this->totalPrice = $oldCart->totalPrice;           
 		}
 	}
 
@@ -76,18 +76,23 @@ class Cart
 		$this->items[$masp]['qty']--;
 		$this->items[$masp]['price'] -= $this->items[$masp]['item']->dongia_or_giakhuyenmai;
 		$this->totalQty--;
-		$this->totalPrice -= $this->items[$masp]['item']->dongia_or_giakhuyenmai;
+        $this->totalPrice -= $this->items[$masp]['item']->dongia_or_giakhuyenmai;
+
 		if($this->items[$masp]['qty']<=0){
 			unset($this->items[$masp]);
-		}
+        }
     }
     
 	//xóa nhiều
 	public function removeItem($masp){
 		$this->totalQty -= $this->items[$masp]['qty'];
-		$this->totalPrice -= $this->items[$masp]['price'];
+        $this->totalPrice -= $this->items[$masp]['price'];
+
 		unset($this->items[$masp]);
-	}
+    }
+    
+    
+
 	//Cập nhật giỏ hàng
 	public function update($rowId, $qty)
     {

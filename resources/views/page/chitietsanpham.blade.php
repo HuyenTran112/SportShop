@@ -115,7 +115,7 @@ Chi tiết sản phẩm
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<?php
+									<?php
 										$size=DB::table('size')->join('sanpham_size','size.masize','=','sanpham_size.masize')->where('masp','=',$sanpham->masp)->get();
 									?>
 										<select class="size" name="size">
@@ -548,9 +548,6 @@ Chi tiết sản phẩm
 				});
 			});
 		});
-
-		
-
 	</script>
 <!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>

@@ -10,7 +10,9 @@ use App\Cart;
 use App\khachhang;
 use App\hoadon;
 use App\cthd;
+use App\User;
 use Session;
+use Auth;
 class PageController extends Controller
 {
     public function getIndex()
@@ -82,8 +84,10 @@ class PageController extends Controller
         $masp1 = (string)$masp;
         $mamau1 = (string)$mamau;
         $masize1 = (string)$masize;
-        $id = $masp1.$mamau1.$masize1;
-        $ma = (int)$id;
+        $id = $masp1."-".$mamau1."-".$masize1;
+        $ma = $id;
+        // $id = $masp1.$mamau1.$masize1;
+        // $ma = (int)$id;
         $cart->add($sanpham, $ma, $soluong);
         $req->session()->put('cart',$cart);
 		// dd($cart);
@@ -127,11 +131,14 @@ class PageController extends Controller
         $masp1 = (string)$masp;
         $mamau1 = (string)$mamau;
         $masize1 = (string)$masize;
-        $id = $masp1.$mamau1.$masize1;
-        $ma = (int)$id;
+        $id = $masp1."-".$mamau1."-".$masize1;
+        $ma = $id;
+        // $id = $masp1.$mamau1.$masize1;
+        // $ma = (int)$id;
         $cart->increase($sanpham, $ma);
         $req->session()->put('cart',$cart);
-		// dd($cart);
+        // dd($cart);
+
         // echo 'oke';   
         return redirect()->back();
 
@@ -142,6 +149,7 @@ class PageController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
+        // dd($cart);
         if(count($cart->items) > 0)  
         {
             Session::put('cart', $cart);
@@ -192,13 +200,22 @@ class PageController extends Controller
 	}
 	public function postCheckout(Request $req)
 	{
-		$cart = Session::get('cart');
-
+        if(Session::get('cart'))
+        {
+        $cart = Session::get('cart');
+        
         $bill = new hoadon;
-        $bill->makh = 1;
+        if(Auth::check())
+            $bill->makh = Auth::user()->manguoidung;
+        else 
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Bạn phải đăng nhập để đặt hàng']);
+        $phiship = DB::table('phigiaohang')->where('maphi',$req->tinh)->first();
+
         $bill->ngayhd = date('Y-m-d');
         $bill->diachigiaohang = $req->address;
         $bill->tongtien = $cart->totalPrice;
+        $bill->phigiaohang = $phiship->phi;
+        $bill->tongthanhtoan = ($cart->totalPrice) + $phiship->phi;
         $bill->trangthai = 0;
         $bill->ghichu = "Họ tên: ". $req->name. ", SĐT: ".$req->phone. ", email: ".$req->email. ". Ghi chú: ".$req->note;
         $bill->save();
@@ -206,14 +223,26 @@ class PageController extends Controller
 
         foreach ($cart->items as $key => $value) {
             $bill_detail = new cthd;
-            $bill_detail->sohd = $bill->id; //$bill->sohd; Lỗi ở đây, nếu để là $bill->makh thì k lỗi
-            $bill_detail->masp = $key;
+            $bill_detail->sohd = $bill->id;
+            // $bill_detail->masp = $key; Lúc thêm vào cart tạo $bien luu masp ban dau. VD: 311 thì masp=3, vì masize = mamau = 1
+            
+            $pos = strpos($key, "-");
+            if($pos == false)
+                return redirect()->back()->with(['flag'=>'danger','message'=>'Đặt hàng thất bại']);
+            $bill_detail->masp = (int)substr($key, 0, $pos);
+
             $bill_detail->soluong = $value['qty'];
             $bill_detail->thanhtien = $value['price'];
+            $bill_detail->mamau = $value['mamau'];
+            $bill_detail->masize = $value['masize'];
             $bill_detail->save();
         }
         Session::forget('cart');
-        return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
+        return redirect()->back()->with(['flag'=>'success','message'=>'Đặt hàng thành công']);
+        // return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
+        }
+        else 
+        return redirect()->back()->with(['flag'=>'danger','message'=>'Giỏ hàng rỗng']);
     }
 
 	public function capnhat()

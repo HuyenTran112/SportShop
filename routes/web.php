@@ -156,7 +156,7 @@ Route::group(['prefix'=>'cart'], function(){
     Route::get('delete/{masp}',['as'=>'xoagiohang', 'uses'=>'PageController@getDelItemCart']);
     Route::get('add/{masp}/{mamau}/{masize}/{soluong}',['as'=>'themgiohang', 'uses'=>'PageController@getAddtoCart']);
     Route::get('increase/{masp}/{mamau}/{masize}',['as'=>'tangiohang', 'uses'=>'PageController@getIncreaseItemCart']);
-    Route::get('reduce/{masp}',['as'=>'giamgiohang', 'uses'=>'PageController@getReduceItemCart']);
+    Route::get('reduce/{masp}',['as'=>'giamgiohang', 'uses'=>'PageController@getReduceItemCart']);   
 });
 
 

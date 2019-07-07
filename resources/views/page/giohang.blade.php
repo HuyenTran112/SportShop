@@ -8,8 +8,11 @@ Giỏ hàng
 	<input type="hidden" name="_token" value="{!!csrf_token()!!}">
 	<div class="container">
 		<div class="row" style="text-align:center"> 
-			@if(Session::has('thongbao')) 
+			<!-- @if(Session::has('thongbao')) 
 				<div class="alert alert-success">{{Session::get('thongbao')}}</div> 
+			@endif -->
+			@if(Session::has('message'))
+				<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
 			@endif
 		</div>
 	</div>
@@ -66,8 +69,10 @@ Giỏ hàng
 											$masize1 = (string)$size->masize;
 										else
 											$masize1 = 1;
-        								$id = $masp1.$mamau1.$masize1;
-										$ma = (int)$id;
+        								// $id = $masp1.$mamau1.$masize1;
+										// $ma = (int)$id;
+										$id = $masp1."-".$mamau1."-".$masize1;
+        								$ma = $id;
 									?>
 									<td class="column-4">
 									
@@ -117,9 +122,17 @@ Giỏ hàng
 							<div class="size-209">
 								<span class="mtext-110 cl2" style="color:red">
 									@if(Session::has('cart'))
-									<div class="TongTien">{{number_format($totalPrice)}}</div> 
+									<?php
+										$TongTien = number_format($totalPrice);
+									?>
+									
 									@else
-									<div class="TongTien">0</div>@endif đồng
+									<?php
+										$TongTien = 0;
+									?>
+									@endif
+									<div class="TongTien" name="TongTien" value="111">{{$TongTien}}</div> đồng
+
 								</span>
 							</div>
 						</div>
@@ -127,21 +140,18 @@ Giỏ hàng
 						<h3>Thông tin người nhận</h3><br>
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
-								<div class="stext-110 cl2" >Họ tên</div>
-								<div class="stext-110 cl2" >Địa chỉ</div>
+								<div class="stext-110 cl2" >Họ tên</div>				
 								<div class="stext-110 cl2" >Số điện thoại</div>
 								<div class="stext-110 cl2" >Email</div>
 								<div class="stext-110 cl2" >Ghi chú</div>
+								<div class="stext-110 cl2" >Địa chỉ</div>
+								<div class="stext-110 cl2" >Tỉnh</div>
 							</div>
 							
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 									<div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" required placeholder="Họ và tên">
-									</div>
-
-									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" required placeholder="Địa chỉ">
-									</div>
+									</div>	
 									
 									<div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" required placeholder="Số điện thoại">
@@ -153,9 +163,30 @@ Giỏ hàng
 
 									<div class="bor8 bg0 m-b-12">
 										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="note" placeholder="Ghi chú" href="#">
-									</div>	
+									</div>
+
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" required placeholder="Số nhà, xã, huyện, tỉnh">
+									</div>
+									<?php
+										$tinh = DB::table('phigiaohang')->get();
+									?>
+									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+										<select class="tinh" name="tinh">
+											@foreach($tinh as $item)
+											{
+												<option value="{{$item->maphi}}">{{$item->tentinh}}</option>	
+											}
+											@endforeach
+											<!-- <option>Select a country...</option>
+											<option>USA</option>
+											<option>UK</option> -->
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
 								</div>
 							</div>
+							<div class="phiship" name="phiship">Phí giao hàng: 30,000 đồng</div><br>
 						</div>
 						
 						<br>
@@ -185,12 +216,29 @@ Giỏ hàng
 
 
 	<script>
-		$(".js-select2").each(function(){
+		$(".tinh").each(function(){
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
 			});
-		})
+		});
+		$(document).ready(function(){
+			$(".tinh").change(function(){
+				var maPhi = $(this).val();
+				var Ttien = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").html();
+				var Ttien1 = Number(Ttien.replace(/\,/g, ''));
+				// alert(Ttien1);
+
+				$.get("PhiGiaoHang.php",
+				{
+					map:maPhi,
+					ttien:Ttien1
+
+				},function(data, status){
+					$(".phiship").html(data);
+				});
+			});
+		});
 	</script>
 <!--===============================================================================================-->
 	<script src="vendor/daterangepicker/moment.min.js"></script>
