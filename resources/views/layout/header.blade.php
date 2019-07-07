@@ -43,7 +43,7 @@
 						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
 							Chào bạn ({{Auth::user()->tenhienthi}}) 							
 						</a>
-						@if(Auth::user()->level==1)
+						@if(Auth::user()->level!=0)
 							<a href="{{route('admin.bill.showBill')}}" class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
 							Settings						
 							</a>
