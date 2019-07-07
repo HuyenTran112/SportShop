@@ -36,10 +36,14 @@ Danh sách user admin
                         <tr class="even gradeC" align="center">
                             <td>{{$item->id}}</td>
                             <td>{{$item->email}}</td>
-							 <td>{{$item->level}}</td>
+							@if($item->level==1)
+							 	<td>Admin</td>
+							@else
+								<td>Member</td>
+							@endif
 							<td>{{$item->tenhienthi}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.user.getDelete', $item->id)}}" >Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.user.getEdit', $item->id)}}">Edit</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.user.getEditUser', $item->id)}}">Edit</a></td>
 							
                         </tr>
                         @endforeach

@@ -57,8 +57,13 @@
                         </li>
                         <li><a href="{{route('trang-chu')}}"><i class="fa fa-gear fa-fw"></i>Trang chủ</a>
                         </li>
+						<?php
+							$id=Auth::user()->id;
+						?>
+						<li><a href="{{route('admin.user.getEdit',$id)}}"><i class="fa fa-gear fa-fw"></i>Đổi password</a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -151,17 +156,19 @@
                             <!-- /.nav-second-level -->
                         </li>
 						<li>
+							@if(Auth::user()->level==1)
                             <a href="#"><i class="fa fa-users fa-fw"></i>User admin<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('admin.user.list')}}">Danh sách admin</a>
+                                    <a href="{{route('admin.user.list')}}">Danh sách user</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.user.getAdd')}}">Thêm admin</a>
+                                    <a href="{{route('admin.user.getAdd')}}">Thêm user</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+						@endif
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

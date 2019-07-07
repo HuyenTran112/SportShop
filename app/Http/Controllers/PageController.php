@@ -17,7 +17,7 @@ class PageController extends Controller
 {
     public function getIndex()
     {
-     	$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(8);
+     	$sp_khuyenmai=DB::table('sanpham')->where('giakhuyenmai','!=','0')->where('trangthai','1')->paginate(8);
         $loai=loaisanpham::all();
         return view('page.trangchu',compact('sp_khuyenmai','loai'));
     }
@@ -30,9 +30,10 @@ class PageController extends Controller
     public function getLoaiSp($maloaisp)
     {
         $loai=loaisanpham::all();
-		$sanpham=sanpham::where('trangthai','<>','0')->paginate(4);
-		$sp_theoloai=sanpham::where('maloaisp',$maloaisp)->get();
-		$sp_khac=sanpham::where('maloaisp','!=',$maloaisp)->paginate(4);
+		//$sanpham=sanpham::where('trangthai','1')->paginate(4);
+		$sanpham=DB::table('sanpham')->where('trangthai','1')->paginate(4);
+		$sp_theoloai=DB::table('sanpham')->where('maloaisp',$maloaisp)->where('trangthai','1')->get();
+		$sp_khac=DB::table('sanpham')->where('maloaisp','!=',$maloaisp)->where('trangthai','1')->paginate(4);
         return view('page.sanpham',compact('loai','sanpham','sp_theoloai','sp_khac'));
     }
 	

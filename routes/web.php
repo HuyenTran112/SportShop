@@ -111,6 +111,9 @@ Route::group(['prefix'=>'user'], function(){
         Route::get('delete/{id}', ['as'=>'admin.user.getDelete', 'uses'=>'UserController@getDelete']);
         Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
         Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
+		Route::get('edituser/{id}', ['as'=>'admin.user.getEditUser', 'uses'=>'UserController@getEditUser']);
+        Route::post('edituser/{id}', ['as'=>'admin.user.postEditUser', 'uses'=>'UserController@postEdituser']);
+		
     });
 	//quản lý  khách hàng
 Route::group(['prefix'=>'customer'], function(){

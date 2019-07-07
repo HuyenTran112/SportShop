@@ -35,7 +35,6 @@ Báo cáo sản phẩm bán chạy
                         </div>
 						<div align="center">
 						<button type="button" class="btn btn-default" id="thongke">Thống kê</button>&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-default"  onclick="window.print();return false;" id="inbaocao">In báo cáo</button>
 						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 						<script>
 						$(document).ready(function(){
@@ -43,11 +42,11 @@ Báo cáo sản phẩm bán chạy
 							var maloaisp=$(".maloaisp").val();
 							var ngaybd=$("#tungay").val();
 							var ngaykt=$("#denngay").val();
-							//alert(ngaykt);
-							
+							if(ngaybd>ngaykt)
+								alert("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc");
 							$.post("bc_sanpham.php",{ maloaisp:maloaisp, ngaybd:ngaybd, ngaykt:ngaykt },function(data,status){
 							$(".baocao").html(data);  
-							
+													
 							});
 						  });
 						   $("#inbaocao").click(function(){

@@ -17,6 +17,9 @@ class ReportController extends Controller
 		$list=DB::table('loaisanpham')->get();
 		return view('admin.report.bc_sanpham',compact('list'));
 	}
-	
+	public function printBaoCaoDoanhThu()
+	{
+		return view('admin.report.print_bc_doanhthu');
+	}
 	
 }

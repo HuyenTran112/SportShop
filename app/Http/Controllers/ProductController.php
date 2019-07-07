@@ -76,6 +76,7 @@ class ProductController extends Controller
 		else
 		{
 			$file_name = $req->file('fImages')->getClientOriginalName();
+			$req->file('fImages')->move('../public/image', $file_name);
 			DB::table('sanpham')
             ->where('masp', $masp)
             ->update(['tensp'=>$req->txtName,
