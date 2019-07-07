@@ -12,10 +12,9 @@ class CustomerController extends Controller
 {
     public function getList(){
 		//$list=DB::table('users')->select('manguoidung')->get()->toArray();
-        //$listItem = DB::table('khachhang')->wherenotin('makh',$list)->get();
-		$listItem = DB::table('khachhang')->whereNotIn('makh', function($q){
-    $q->select('manguoidung')->from('users');
-})->get();
+        //$listuser = DB::table('users')->select('manguoidung')->get();
+		$listItem = DB::table('khachhang')->join('users','khachhang.makh','users.manguoidung')->where('level',0)->get();
+		
         return view('admin.customer.list',compact('listItem'));
     }
 	public function showBill($makh)

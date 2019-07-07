@@ -7,6 +7,9 @@
     $conn->set_charset("utf8");
 	$ngaybd=$_POST['ngaybd'];
 	$ngaykt=$_POST['ngaykt'];
+	if($ngaybd>$ngaykt)
+		echo "";
+	else{
 	$str="select khachhang.makh,tenkh, diachi, email, count(*) sodonhang,sum(hoadon.tongthanhtoan) tongthanhtoan
 		from khachhang, hoadon
 		where khachhang.makh=hoadon.makh and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
@@ -39,5 +42,5 @@
 	}
 	
 		echo "</tbody> </table>";
-
+}
 ?>

@@ -23,14 +23,15 @@ Khách hàng tiềm năng
 							 <input type ="date"name="txtDenNgay" placeholder="Chọn ngày" value="2019-06-17" id="denngay"/>
 							 </div>
 						<div align="center">
-						<button type="button" class="btn btn-default" id="thongke">Thống kê</button>&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-default" id="thongke">Thống kê</button>&nbsp;&nbsp;&nbsp;<br />
 					    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 						<script>
 						$(document).ready(function(){
 						  $("#thongke").click(function(){
 							var ngaybd=$("#tungay").val();
 							var ngaykt=$("#denngay").val();
-							//alert(ngaykt);
+							if(ngaybd>ngaykt)
+								alert("Ngày bắt đầu phải lớn hơn ngày kết thúc");
 							
 							$.post("kh_tiemnang.php",{ngaybd:ngaybd, ngaykt:ngaykt },function(data,status){
 							$(".baocao").html(data);  
