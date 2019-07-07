@@ -14,17 +14,17 @@
 		$loaisp="Tất cả loại sản phẩm";
 	else
 	{
-		$str="select tenloaisp from loaisanpham where maloaisp='$maloaisp'";
-		$rs=$conn->query($str);
-		while($row=$rs->fetch_row())
-			$loaisp=$row[0];
+		$str1="select tenloaisp from loaisanpham where maloaisp='$maloaisp'";
+		$rs1=$conn->query($str1);
+		while($row1=$rs1->fetch_row())
+			$loaisp=$row1[0];
 	}
 	if($maloaisp!=0)
 		{
 			$str="select sanpham.masp,tensp, tenmau, tensize,sum(cthd.soluong) soluongban
 			from sanpham, loaisanpham, cthd, hoadon, mausac,size
-			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and sanpham.maloaisp='$maloaisp'
-			group by sanpham.masp
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and sanpham.maloaisp='$maloaisp' and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
+			group by sanpham.masp,tenmau,tensize
 			order by soluongban desc
 			limit 10";
 		}
@@ -32,8 +32,8 @@
 		{
 			$str="select sanpham.masp,tensp, tenmau, tensize, sum(cthd.soluong) soluongban
 			from sanpham, loaisanpham, cthd, hoadon, mausac,size
-			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau
-			group by sanpham.masp
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
+			group by sanpham.masp,tenmau,tensize
 			order by soluongban desc
 			limit 10";
 		}
@@ -222,7 +222,7 @@ button {
 	<u><b>Thông tin báo cáo:</b></u>
 	</br>
 </br>
-  <table class='TableData'>
+  <tbody><table class='TableData'>
     <tr align='center'>
 		<th align='center'>STT</th>
 		<th align='center'>Mã sản phẩm</th>
