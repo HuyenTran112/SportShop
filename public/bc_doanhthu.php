@@ -17,14 +17,14 @@
 		{
 			$str="select sanpham.masp,tensp, tenmau, tensize,dongia, giakhuyenmai, sum(cthd.soluong) soluongban, sum(thanhtien) as thanhtien
 			from sanpham, loaisanpham, cthd, hoadon, mausac,size
-			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and sanpham.maloaisp='$maloaisp' and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and sanpham.maloaisp='$maloaisp' and ngayhd>='$ngaybd' and ngayhd<='$ngaykt' and hoadon.trangthai=2
 			group by sanpham.masp, tenmau, tensize";
 		}
 		else
 		{
 			$str="select sanpham.masp,tensp, tenmau, tensize,dongia, giakhuyenmai, sum(cthd.soluong) soluongban, sum(thanhtien) as thanhtien
 			from sanpham, loaisanpham, cthd, hoadon, mausac,size
-			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and ngayhd>='$ngaybd' and ngayhd<='$ngaykt' and hoadon.trangthai=2
 			group by sanpham.masp, tenmau, tensize";
 		}
 		$rs=$conn->query($str);
@@ -64,10 +64,11 @@
 						echo number_format($row[7],3);
 						echo" VND</td>
 					</tr>";
+					$stt++;
 			$tong+=$row[7];
 		}
 		
-			echo "<tr><td colspan='5' align ='center'>";
+			echo "<tr><td colspan='8' align ='right'>";
 			echo "<b>Tổng doanh thu</b></td>";
 			echo "<td>".$tong."</td>";
 			echo "</tbody> </table>";

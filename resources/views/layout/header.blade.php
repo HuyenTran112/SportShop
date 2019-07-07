@@ -45,7 +45,14 @@
 						</a>
 						@if(Auth::user()->level!=0)
 							<a href="{{route('admin.bill.showBill')}}" class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
-							Settings						
+							<?php
+								$count=DB::table('hoadon')->where('trangthai','0')->count();
+							?>
+							@if($count>0)
+								Settings (Có {{$count}} đơn hàng đang chờ xác nhận)	
+							@else
+								Settings
+							@endif				
 							</a>
 						@endif
 

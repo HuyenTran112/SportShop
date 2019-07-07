@@ -23,7 +23,7 @@
 		{
 			$str="select sanpham.masp,tensp, tenmau, tensize,sum(cthd.soluong) soluongban
 			from sanpham, loaisanpham, cthd, hoadon, mausac,size
-			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and sanpham.maloaisp='$maloaisp' and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and sanpham.maloaisp='$maloaisp' and ngayhd>='$ngaybd' and ngayhd<='$ngaykt' and hoadon.trangthai=2
 			group by sanpham.masp,tenmau,tensize
 			order by soluongban desc
 			limit 10";
@@ -32,7 +32,7 @@
 		{
 			$str="select sanpham.masp,tensp, tenmau, tensize, sum(cthd.soluong) soluongban
 			from sanpham, loaisanpham, cthd, hoadon, mausac,size
-			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and ngayhd>='$ngaybd' and ngayhd<='$ngaykt'
+			where sanpham.maloaisp=loaisanpham.maloaisp and sanpham.masp=cthd.masp and hoadon.sohd=cthd.sohd  and cthd.masize=size.masize and cthd.mamau=mausac.mamau and ngayhd>='$ngaybd' and ngayhd<='$ngaykt' and hoadon.trangthai=2
 			group by sanpham.masp,tenmau,tensize
 			order by soluongban desc
 			limit 10";
@@ -240,6 +240,7 @@ button {
 						<td>".$row[1]."</td>";
 						echo "<td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td>
 					</tr>";
+					$stt++;
 		}
 			echo "</tbody> </table>";
 	
