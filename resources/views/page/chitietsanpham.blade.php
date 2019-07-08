@@ -383,7 +383,7 @@ Chi tiết sản phẩm
 								<img src="image/{{$sp->hinhanh}}"  height="300px" alt="IMG-PRODUCT" >
 
 								<a href="{{route('chitietsanpham',$sp->masp)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-									Quick View
+									Chi tiết
 								</a>
 							</div>
 
@@ -397,19 +397,21 @@ Chi tiết sản phẩm
 										@if($sp->giakhuyenmai==0)
                                	 	<span class="flash-sale" style="font-size:14px"><b>{{number_format($sp->dongia)}} đồng</b></span>
                            		 @else
-								 	<span class="flash-sale" style="font-size:14px"><b>{{number_format($sp->giakhuyenmai)}} đồng</b></span>&ensp;&ensp;&ensp;
+								 	<span class="flash-sale" style="font-size:14px"><b>{{number_format($sp->giakhuyenmai)}} đồng</b></span>&ensp;&ensp;
                                 	<span class="flash-del" style="font-size:14px"><b>{{number_format($sp->dongia)}} đồng</b></span>
                             	@endif
+
+								
 									</span>
 									
 								</div>
 
-								<div class="block2-txt-child2 flex-r p-t-3">
+								<!-- <div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 									</a>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>

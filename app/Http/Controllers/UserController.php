@@ -195,6 +195,7 @@ class UserController extends Controller
     //đăng xuất
     public function getLogout(){
         Auth::logout();
+        Session::forget('cart');
         return redirect()->route('trang-chu');
     }
 }

@@ -1,4 +1,5 @@
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="image/favicon.png"/>
+	<!-- <link rel="icon" type="image/png" href="images/icons/favicon.png"/> -->
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -84,9 +85,10 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
+					<div class="logo" style="height:90px;">
+						<img src="image/logo1.png" alt="IMG-LOGO">
+						<!-- <img src="images/icons/logo-01.png" alt="IMG-LOGO"> -->						
+					</div>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
@@ -142,9 +144,9 @@
 							<a href="{{route('giohang')}}"><i class="zmdi zmdi-shopping-cart"></i></a>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+						</a> -->
 					</div>
                                         
                                        
@@ -156,7 +158,8 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href=""><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href=""><img src="image/logo1.png" alt="IMG-LOGO"></a>
+				<!-- <a href=""><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a> -->
 			</div>
 
 			<!-- Icon header -->
@@ -169,9 +172,9 @@
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+				<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				</a> -->
 			</div>
 
 			<!-- Button show menu -->
@@ -194,7 +197,7 @@
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-					@if(Auth::check())
+					<!-- @if(Auth::check())
 						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
 							Chào bạn ({{Auth::user()->tenkh}}) 							
 						</a>
@@ -210,7 +213,38 @@
 						<a href="{{route('signin')}}" class="flex-c-m p-lr-10 trans-04">
 							Đăng ký
 						</a>
+					@endif -->
+					<!-- ******* -->
+					@if(Auth::check())
+						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
+							Chào bạn ({{Auth::user()->tenhienthi}}) 							
+						</a>
+						@if(Auth::user()->level!=0)
+							<a href="{{route('admin.bill.showBill')}}" class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
+							<?php
+								$count=DB::table('hoadon')->where('trangthai','0')->count();
+							?>
+							@if($count>0)
+								Settings (Có {{$count}} đơn hàng đang chờ xác nhận)	
+							@else
+								Settings
+							@endif				
+							</a>
+						@endif
+
+						<a href="{{route('logout')}}" class="flex-c-m p-lr-10 trans-04">
+							Đăng xuất
+						</a>
+					@else
+						<a href="{{route('login')}}" class="flex-c-m p-lr-10 trans-04">
+							Đăng nhập
+						</a>
+
+						<a href="{{route('signin')}}" class="flex-c-m p-lr-10 trans-04">
+							Đăng ký
+						</a>
 					@endif
+
 					
 					
 <!--						<a href="#" class="flex-c-m p-lr-10 trans-04">

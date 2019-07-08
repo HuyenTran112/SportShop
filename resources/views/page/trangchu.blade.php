@@ -48,56 +48,7 @@ Trang chủ
 					</div>
 				</div>
 			@endforeach
-
-				<!-- <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-02.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Giày
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									năng động
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Mua ngay
-								</div>
-							</div>
-						</a>
-					</div>
-				</div> -->
-
-
-				<!-- <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Dụng cụ
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									đa dạng
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Mua ngay
-								</div>
-							</div>
-						</a>
-					</div>
-				</div> -->
-				
+	
 			</div>
 		</div>
 	</div>
@@ -115,14 +66,14 @@ Trang chủ
 			<div class="flex-w flex-sb-m p-b-52">
 				
 
-				<div class="flex-w flex-c-m m-tb-10">
+				<!-- <div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						 Filter
 					</div>
-				</div>
-			@include('layout.filter')	
+				</div> -->
+			<!-- @include('layout.filter')	 -->
 			<div class="row isotope-grid">
 				@foreach($sp_khuyenmai as $sp)
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -132,7 +83,7 @@ Trang chủ
 							<img src="image/{{$sp->hinhanh}}" alt="IMG-PRODUCT" height="300px">
 
 							<a href="{{route('chitietsanpham',$sp->masp)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
-								Quick View
+								Chi tiết
 							</a>
 						</div>
 						<div class="block2-txt flex-w flex-t p-t-14">
@@ -158,10 +109,10 @@ Trang chủ
 
 							<div class="block2-txt-child2 flex-r p-t-3">
                                                
-								<a href="{{route('blog')}}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+								<!-- <a href="{{route('blog')}}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<img  src="images/icons/icon-heart-01.png" alt="ICON">
 									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
+								</a> -->
 							</div>
 						</div>
 					</div>
@@ -173,7 +124,7 @@ Trang chủ
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
 				<a href="{{route('loai-san-pham',1)}}" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
+					Tải thêm
 				</a>
 			</div>
 		</div>

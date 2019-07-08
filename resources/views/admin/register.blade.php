@@ -20,6 +20,9 @@
 </head>
 <body>
 <div class="container" style="margin-top:50px">
+<div class="logo">
+			    <img src="image/minlogo.JPG" alt="IMG-LOGO">					
+		    </div>
     <form class="form-horizontal" role="form" method="POST" action="{{route('signin')}}">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="row">

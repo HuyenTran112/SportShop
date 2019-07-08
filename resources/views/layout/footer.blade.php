@@ -4,37 +4,22 @@
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Categories
+						SẢN PHẨM
 					</h4>
 
 					<ul>
+					@foreach($loai as $l)
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+							<a href="{{route('loai-san-pham',$l->maloaisp)}}" class="stext-107 cl7 hov-cl1 trans-04">
+								{{$l->tenloaisp}}
 							</a>
 						</li>
+					@endforeach
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
 					</ul>
 				</div>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
+				<!-- <div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
 						Help
 					</h4>
@@ -64,15 +49,21 @@
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
+						LIÊN HỆ
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+						* SportShop TY, khu phố 6, phường Linh Trung, quận Thủ Đức, TP Hồ Chí Minh
+					</p>
+					<p class="stext-107 cl7 size-201">
+						* SĐT: 0282 471 895. Email: ty@gmail.com
+					</p>
+					<p class="stext-107 cl7 size-201">
+						* Email: ty@gmail.com
 					</p>
 
 					<div class="p-t-27">
@@ -92,7 +83,7 @@
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
+						ĐĂNG KÝ NHẬN TIN MỚI NHẤT
 					</h4>
 
 					<form>
@@ -103,7 +94,7 @@
 
 						<div class="p-t-18">
 							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
+								GỬI
 							</button>
 						</div>
 					</form>
@@ -111,8 +102,8 @@
 			</div>
 
 			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
+				<!-- <div class="flex-c-m flex-w p-b-18">
+					<a href="" class="m-all-1">
 						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
 					</a>
 
@@ -131,7 +122,7 @@
 					<a href="#" class="m-all-1">
 						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
 					</a>
-				</div>
+				</div> -->
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -284,25 +275,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							</div>
 
 							<!--  -->
-							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+							<!-- <div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
 									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
 										<i class="zmdi zmdi-favorite"></i>
 									</a>
 								</div>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+								<a class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 									<i class="fa fa-facebook"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+								<a class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
 									<i class="fa fa-twitter"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+								<a class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
 									<i class="fa fa-google-plus"></i>
 								</a>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
