@@ -53,15 +53,14 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>&nbsp;{{Auth::user()->tenhienthi}}</a>
+					<?php
+							$id=Auth::user()->id;
+						?>
+                        <li><a href="{{route('admin.user.getEdit',$id)}}"><i class="fa fa-user fa-fw"></i>&nbsp;{{Auth::user()->tenhienthi}}</a>
                         </li>
                         <li><a href="{{route('trang-chu')}}"><i class="fa fa-gear fa-fw"></i>Trang chủ</a>
                         </li>
-						<?php
-							$id=Auth::user()->id;
-						?>
-						<li><a href="{{route('admin.user.getEdit',$id)}}"><i class="fa fa-gear fa-fw"></i>Đổi password</a>
-                        </li>
+						
                         <li class="divider"></li>
                         <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a>
                         </li>
