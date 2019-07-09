@@ -111,9 +111,9 @@
 								<a href="shoping-cart.html">Features</a>
 							</li>-->
 
-							<li>
+							<!-- <li>
 								<a href="{{route('blog')}}">Blog</a>
-							</li>
+							</li> -->
 
 							<li>
 								<a href="{{route('gioithieu')}}">Giới thiệu</a>
