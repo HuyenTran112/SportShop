@@ -32,8 +32,8 @@ Danh sách sản phẩm
 							<th>Miêu tả</th>
 							<th>Nhà cung cấp</th>
 							<th>Trạng thái</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>Xóa</th>
+                            <th>Cập nhật</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,8 +55,8 @@ Danh sách sản phẩm
 									echo "<td>".$name->tennhacungcap."</td>";
 								?>
 								<td>{{$item->trangthai}}</td>
-								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete',$item->masp)}}">Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit',$item->masp)}}">Edit</a></td>
+								<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete',$item->masp)}}">Xóa</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit',$item->masp)}}">Cập nhật</a></td>
                             </tr>
                         @endforeach
                     </tbody>

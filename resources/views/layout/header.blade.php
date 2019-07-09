@@ -50,7 +50,7 @@
 								$count=DB::table('hoadon')->where('trangthai','0')->count();
 							?>
 							@if($count>0)
-								Settings (Có {{$count}} đơn hàng đang chờ xác nhận)	
+								Settings ({{$count}})	
 							@else
 								Settings
 							@endif				
@@ -225,7 +225,7 @@
 								$count=DB::table('hoadon')->where('trangthai','0')->count();
 							?>
 							@if($count>0)
-								Settings (Có {{$count}} đơn hàng đang chờ xác nhận)	
+								Settings ({{$count}})	
 							@else
 								Settings
 							@endif				
@@ -280,9 +280,9 @@
 					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
 				</li>-->
 
-				<li>
+				<!--<li>
 					<a href="{{route('blog')}}">Blog</a>
-				</li>
+				</li>-->
 
 				<li>
 					<a href="{{route('gioithieu')}}">Giới thiệu</a>

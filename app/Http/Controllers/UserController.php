@@ -31,14 +31,14 @@ class UserController extends Controller
                 'txtEmail'=>'email|unique:users,email',
                 'txtPass'=>'min:6|max:20',
                 'txtRePass'=>'same:txtPass',
-                'txtName'=>'min:3'
+                'txtTenHienThi'=>'min:3'
             ],
             [
                 'txtEmail.email'=>'Không đúng định dạng email',
                 'txtEmail.unique'=>'Email đã có người sử dụng',
                 'txtRePass.same'=>'Mật khẩu không giống nhau',
                 'txtPass.min'=>'Mật khẩu ít nhất 6 kí tự',
-                'txtName.min'=>'Tên hiện thị ít nhất 3 ký tự'
+                'txtTenHienThi.min'=>'Tên hiện thị ít nhất 3 ký tự'
             ]);
         $username = new user();
         $username->email = $req->txtEmail;

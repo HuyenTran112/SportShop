@@ -9,7 +9,7 @@ Cập nhật loại sản phẩm
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Loại sản phẩm
-                        <small>Edit</small>
+                        <small>Cập nhật</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -23,7 +23,7 @@ Cập nhật loại sản phẩm
                             <label>Tên loại sản phẩm</label>
                             <input class="form-control" name="txtName" value="{{$item->tenloaisp}}" />
                         </div>
-                        <button type="submit" class="btn btn-default">Edit</button>
+                        <button type="submit" class="btn btn-default">Cập nhật</button>
                         <button type="reset" class="btn btn-default">Reset</button>
                     <form>
                 </div>

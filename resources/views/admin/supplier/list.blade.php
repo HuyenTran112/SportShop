@@ -9,7 +9,7 @@ Danh sách nhà cung cấp
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Nhà cung cấp
-                        <small>List</small>
+                        <small>Danh sách nhà cung cấp</small>
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -29,9 +29,9 @@ Danh sách nhà cung cấp
 							<th>Điện thoại</th>
 							<th>Email</th>
 							<th>Trạng thái</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
-							<th>View more</th>
+                            <th>Xóa</th>
+                            <th>Cập nhật</th>
+							<th>Chi tiết</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,9 +43,9 @@ Danh sách nhà cung cấp
 							<td>{{$item->dienthoai}}</td>
 							<td>{{$item->email}}</td>
 							<td>{{$item->trangthai}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.supplier.getDelete',$item->manhacungcap)}}">Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.supplier.getEdit',$item->manhacungcap)}}">Edit</a></td>
-							<td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.supplier.showProduct',$item->manhacungcap)}}">View more</a></td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.supplier.getDelete',$item->manhacungcap)}}">Xóa</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.supplier.getEdit',$item->manhacungcap)}}">Cập nhật</a></td>
+							<td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.supplier.showProduct',$item->manhacungcap)}}">Xem chi tiết</a></td>
                         </tr>
                         @endforeach
                     </tbody>

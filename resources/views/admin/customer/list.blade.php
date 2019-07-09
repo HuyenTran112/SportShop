@@ -28,7 +28,7 @@ Danh sách user khách hàng
                                 <th>Địa chỉ</th>
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
-								<th>View more</th>
+								<th>Chi tiết</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +39,7 @@ Danh sách user khách hàng
 							<td>{{$item->diachi}}</td>
 							 <td>{{$item->sodt}}</td>
 							<td>{{$item->email}}</td>
-							<td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.customer.showBill', $item->makh)}}">View more</a></td>
+							<td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.customer.showBill', $item->makh)}}">Xem chi tiết</a></td>
 							
                         </tr>
                         @endforeach

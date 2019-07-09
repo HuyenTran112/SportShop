@@ -110,19 +110,15 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-list-alt"></i>Đơn hàng<span class="fa arrow"></span></a>
 							<?php
 								$count=DB::table('hoadon')->where('trangthai',0)->count();
 							?>
-                            <ul class="nav nav-second-level">
-                                <li>
-									@if($count>0)
-                                    <a href="{{route('admin.bill.showBill')}}">Danh sách đơn hàng <b>({{$count}})</b></a>
-									@else
-									<a href="{{route('admin.bill.showBill')}}">Danh sách đơn hàng</a>
-									@endif
-                                </li>
-                            </ul>
+							@if($count>0)
+                            <a href="{{route('admin.bill.showBill')}}"><i class="glyphicon glyphicon-list-alt"></i>Đơn hàng <b>({{$count}})</b><span class="fa"></span></a>
+							@else
+							 <a href="{{route('admin.bill.showBill')}}"><i class="glyphicon glyphicon-list-alt"></i>Đơn hàng<span class="fa arrow"></span></a>
+							 @endif
+                            
                             <!-- /.nav-second-level -->
                         </li>
 						 <li>

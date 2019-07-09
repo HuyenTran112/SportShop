@@ -9,7 +9,7 @@ Danh sách user admin
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">User
-                            <small>List</small>
+                            <small>Danh sách user</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -23,12 +23,12 @@ Danh sách user admin
                                 </div>
                         <thead>
                             <tr align="center">
-                                <th>ID</th>
-                                <th>Email Address</th>
+                                <th>Mã số</th>
+                                <th>Email</th>
                                 <th>Level</th>
                                 <th>Tên hiện thị</th>
-                                <th>Delete</th>
-                                <th>Edit</th>
+                                <th>Xóa</th>
+                                <th>Cập nhật</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,8 +42,8 @@ Danh sách user admin
 								<td>Member</td>
 							@endif
 							<td>{{$item->tenhienthi}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.user.getDelete', $item->id)}}" >Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.user.getEditUser', $item->id)}}">Edit</a></td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.user.getDelete', $item->id)}}" >Xóa</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.user.getEditUser', $item->id)}}">Cập nhật</a></td>
 							
                         </tr>
                         @endforeach

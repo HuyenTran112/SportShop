@@ -49,7 +49,7 @@ Thêm user admin
                                 <input type="text" class="form-control" name="txtTenHienThi" placeholder="Please Enter Name" />
                             </div>
                             
-                            <button type="submit" class="btn btn-default">User Add</button>
+                            <button type="submit" class="btn btn-default">Thêm</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

@@ -209,7 +209,7 @@ class PageController extends Controller
         if(Auth::check())
             $bill->makh = Auth::user()->manguoidung;
         else 
-            return redirect()->back()->with(['flag'=>'danger','message'=>'Bạn phải đăng nhập để đặt hàng']);
+            return redirect()->route('admin.login')->with(['flag'=>'danger','message'=>'Bạn phải đăng nhập để đặt hàng']);
         $phiship = DB::table('phigiaohang')->where('maphi',$req->tinh)->first();
 
         $bill->ngayhd = date('Y-m-d');

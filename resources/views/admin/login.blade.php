@@ -43,7 +43,7 @@
 
                             <div class="form-group" style="font-family: Helvetica; font-size: 16px;">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                Tên đăng nhập <input style="font-family: Helvetica; font-size: 15px;" type="text" name="email" required placeholder="Email"/>
+                                Email <input style="font-family: Helvetica; font-size: 15px;" type="text" name="email" required placeholder="Email"/>
                             </div>
                             <div class="form-group" style="font-family: Helvetica; font-size: 16px;">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
