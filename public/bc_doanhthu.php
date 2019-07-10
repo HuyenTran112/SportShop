@@ -55,14 +55,14 @@
 						<td>".$row[3]."</td>
 						<td>";
 						echo number_format($row[4], 3);
-						echo" VND</td>
+						echo"</td>
 						<td>";
 						echo number_format($row[5], 3);
-						echo" VND</td>
+						echo"</td>
 						<td>".$row[6]."</td>";
 						echo "<td>";
 						echo number_format($row[7],3);
-						echo" VND</td>
+						echo"</td>
 					</tr>";
 					$stt++;
 			$tong+=$row[7];
@@ -70,7 +70,7 @@
 		
 			echo "<tr><td colspan='8' align ='right'>";
 			echo "<b>Tổng doanh thu</b></td>";
-			echo "<td>".$tong."</td>";
+			echo "<td>".number_format($tong,3)." VND</td>";
 			echo "</tbody> </table>";
 			echo "<a href='print_bc_doanhthu.php?ngaybd=$ngaybd&ngaykt=$ngaykt&maloaisp=$maloaisp'> <button type='button' class='btn btn-default' id='print'>In báo cáo</button></a>";
 	}

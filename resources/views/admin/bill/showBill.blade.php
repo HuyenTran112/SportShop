@@ -45,17 +45,15 @@ Danh sách đơn hàng
                             <td>{{$item->ngayhd}}</td>
                             <td>{{$item->diachigiaohang}}</td>
                             <td>{{$item->tongtien}}</td>
-                            <td >
                                 @if($item->trangthai == 1)
-                                    Đã xác nhận
+                                   <td style="color:#3300FF"><b> Đã xác nhận</b></td>
                                  @endif
 								 @if($item->trangthai==0)
-								 	Chờ xác nhận
+								 	<td style="color:#FF0000"><b>Chờ xác nhận</b></td>
                              	@endif
 								@if($item->trangthai==2)
-									Đã thanh toán
+									<td style="color:#0066FF"><b>Đã thanh toán</b></td>
                              	@endif
-							 </td>
 							<td class="center"><i class="fa fa-check-square"></i> <a href={{route('admin.bill.getUpdateBill',$item->sohd)}}>Xác nhận</a></td> 
 							 <td class="center"><i class="fa fa-money"></i> <a href={{route('admin.bill.getCheckBill',$item->sohd)}}>Thanh toán</a></td>
 							 <td class="center"><i class="fa fa-trash-o"></i> <a href={{route('admin.bill.getDeleteBill',$item->sohd)}}>Hủy</a></td>

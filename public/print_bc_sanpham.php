@@ -39,7 +39,10 @@
 		}
 		$rs=$conn->query($str);
 		
-echo"<style>
+echo"
+<title>Báo cáo sản phẩm</title>
+<link rel='icon' type='image/png' href='image/favicon.png'/>
+<style>
 	body {
     margin: 0;
     padding: 0;

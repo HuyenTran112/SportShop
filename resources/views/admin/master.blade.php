@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="image/favicon.png"/>
     <title>@yield('title')</title>
     <base href="{{asset('')}}">
     <!-- Bootstrap Core CSS -->
@@ -30,6 +30,7 @@
     <script type="text/javascript">
         var baseURL = "{!! url('/') !!}";
     </script>
+	
 </head>
 <body>
     <div id="wrapper">
@@ -114,7 +115,7 @@
 								$count=DB::table('hoadon')->where('trangthai',0)->count();
 							?>
 							@if($count>0)
-                            <a href="{{route('admin.bill.showBill')}}"><i class="glyphicon glyphicon-list-alt"></i>Đơn hàng <b>({{$count}})</b><span class="fa"></span></a>
+                            <a href="{{route('admin.bill.showBill')}}"><i class="fa fa-shopping-cart"></i> Đơn hàng <b>({{$count}})</b><span class="fa"></span></a>
 							@else
 							 <a href="{{route('admin.bill.showBill')}}"><i class="glyphicon glyphicon-list-alt"></i>Đơn hàng<span class="fa arrow"></span></a>
 							 @endif
@@ -146,7 +147,7 @@
                             <!-- /.nav-second-level -->
                         </li>
 						<li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i>Khách hàng<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-user"></i>Khách hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{route('admin.customer.list')}}">Danh sách khách hàng</a>
@@ -159,7 +160,7 @@
                         </li>
 						<li>
 							@if(Auth::user()->level==1)
-                            <a href="#"><i class="fa fa-users fa-fw"></i>User admin<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-lock"></i>User admin<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{route('admin.user.list')}}">Danh sách user</a>

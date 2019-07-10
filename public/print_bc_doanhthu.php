@@ -35,7 +35,10 @@
 		}
 		$rs=$conn->query($str);
 		
-echo"<style>
+echo"
+<title>Báo cáo doanh thu</title>
+<link rel='icon' type='image/png' href='image/favicon.png'/>
+<style>
 	body {
     margin: 0;
     padding: 0;
@@ -242,10 +245,10 @@ button {
 						<td>".$row[3]."</td>
 						<td>";
 						echo number_format($row[4], 3);
-						echo" VND</td>
+						echo"</td>
 						<td>";
 						echo number_format($row[5], 3);
-						echo" VND</td>
+						echo"</td>
 						<td>".$row[6]."</td>";
 						echo "<td>";
 						echo number_format($row[7],3);
@@ -257,7 +260,7 @@ button {
 		
 			echo "<tr><td colspan='8' align ='right'>";
 			echo "<b>Tổng doanh thu</b></td>";
-			echo "<td>".$tong."</td>";
+			echo "<td>".number_format($tong)." VND</td>";
 			echo "</tbody> </table>";
 	
   echo "<div class='footer-right'>TPHCM,ngày   , tháng   , năm   <br/>
