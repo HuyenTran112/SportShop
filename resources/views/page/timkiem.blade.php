@@ -4,10 +4,6 @@ Tìm kiếm
 @endsection
 @section('content')
 
-
-
-	
-
 	<!-- Product -->
 	<section class="bg0 p-t-23 p-b-140" style="margin-top:100px">
 		<div class="container">                                
@@ -41,9 +37,6 @@ Tìm kiếm
 									{{$sp->tensp}}
 								</a>
 
-								<!--<span class="stext-105 cl3">
-									{{number_format($sp->dongia)}} đồng
-								</span>-->
 								<p class="single-item-price">
 								@if($sp->giakhuyenmai==0)
                                	 	<span class="flash-sale" style="font-size:15px"><b>{{number_format($sp->dongia)}} đồng</b></span>
@@ -142,7 +135,7 @@ Tìm kiếm
             $('.js-addcart').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-b2').html();
 			$(this).on('click', function(){
-				// swal(nameProduct, "đã được thêm vào giỏ hàng", "success");
+
 				var id = $(this).attr('id');
 				var token = $("input[name='_token']").val();
 				var sl = $(this).parent().parent().parent().parent().parent().parent().parent().parent().find('.js-show-cart').attr('data-notify');
@@ -155,9 +148,7 @@ Tìm kiếm
 					data: {"_token":token, "id": id},
 						success:function (data){
 							if(data == 'oke'){
-								swal({title: nameProduct,text: "đã được thêm vào giỏ hàng",type: "success",timer: 2000});
-								// swal(nameProduct, "is added to cart !", "success");
-								//$(this).parent().parent().parent().parent().parent().parent().parent().parent().find('.js-show-cart').attr('data-notify',1);
+								swal({title: nameProduct,text: "đã được thêm vào giỏ hàng",type: "success",timer: 2000});								
 							}
 
 						}

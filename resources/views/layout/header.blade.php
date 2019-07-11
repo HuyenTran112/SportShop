@@ -70,13 +70,6 @@
 						</a>
 					@endif
 
-<!--						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>-->
 					</div>
 				</div>
 			</div>
@@ -107,14 +100,6 @@
 								</ul>
 							</li>
 
-<!--							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
-							</li>-->
-
-							<!-- <li>
-								<a href="{{route('blog')}}">Blog</a>
-							</li> -->
-
 							<li>
 								<a href="{{route('gioithieu')}}">Giới thiệu</a>
 							</li>
@@ -127,29 +112,16 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-                                            <!--<input class ="search_top_menu" type="text" name="search">-->
                                             
-                                            <form class="example" style="margin:auto;max-width:700px" method="get" action="{{route('search')}}">
-                                              <input type="text" placeholder="Search.." name="key">
-                                              <button type="submit"><i class="fa fa-search"></i></button>
-                                            </form>
-                                            
-<!--						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>-->
-                                                
-                                                
-
+                        <form class="example" style="margin:auto;max-width:700px" method="get" action="{{route('search')}}">
+                            <input type="text" placeholder="Search.." name="key">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                        
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif ">
 							<a href="{{route('giohang')}}"><i class="zmdi zmdi-shopping-cart"></i></a>
 						</div>
-
-						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a> -->
-					</div>
-                                        
-                                       
+					</div>                   
 				</nav>
 			</div>	
 		</div>
@@ -170,11 +142,7 @@
 
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif">
 					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a> -->
+				</div>				
 			</div>
 
 			<!-- Button show menu -->
@@ -189,32 +157,10 @@
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
-				<li>
-<!--					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>-->
-				</li>
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-					<!-- @if(Auth::check())
-						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
-							Chào bạn ({{Auth::user()->tenkh}}) 							
-						</a>
-
-						<a href="{{route('logout')}}" class="flex-c-m p-lr-10 trans-04">
-							Đăng xuất
-						</a>
-					@else
-						<a href="{{route('login')}}" class="flex-c-m p-lr-10 trans-04">
-							Đăng nhập
-						</a>
-
-						<a href="{{route('signin')}}" class="flex-c-m p-lr-10 trans-04">
-							Đăng ký
-						</a>
-					@endif -->
-					<!-- ******* -->
+					
 					@if(Auth::check())
 						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
 							Chào bạn ({{Auth::user()->tenhienthi}}) 							
@@ -245,15 +191,6 @@
 						</a>
 					@endif
 
-					
-					
-<!--						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
-						</a>-->
 					</div>
 				</li>
 			</ul>
@@ -266,23 +203,15 @@
 
 				<li>
 					<a>Sản phẩm</a>
-                                        <ul class="sub-menu-m">
+                        <ul class="sub-menu-m">
 						@foreach($loai as $l)
-								<li><a href="{{route('loai-san-pham',$l->maloaisp)}}">{{$l->tenloaisp}}</a></li>
-								@endforeach
-					</ul>
-                                        <span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
+							<li><a href="{{route('loai-san-pham',$l->maloaisp)}}">{{$l->tenloaisp}}</a></li>
+						@endforeach
+						</ul>
+                            <span class="arrow-main-menu-m">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+							</span>
 				</li>
-
-<!--				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-				</li>-->
-
-				<!--<li>
-					<a href="{{route('blog')}}">Blog</a>
-				</li>-->
 
 				<li>
 					<a href="{{route('gioithieu')}}">Giới thiệu</a>

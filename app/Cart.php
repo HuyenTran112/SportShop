@@ -56,12 +56,7 @@ class Cart
                 $giohang = $this->items[$masp];
             }
         }
-        // $giohang['qty']++;
         
-        // $giohang['price'] = $item->dongia_or_giakhuyenmai * $giohang['qty'];
-        // $this->items[$masp] = $giohang;
-        // $this->totalQty++;
-        // $this->totalPrice += $item->dongia_or_giakhuyenmai;
         $giohang['qty'] += $soluong;
         
         $giohang['price'] = $item->dongia_or_giakhuyenmai * $giohang['qty'];
@@ -90,8 +85,6 @@ class Cart
 
 		unset($this->items[$masp]);
     }
-    
-    
 
 	//Cập nhật giỏ hàng
 	public function update($rowId, $qty)

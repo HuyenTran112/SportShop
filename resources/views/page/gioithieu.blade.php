@@ -5,12 +5,11 @@ Giới thiệu
 @section('content')
 <!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('image/bn1.png');">
-	<!-- <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');"> -->
+	
 		<h2 class="ltext-105 cl0 txt-center">
 			Giới thiệu
 		</h2>
 	</section>	
-
 
 	<!-- Content page -->
 
@@ -49,16 +48,7 @@ Giới thiệu
 						<p class="stext-113 cl6 p-b-26">
 							SportShopTY cung cấp đa dạng các sản phẩm cho lĩnh vực thể thao từ quần áo, giày cho đến dụng cụ. Các sản phẩm luôn được cập nhật phù hợp xu hướng và đem lại sự thoải mái cho người sử dụng. Giá cả hợp lý, chất lượng được cam kết.
 						</p>
-
-						<!-- <div class="bor16 p-l-29 p-b-9 m-t-22">
-							<p class="stext-114 cl6 p-r-40 p-b-11">
-								Các sản phẩm luôn được cập nhật phù hợp xu hướng và đem lại sự thoải mái cho người sử dụng. Giá cả hợp lý, chất lượng được cam kết.
-							</p>
-
-							<span class="stext-111 cl8">
-								- Steve Job’s 
-							</span>
-						</div> -->
+						
 					</div>
 				</div>
 

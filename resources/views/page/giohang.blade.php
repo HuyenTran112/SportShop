@@ -8,9 +8,7 @@ Giỏ hàng
 	<input type="hidden" name="_token" value="{!!csrf_token()!!}">
 	<div class="container">
 		<div class="row" style="text-align:center"> 
-			<!-- @if(Session::has('thongbao')) 
-				<div class="alert alert-success">{{Session::get('thongbao')}}</div> 
-			@endif -->
+			
 			@if(Session::has('message'))
 				<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
 			@endif
@@ -69,8 +67,7 @@ Giỏ hàng
 											$masize1 = (string)$size->masize;
 										else
 											$masize1 = 1;
-        								// $id = $masp1.$mamau1.$masize1;
-										// $ma = (int)$id;
+        								
 										$id = $masp1."-".$mamau1."-".$masize1;
         								$ma = $id;
 									?>
@@ -78,8 +75,6 @@ Giỏ hàng
 									
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $ma)}}" style="width: 45px; height: 100%; cursor: pointer">
-											<!-- <a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px; height: 100%; cursor: pointer"> -->
-											
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</a>
 
@@ -97,10 +92,8 @@ Giỏ hàng
 									<td class="column-5 TotalPrice">{{number_format($cart['price'])}}</td>
 									<td class="column-6">
 									
-										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $ma)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
-										<!-- <a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $cart['item']->masp)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a> -->
-										
-										</td>
+										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $ma)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>	
+									</td>
 								</tr>
 								@endforeach
 								@endif
@@ -178,9 +171,7 @@ Giỏ hàng
 												<option value="{{$item->maphi}}">{{$item->tentinh}}</option>	
 											}
 											@endforeach
-											<!-- <option>Select a country...</option>
-											<option>USA</option>
-											<option>UK</option> -->
+											
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -326,105 +317,7 @@ Giỏ hàng
 		
 	</script>
 	<script>
-
-		// $(document).ready(function(){
-		// 	$(".btn-num-product-down1").click(function(){
-		// 		var id = $(this).parent().parent().parent().find(".gia").attr('id');
-		// 		var token = $("input[name='_token']").val();
-		// 		$.ajax({
-		// 			url: 'reduce-cart/' + id,
-		// 			type: 'GET',
-		// 			cache: false,
-		// 			data: {"_token":token, "id": id},
-		// 				success:function (data){
-		// 					if(data == 'oke'){
-		// 						var numProduct = Number($(this).next().val());
-		// 						if(numProduct > 1) 
-		// 							$(this).next().val(numProduct - 1);
-
-		// 						var t = $(this).parent().parent().parent().find(".gia").text();
-		// 						var sl = Number($(this).parent().find(".num-product").val());
-		// 						var res = Number(t.replace(/\,/g, ''));
-		// 						$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
-				
-		// 						var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
-		// 						var Ttien = Number(tt.replace(/\,/g, ''));
-		// 						if(numProduct > 1)
-		// 							$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien - res)); // gán lại Tổng Tiền
-		// 					}
-
-		// 				}
-		// 		});
-		// 	});
-
-		// });
-
-
-		// $(document).ready(function()
-		// {
-			// $('.fa-edit').click(function(){
-			// 	var rowid=$(this).attr('id');
-			// 	var qty=$(this).parent().parent().parent().find(".num-product").val();
-			// 	var token=$("input[name='_token']").val();
-			// 	$.ajax(
-			// 	{
-			// 		url:'cap-nhat/'+rowid+'/'+qty,
-			// 		type:'GET',
-			// 		cache:false,
-			// 		data:{'_token':token,'masp':rowid,'qty':qty},
-			// 		success:function(data)
-			// 		{
-			// 			if(data=="oke")
-			// 			{
-			// 				alert("Yes");
-			// 			}
-			// 		}
-			// 	});
-			// });
-
-			// $(".btn-num-product-down1").click(function(){
-			// 	var numProduct = Number($(this).next().val());
-			// 	if(numProduct > 1) $(this).next().val(numProduct - 1);
-
-			// 	var t = $(this).parent().parent().parent().find(".gia").text();
-			// 	var sl = Number($(this).parent().find(".num-product").val());
-			// 	var res = Number(t.replace(/\,/g, ''));
-			// 	$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
-				
-			// 	var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
-			// 	var Ttien = Number(tt.replace(/\,/g, ''));
-			// 	if(numProduct > 1)
-			// 		$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien - res)); // gán lại Tổng Tiền
-			// });
-
-			// $('.btn-num-product-up1').click(function(){
-			// 	var numProduct = Number($(this).prev().val());
-        	// 	$(this).prev().val(numProduct + 1);
-
-			// 	var t = $(this).parent().parent().parent().find(".gia").text();
-			// 	var sl = Number($(this).parent().find(".num-product").val());
-			// 	var res = Number(t.replace(/\,/g, ''));
-			// 	$(this).parent().parent().parent().find(".TotalPrice").text(addCommas(res*sl)); //gán lại thành tiền
-
-			// 	var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
-			// 	var Ttien = Number(tt.replace(/\,/g, '')); //bỏ tất cả dấu "," trong number-format
-			// 	$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Ttien + res)); // gán lại Tổng Tiền
-			// 	alert(tt.replace(/\,/g, ''));
-			// });
-
-			// $('.btn-DelCart').click(function(){
-			// 	var Tht = $(this).parent().parent().find(".TotalPrice").text(); //gán lại thành tiền
-			// 	var Thanhtien = Number(Tht.replace(/\,/g, ''));
-
-			// 	var tt = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text();
-			// 	var Tongtien = Number(tt.replace(/\,/g, '')); //bỏ tất cả dấu "," trong number-format
-
-			// 	$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find(".TongTien").text(addCommas(Tongtien - Thanhtien)); // gán lại Tổng Tiền
-			// 	$(this).parent().parent().remove();
-			// });
-
-		// });
-	//number-format
+		
 	function addCommas(nStr)
 	{
     	nStr += '';

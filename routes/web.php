@@ -14,72 +14,27 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('index',[
-    'as'=>'trang-chu',
-    'uses'=>'PageController@getIndex'
-]);
+Route::get('index',['as'=>'trang-chu', 'uses'=>'PageController@getIndex']);
 
-Route::get('loaisanpham/{maloaisp}',[
-    'as'=>'loai-san-pham',
-    'uses'=>'PageController@getLoaiSp'
-]);
+Route::get('loaisanpham/{maloaisp}',['as'=>'loai-san-pham', 'uses'=>'PageController@getLoaiSp']);
 
+Route::get('chi-tiet-san-pham/{masp}',['as'=>'chitietsanpham', 'uses'=>'PageController@getChiTiet']);
 
+Route::get('gio-hang',['as'=>'giohang', 'uses'=>'PageController@getCheckout']);
 
-Route::get('chi-tiet-san-pham/{masp}',[
-    'as'=>'chitietsanpham',
-    'uses'=>'PageController@getChiTiet'
-]);
+Route::post('gio-hang',['as'=>'giohang', 'uses'=>'PageController@postCheckout']);
 
-Route::get('gio-hang',[
-    'as'=>'giohang',
-    'uses'=>'PageController@getCheckout'
-]);
-Route::post('gio-hang',[
-    'as'=>'giohang',
-    'uses'=>'PageController@postCheckout'
-]);
+Route::get('san-pham',['as'=>'sanpham', 'uses'=>'PageController@getSanPham']);
 
-Route::get('san-pham',[
-    'as'=>'sanpham',
-    'uses'=>'PageController@getSanPham'
-]);
+Route::get('/login', function () {return view('admin.login');});
 
+Route::get('lien-he',['as'=>'lienhe', 'uses'=>'PageController@getLienhe']);
 
+Route::get('gioi-thieu',['as'=>'gioithieu', 'uses'=>'PageController@getGioithieu']);
 
-Route::get('/login', function () {
-    return view('admin.login');
-});
+Route::get('blog',['as'=>'blog', 'uses'=>'PageController@getBlog']);
 
-// Route::get('register',[
-//     'as'=>'register',
-//     'uses'=>'PageController@getRegister'
-// ]);
-
-Route::get('lien-he',[
-    'as'=>'lienhe',
-    'uses'=>'PageController@getLienhe'
-]);
-Route::get('gioi-thieu',[
-    'as'=>'gioithieu',
-    'uses'=>'PageController@getGioithieu'
-]);
-Route::get('blog',[
-    'as'=>'blog',
-    'uses'=>'PageController@getBlog'
-]);
-
-// Route::post('gio-hang',[
-// 	'as'=>'giohang',
-// 	'uses'=>'PageController@postCheckout'
-// ]);
-
-
-Route::get('/setting',
-    [
-	'as'=>'setting',
-	'uses'=>'ProductController@getList'
-]);
+Route::get('/setting',['as'=>'setting', 'uses'=>'ProductController@getList']);
 	
 Route::group(['prefix'=>'admin','middleware'=>'checkAdminLogin'], function(){
     // Manage products
@@ -162,20 +117,14 @@ Route::group(['prefix'=>'cart'], function(){
     Route::get('reduce/{masp}',['as'=>'giamgiohang', 'uses'=>'PageController@getReduceItemCart']);   
 });
 
-
-
-// Route::get('cap-nhat/{masp}/{qty}',
-// [
-// 	'as'=>'capnhat',
-// 	'uses'=>'PageController@capnhat'
-// ]);
-
 //đăng ký tài khoản
 Route::get('dang-ky',['as'=>'signin', 'uses'=>'UserController@getSignin']);
 Route::post('dang-ky',['as'=>'signin', 'uses'=>'UserController@postSignin']); 
+
 //đăng nhập
 Route::get('dang-nhap',['as'=>'login', 'uses'=>'UserController@getLogin']);
 Route::post('dang-nhap',['as'=>'login', 'uses'=>'UserController@postLogin']); 
+
 //đăng xuất
 Route::get('dang-xuat',['as'=>'logout', 'uses'=>'UserController@getLogout']);
 

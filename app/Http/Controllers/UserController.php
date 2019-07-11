@@ -96,8 +96,7 @@ class UserController extends Controller
         }
         $username->tenhienthi = $req->txtName;
         DB::table('users')->where('id',$id)->update(['password' => Hash::make($pass)]);
-        //return redirect()->route('admin.user.getEdit',$id)->with(['flash_level'=>'success','flash_message'=>'Cập nhật user thành công']);
-   		return	redirect()->route('admin.bill.showBill')->with(['flash_level'=>'success','flash_message'=>'Cập nhật user thành công']);
+        return	redirect()->route('admin.bill.showBill')->with(['flash_level'=>'success','flash_message'=>'Cập nhật user thành công']);
    
     }
 	//Cập nhật user
@@ -178,19 +177,15 @@ class UserController extends Controller
         $credentialsAdmin = array('email'=>$req->email, 'password'=>$req->password, 'level' => 1);
 		 $credentialsAdmin1 = array('email'=>$req->email, 'password'=>$req->password, 'level' => 2);
         if(Auth::attempt($credentials)){
-            // return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
             return redirect()->route('trang-chu');
         }
         else if (Auth::attempt($credentialsAdmin) or Auth::attempt($credentialsAdmin1)){
-            // return redirect()->back()->with(['flag'=>'success', 'message'=>'Đăng nhập thành công']);
             return redirect()->route('admin.bill.showBill');
         }
         else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
         }
-        // else{
-        //     return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
-        // }
+        
     }
     //đăng xuất
     public function getLogout(){

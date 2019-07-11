@@ -21,16 +21,10 @@ class PageController extends Controller
         $loai=loaisanpham::all();
         return view('page.trangchu',compact('sp_khuyenmai','loai'));
     }
-	// public function getRegister()
-    // {
-	// 	$sp_khuyenmai=sanpham::where('giakhuyenmai','!=','0')->paginate(4);
-	// 	$loai=loaisanpham::all();
-    //     return view('admin.register',compact('sp_khuyenmai','loai'));
-    // }
+	
     public function getLoaiSp($maloaisp)
     {
         $loai=loaisanpham::all();
-		//$sanpham=sanpham::where('trangthai','1')->paginate(4);
 		$sanpham=DB::table('sanpham')->where('trangthai','1')->paginate(4);
 		$sp_theoloai=DB::table('sanpham')->where('maloaisp',$maloaisp)->where('trangthai','1')->get();
 		$sp_khac=DB::table('sanpham')->where('maloaisp','!=',$maloaisp)->where('trangthai','1')->paginate(4);
@@ -97,17 +91,6 @@ class PageController extends Controller
 
     }
     
-    // public function getIncreaseItemCart(Request $req, $masp)
-    // {
-    //     $sanpham = sanpham::where('masp',$masp)->first();
-    //     $oldCart = Session('cart')?Session::get('cart'):null;
-    //     $cart = new Cart($oldCart);
-    //     $cart->add($sanpham,$masp);
-    //     $req->session()->put('cart',$cart); 
-    //     return redirect()->back();
-
-    // }
-
     public function getIncreaseItemCart(Request $req, $masp, $mamau, $masize)
     {
 		$count_color=DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->where('sanpham.masp',$masp)->count();
@@ -125,22 +108,19 @@ class PageController extends Controller
 			if($count_color==0 and $count_size==0)
 				$sanpham =DB::table('sanpham')->where('sanpham.masp',$masp)->select('sanpham.masp','tensp','dongia','giakhuyenmai','hinhanh')->first();
 		}
-		//dd($sanpham);
+		
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        // $cart->add($sanpham, $masp, $mamau, $masize);
+        
         $masp1 = (string)$masp;
         $mamau1 = (string)$mamau;
         $masize1 = (string)$masize;
         $id = $masp1."-".$mamau1."-".$masize1;
         $ma = $id;
-        // $id = $masp1.$mamau1.$masize1;
-        // $ma = (int)$id;
+        
         $cart->increase($sanpham, $ma);
         $req->session()->put('cart',$cart);
-        // dd($cart);
-
-        // echo 'oke';   
+       
         return redirect()->back();
 
     }
@@ -150,7 +130,7 @@ class PageController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
-        // dd($cart);
+        
         if(count($cart->items) > 0)  
         {
             Session::put('cart', $cart);
@@ -162,21 +142,7 @@ class PageController extends Controller
         return redirect()->back();
     }
 
-    // public function getDelItemCart($id){
-    //     $oldCart = Session::has('cart') ? Session::get('cart'):null;
-    //     $cart = new Cart($oldCart);
-    //     $cart->removeItem($id);
-    //     if(count($cart->items) > 0)  
-    //     {
-    //         Session::put('cart', $cart);
-    //     }     
-            
-    //     else{
-    //         Session::forget('cart');
-    //     }   
-    //     return redirect()->back();
-    // }
-
+    
     //giảm số lượng đi 1 (xóa 1)
     public function getReduceItemCart($id){
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
@@ -186,11 +152,7 @@ class PageController extends Controller
         {
             Session::put('cart', $cart);
         }     
-            
-        // else{
-        //     Session::forget('cart');
-        // }
-        // echo 'oke';   
+          
         return redirect()->back();
     }
 	
@@ -225,7 +187,6 @@ class PageController extends Controller
         foreach ($cart->items as $key => $value) {
             $bill_detail = new cthd;
             $bill_detail->sohd = $bill->id;
-            // $bill_detail->masp = $key; Lúc thêm vào cart tạo $bien luu masp ban dau. VD: 311 thì masp=3, vì masize = mamau = 1
             
             $pos = strpos($key, "-");
             if($pos == false)
@@ -240,7 +201,7 @@ class PageController extends Controller
         }
         Session::forget('cart');
         return redirect()->back()->with(['flag'=>'success','message'=>'Đặt hàng thành công']);
-        // return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
+        
         }
         else 
         return redirect()->back()->with(['flag'=>'danger','message'=>'Giỏ hàng rỗng']);
@@ -258,7 +219,6 @@ class PageController extends Controller
     public function getSearch(Request $req){
         $product = sanpham::where('tensp', 'like', '%'.$req->key.'%' )
                             ->orwhere('dongia', $req->key)
-                            // ->get();
                             ->paginate(12);
         $loai=loaisanpham::all();
         return view('page.timkiem', compact('product', 'loai'));

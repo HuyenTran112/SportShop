@@ -202,7 +202,7 @@ button {
 <body onLoad='window.print();'>
 <div id='page' class='page'>
     <div class='header'>
-        <div class='logo'><img src='image/logo.png'/></div>
+        <div class='logo'><img src='image/minlogo.JPG'/></div>
         <div class='company'>Cửa hàng SportShop TY<br>
 		Khu phố 6, phường Linh Trung<br>
 		Quận Thủ Đức, TPHCM<br>
