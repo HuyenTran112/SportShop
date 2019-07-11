@@ -181,10 +181,7 @@ class PageController extends Controller
         $bill->phigiaohang = $phiship->phi;
         $bill->tongthanhtoan = ($cart->totalPrice) + $phiship->phi;
         $bill->trangthai = 0;
-        if($req->name=="" && $req->email=="" && $req->note=="" )
-            $bill->ghichu="";
-        else
-            $bill->ghichu = "Họ tên: ". $req->name. ", SĐT: ".$req->phone. ", email: ".$req->email. ". Ghi chú: ".$req->note;
+        $bill->ghichu = "Họ tên người nhận: ". $req->name. ", SĐT: ".$req->phone. ", email: ".$req->email. ". Ghi chú: ".$req->note;
         $bill->save();
 
 
