@@ -12,15 +12,15 @@ Sản phẩm
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
-				
+
 			</div>
-			
+
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
-					Sản phẩm 
+					Sản phẩm
 				</h3>
 			</div>
-			
+
 			<div class="row isotope-grid">
 				@foreach($sp_theoloai as $sp)
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -54,13 +54,13 @@ Sản phẩm
 				</div>
 				@endforeach
 			</div>
-			<div class="row isotope-grid">{{$sp_theoloai->links()}}</div><br />
+
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
 					Sản phẩm khác
 				</h3>
 			</div>
-			
+
 			<div class="row isotope-grid">
 				@foreach($sp_khac as $sp)
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -87,7 +87,7 @@ Sản phẩm
                                 	<span class="flash-sale" style="font-size:15px"><b>{{number_format($sp->giakhuyenmai)}} đồng</b></span>
                             	@endif
 								</p>
-								
+
 							</div>
 
 						</div>
@@ -103,7 +103,7 @@ Sản phẩm
 	</section>
 @endsection
 @section('script')
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
@@ -150,9 +150,9 @@ Sản phẩm
 <!--===============================================================================================-->
 	<script src="vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
-            
-            /*---------------------------------------------*/		
-            
+
+            /*---------------------------------------------*/
+
 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
 		});
@@ -191,9 +191,9 @@ Sản phẩm
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-b2').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
-			});     
+			});
 		});
-	
+
 	</script>
 <!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
