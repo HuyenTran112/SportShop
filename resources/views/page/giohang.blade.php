@@ -7,8 +7,8 @@ Giỏ hàng
 	<form class="bg0 p-t-75 p-b-85" action="{{route('giohang')}}" method="post">
 	<input type="hidden" name="_token" value="{!!csrf_token()!!}">
 	<div class="container">
-		<div class="row" style="text-align:center"> 
-			
+		<div class="row" style="text-align:center">
+
 			@if(Session::has('message'))
 				<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
 			@endif
@@ -41,9 +41,9 @@ Giỏ hàng
 											<img src="image/{{$sp->hinhanh}}" alt="IMG">
 										</div>
 									</td>
-									
+
 									<td class="column-2">{{$cart['item']->tensp}}</td>
-									
+
 									@if ($cart['item']->giakhuyenmai==0)
 									<!-- <td style="width: 100px"></td> -->
                                	 	<td class="column-3 gia"  id="{{$cart['item']->masp}}">{{number_format($cart['item']->dongia)}}</td>
@@ -67,12 +67,12 @@ Giỏ hàng
 											$masize1 = (string)$size->masize;
 										else
 											$masize1 = 1;
-        								
+
 										$id = $masp1."-".$mamau1."-".$masize1;
         								$ma = $id;
 									?>
 									<td class="column-4">
-									
+
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<a class="btn-num-product-down1 cl8 hov-btn3 trans-04 flex-c-m" href="{{route('giamgiohang', $ma)}}" style="width: 45px; height: 100%; cursor: pointer">
 												<i class="fs-16 zmdi zmdi-minus"></i>
@@ -84,15 +84,15 @@ Giỏ hàng
 												<i class="fs-16 zmdi zmdi-plus" ></i>
 											</a>
 										</div>
-									
+
 									</td>
-									
+
 									<td class="column-4">{{$color->tenmau}}</td>
 									<td class="column-4">{{$size->tensize}}</td>
 									<td class="column-5 TotalPrice">{{number_format($cart['price'])}}</td>
 									<td class="column-6">
-									
-										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $ma)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>	
+
+										<a class="cart-item-delete btn-DelCart" href="{{route('xoagiohang', $ma)}}" style="text-aline:center; cursor: pointer"><i class="fa fa-times"></i></a>
 									</td>
 								</tr>
 								@endforeach
@@ -104,7 +104,7 @@ Giỏ hàng
 
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
 					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						
+
 						<div class="flex-w flex-t bor12 p-b-13">
 							<div class="size-208">
 								<span class="stext-110 cl2" style="color:red">
@@ -118,7 +118,7 @@ Giỏ hàng
 									<?php
 										$TongTien = number_format($totalPrice);
 									?>
-									
+
 									@else
 									<?php
 										$TongTien = 0;
@@ -133,21 +133,21 @@ Giỏ hàng
 						<h3>Thông tin người nhận</h3><br>
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
-								<div class="stext-110 cl2" >Họ tên</div>				
+								<div class="stext-110 cl2" >Họ tên</div>
 								<div class="stext-110 cl2" >Số điện thoại</div>
 								<div class="stext-110 cl2" >Email</div>
 								<div class="stext-110 cl2" >Ghi chú</div>
 								<div class="stext-110 cl2" >Địa chỉ</div>
 								<div class="stext-110 cl2" >Tỉnh</div>
 							</div>
-							
+
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" required placeholder="Họ và tên">
-									</div>	
-									
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Họ và tên">
+									</div>
+
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" required placeholder="Số điện thoại">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone"  placeholder="Số điện thoại">
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
@@ -168,10 +168,10 @@ Giỏ hàng
 										<select class="tinh" name="tinh">
 											@foreach($tinh as $item)
 											{
-												<option value="{{$item->maphi}}">{{$item->tentinh}}</option>	
+												<option value="{{$item->maphi}}">{{$item->tentinh}}</option>
 											}
 											@endforeach
-											
+
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -179,7 +179,7 @@ Giỏ hàng
 							</div>
 							<div class="phiship" name="phiship">Phí giao hàng: 30,000 đồng</div><br>
 						</div>
-						
+
 						<br>
 						<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Đặt hàng
@@ -189,7 +189,7 @@ Giỏ hàng
 			</div>
 		</div>
 	</form>
-		
+
 
 @endsection
 @section('script')
@@ -203,7 +203,7 @@ Giỏ hàng
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 
-  
+
 
 
 	<script>
@@ -286,7 +286,7 @@ Giỏ hàng
 			});
 		});
 
-		
+
 
 		/*---------------------------------------------*/
 
@@ -314,10 +314,10 @@ Giỏ hàng
 				ps.update();
 			})
 		});
-		
+
 	</script>
 	<script>
-		
+
 	function addCommas(nStr)
 	{
     	nStr += '';
@@ -330,7 +330,7 @@ Giỏ hàng
     	}
     	return x1 + x2;
 	}
-	
+
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>

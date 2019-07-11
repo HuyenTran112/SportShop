@@ -1,4 +1,5 @@
 ﻿<style>
+
 	body {
     margin: 0;
     padding: 0;
@@ -155,6 +156,7 @@ button {
 }
 }
 </style>
+<link rel='icon' type='image/png' href='../../../../public/image/favicon.png'/>
 <body onload="window.print();">
 <div id="page" class="page">
     <div class="header">
@@ -174,7 +176,11 @@ button {
   <br/>
   <br/>
   <b>Thông tin khách hàng:</b>
-  <table>	
+  <table>
+      <tr>
+            <td><b>Số hóa đơn</b></td>
+            <td>{{$bill->sohd}}</td>
+      </tr>
 	<tr>
 		<td><b>Tên khách hàng:</b></td>
 		<td>{{$customer->tenkh}}</td>
@@ -220,7 +226,7 @@ button {
 	<?php $stt=1;?>
 	@foreach($bill_detail as $item)
 	<tr>
-		<?php $name = DB::table('sanpham')->where('masp',$item->masp)->first(); 
+		<?php $name = DB::table('sanpham')->where('masp',$item->masp)->first();
 		echo "<td>".$stt."</td>";
 		$stt++;?>
 		<td>{{$name->tensp}}</td>
@@ -228,14 +234,14 @@ button {
 			$color=DB::table('mausac')->where('mamau',$item->mamau)->first();
 			echo "<td>".$color->tenmau."</td>";
 		?>
-		
+
 		<?php
 			$size=DB::table('size')->where('masize',$item->masize)->first();
 			echo "<td>".$size->tensize."</td>";
 		?>
 		<td>{{$item->soluong}}</td>
 		<td>{{number_format($item->thanhtien)}}</td>
-		
+
 	</tr>
 	@endforeach
 	<tr align="center">

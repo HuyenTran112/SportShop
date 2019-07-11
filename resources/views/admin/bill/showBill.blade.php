@@ -54,10 +54,10 @@ Danh sách đơn hàng
 								@if($item->trangthai==2)
 									<td style="color:#0066FF"><b>Đã thanh toán</b></td>
                              	@endif
-							<td class="center"><i class="fa fa-check-square"></i> <a href={{route('admin.bill.getUpdateBill',$item->sohd)}}>Xác nhận</a></td> 
+							<td class="center"><i class="fa fa-check-square"></i> <a href={{route('admin.bill.getUpdateBill',$item->sohd)}}>Xác nhận</a></td>
 							 <td class="center"><i class="fa fa-money"></i> <a href={{route('admin.bill.getCheckBill',$item->sohd)}}>Thanh toán</a></td>
 							 <td class="center"><i class="fa fa-trash-o"></i> <a href={{route('admin.bill.getDeleteBill',$item->sohd)}}>Hủy</a></td>
-                            <td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.bill.showBillDetail',$item->sohd)}}">Xem chi tiết</a></td> 
+                            <td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.bill.showBillDetail',$item->sohd)}}">Xem chi tiết</a></td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -21,7 +21,7 @@ class PageController extends Controller
         $loai=loaisanpham::all();
         return view('page.trangchu',compact('sp_khuyenmai','loai'));
     }
-	
+
     public function getLoaiSp($maloaisp)
     {
         $loai=loaisanpham::all();
@@ -30,7 +30,7 @@ class PageController extends Controller
 		$sp_khac=DB::table('sanpham')->where('maloaisp','!=',$maloaisp)->where('trangthai','1')->paginate(4);
         return view('page.sanpham',compact('loai','sanpham','sp_theoloai','sp_khac'));
     }
-	
+
 	public function getChiTiet(Request $req)
     {
 		$loai=loaisanpham::all();
@@ -38,7 +38,7 @@ class PageController extends Controller
         $sp_tuongtu=sanpham::where('maloaisp',$sanpham->maloaisp)->paginate(6);
         return view('page.chitietsanpham',compact('loai','sanpham','sp_tuongtu'));
     }
-	
+
     public function getLienhe()
     {
 		$loai=loaisanpham::all();
@@ -86,11 +86,11 @@ class PageController extends Controller
         $cart->add($sanpham, $ma, $soluong);
         $req->session()->put('cart',$cart);
 		// dd($cart);
-        echo 'oke';   
+        echo 'oke';
         // return redirect()->back();
 
     }
-    
+
     public function getIncreaseItemCart(Request $req, $masp, $mamau, $masize)
     {
 		$count_color=DB::table('sanpham')->join('sanpham_mausac','sanpham.masp','=','sanpham_mausac.masp')->where('sanpham.masp',$masp)->count();
@@ -108,19 +108,19 @@ class PageController extends Controller
 			if($count_color==0 and $count_size==0)
 				$sanpham =DB::table('sanpham')->where('sanpham.masp',$masp)->select('sanpham.masp','tensp','dongia','giakhuyenmai','hinhanh')->first();
 		}
-		
+
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        
+
         $masp1 = (string)$masp;
         $mamau1 = (string)$mamau;
         $masize1 = (string)$masize;
         $id = $masp1."-".$mamau1."-".$masize1;
         $ma = $id;
-        
+
         $cart->increase($sanpham, $ma);
         $req->session()->put('cart',$cart);
-       
+
         return redirect()->back();
 
     }
@@ -130,32 +130,32 @@ class PageController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
-        
-        if(count($cart->items) > 0)  
+
+        if(count($cart->items) > 0)
         {
             Session::put('cart', $cart);
-        }     
-            
+        }
+
         else{
             Session::forget('cart');
-        }   
+        }
         return redirect()->back();
     }
 
-    
+
     //giảm số lượng đi 1 (xóa 1)
     public function getReduceItemCart($id){
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->reduceByOne($id);
-        if(count($cart->items) > 1)  
+        if(count($cart->items) > 1)
         {
             Session::put('cart', $cart);
-        }     
-          
+        }
+
         return redirect()->back();
     }
-	
+
 	public function getCheckout()
 	{
 		$loai=loaisanpham::all();
@@ -166,11 +166,11 @@ class PageController extends Controller
         if(Session::get('cart'))
         {
         $cart = Session::get('cart');
-        
+
         $bill = new hoadon;
         if(Auth::check())
             $bill->makh = Auth::user()->manguoidung;
-        else 
+        else
             return redirect()->route('admin.login')->with(['flag'=>'danger','message'=>'Bạn phải đăng nhập để đặt hàng']);
         $phiship = DB::table('phigiaohang')->where('maphi',$req->tinh)->first();
 
@@ -180,14 +180,17 @@ class PageController extends Controller
         $bill->phigiaohang = $phiship->phi;
         $bill->tongthanhtoan = ($cart->totalPrice) + $phiship->phi;
         $bill->trangthai = 0;
-        $bill->ghichu = "Họ tên: ". $req->name. ", SĐT: ".$req->phone. ", email: ".$req->email. ". Ghi chú: ".$req->note;
+        if($req->name=="" && $req->email=="" && $req->note=="" )
+            $bill->ghichu="";
+        else
+            $bill->ghichu = "Họ tên: ". $req->name. ", SĐT: ".$req->phone. ", email: ".$req->email. ". Ghi chú: ".$req->note;
         $bill->save();
-        
+
 
         foreach ($cart->items as $key => $value) {
             $bill_detail = new cthd;
             $bill_detail->sohd = $bill->id;
-            
+
             $pos = strpos($key, "-");
             if($pos == false)
                 return redirect()->back()->with(['flag'=>'danger','message'=>'Đặt hàng thất bại']);
@@ -201,9 +204,9 @@ class PageController extends Controller
         }
         Session::forget('cart');
         return redirect()->back()->with(['flag'=>'success','message'=>'Đặt hàng thành công']);
-        
+
         }
-        else 
+        else
         return redirect()->back()->with(['flag'=>'danger','message'=>'Giỏ hàng rỗng']);
     }
 
@@ -224,5 +227,5 @@ class PageController extends Controller
         return view('page.timkiem', compact('product', 'loai'));
     }
 
-    
+
 }

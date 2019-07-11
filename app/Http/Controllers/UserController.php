@@ -97,7 +97,7 @@ class UserController extends Controller
         $username->tenhienthi = $req->txtName;
         DB::table('users')->where('id',$id)->update(['password' => Hash::make($pass)]);
         return	redirect()->route('admin.bill.showBill')->with(['flash_level'=>'success','flash_message'=>'Cập nhật user thành công']);
-   
+
     }
 	//Cập nhật user
 	public function getEditUser($id){
@@ -109,7 +109,6 @@ class UserController extends Controller
     }
 
     public function postEditUser($id,Request $req){
-	    $username->tenhienthi = $req->txtName;
         DB::table('users')->where('id',$id)->update(['tenhienthi'=>$req->txtName,'level'=>$req->rdoLevel]);
         return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Cập nhật user thành công']);
     }
@@ -158,7 +157,7 @@ class UserController extends Controller
     public function getLogin(){
         return view('admin.login');
     }
-    
+
     public function postLogin(Request $req){
         $this->validate($req,
         [
@@ -185,7 +184,7 @@ class UserController extends Controller
         else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
         }
-        
+
     }
     //đăng xuất
     public function getLogout(){

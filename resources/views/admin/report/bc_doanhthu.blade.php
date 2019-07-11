@@ -18,9 +18,9 @@ Báo cáo doanh thu
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Từ ngày</label>
-                            <input type ="date"name="txtTuNgay" placeholder="Chọn ngày" value="2019-06-17" id="tungay" />
+                            <input type ="date"name="txtTuNgay" placeholder="Chọn ngày" value="2019-07-12" id="tungay" />
 							<label>Đến ngày</label>
-							 <input type ="date"name="txtDenNgay" placeholder="Chọn ngày" value="2019-06-17" id="denngay"/>
+							 <input type ="date"name="txtDenNgay" placeholder="Chọn ngày" value="2019-07-12" id="denngay"/>
 							 </div>
 							 <div class="form-group">
 							<label>Loại sản phẩm</label>
@@ -29,12 +29,12 @@ Báo cáo doanh thu
 									 @foreach($list as $item)
                                         <option value="{{$item->maloaisp}}">{{$item->tenloaisp}}</option>
                                     @endforeach
-									
+
 								</select>
-								
+
                         </div>
-						
-						
+
+
 						<div align="center">
 						<button type="button" class="btn btn-default" id="thongke">Thống kê</button>&nbsp;&nbsp;&nbsp;
 					    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -46,16 +46,16 @@ Báo cáo doanh thu
 							var ngaykt=$("#denngay").val();
 							if(ngaybd>ngaykt)
 								alert("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc");
-							
+
 							$.post("bc_doanhthu.php",{ maloaisp:maloaisp, ngaybd:ngaybd, ngaykt:ngaykt },function(data,status){
-								if(status=="success"){	
-									$(".baocao").html(data); 
-									
-									
+								if(status=="success"){
+									$(".baocao").html(data);
+
+
 								}
 							});
 						  });
-						 
+
 						});
 						</script>
 						</br>

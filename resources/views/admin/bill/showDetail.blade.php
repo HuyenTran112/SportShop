@@ -22,6 +22,10 @@ Thông tin đơn hàng
                         </div>
        					<div class="col-lg-12">
                         <tr>
+                                <td><b>Số hóa đơn</b></td>
+                                <td>{{$bill->sohd}}</td>
+                        </tr>
+                        <tr>
                             <td><b>Tên khách hàng</b></td>
                             <td>{{$customer->tenkh}}</td>
                         </tr>
@@ -50,7 +54,7 @@ Thông tin đơn hàng
                             <td>{{$bill->ghichu}}</td>
                         </tr>
                     </div>
-					
+
                 </table>
 				<!-- /.col-lg-12 -->
 				<h1 class="page-header">
@@ -78,17 +82,17 @@ Thông tin đơn hàng
 						<?php $stt=1;?>
                         @foreach($list as $item)
                         <tr class="even gradeC" >
-                            <?php $name = DB::table('sanpham')->where('masp',$item->masp)->first(); 
+                            <?php $name = DB::table('sanpham')->where('masp',$item->masp)->first();
 							echo "<td>".$stt."</td>";
 							$stt++;
 							echo "<td>".$name->tensp."</td>";
 							?>
-                            
+
 							<?php
 								$color=DB::table('mausac')->where('mamau',$item->mamau)->first();
 								echo "<td>".$color->tenmau."</td>";
 							?>
-							
+
 							<?php
 								$size=DB::table('size')->where('masize',$item->masize)->first();
 								echo "<td>".$size->tensize."</td>";

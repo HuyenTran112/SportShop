@@ -18,9 +18,9 @@ Khách hàng tiềm năng
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Từ ngày</label>
-                            <input type ="date"name="txtTuNgay" placeholder="Chọn ngày" value="2019-06-17" id="tungay" />
+                            <input type ="date"name="txtTuNgay" placeholder="Chọn ngày" value="2019-07-12" id="tungay" />
 							<label>Đến ngày</label>
-							 <input type ="date"name="txtDenNgay" placeholder="Chọn ngày" value="2019-06-17" id="denngay"/>
+							 <input type ="date"name="txtDenNgay" placeholder="Chọn ngày" value="2019-07-12" id="denngay"/>
 							 </div>
 						<div align="center">
 						<button type="button" class="btn btn-default" id="thongke">Thống kê</button>&nbsp;&nbsp;&nbsp;<br />
@@ -32,13 +32,13 @@ Khách hàng tiềm năng
 							var ngaykt=$("#denngay").val();
 							if(ngaybd>ngaykt)
 								alert("Ngày bắt đầu phải lớn hơn ngày kết thúc");
-							
+
 							$.post("kh_tiemnang.php",{ngaybd:ngaybd, ngaykt:ngaykt },function(data,status){
-							$(".baocao").html(data);  
-							
+							$(".baocao").html(data);
+
 							});
 						  });
-						 
+
 						});
 						</script>
 						</br>
