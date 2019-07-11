@@ -32,7 +32,7 @@ class PageController extends Controller
         $loai=loaisanpham::all();
 		//$sanpham=sanpham::where('trangthai','1')->paginate(4);
 		$sanpham=DB::table('sanpham')->where('trangthai','1')->paginate(4);
-		$sp_theoloai=DB::table('sanpham')->where('maloaisp',$maloaisp)->where('trangthai','1')->get();
+		$sp_theoloai=DB::table('sanpham')->where('maloaisp',$maloaisp)->where('trangthai','1')->paginate(8);
 		$sp_khac=DB::table('sanpham')->where('maloaisp','!=',$maloaisp)->where('trangthai','1')->paginate(4);
         return view('page.sanpham',compact('loai','sanpham','sp_theoloai','sp_khac'));
     }
