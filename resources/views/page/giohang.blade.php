@@ -143,11 +143,11 @@ Giỏ hàng
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Họ và tên">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" required placeholder="Họ và tên">
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone"  placeholder="Số điện thoại">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" required placeholder="Số điện thoại">
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
