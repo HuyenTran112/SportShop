@@ -41,7 +41,7 @@
 
 					<div class="right-top-bar flex-w h-full">
 					@if(Auth::check())
-						<a class="flex-c-m p-lr-10 trans-04" style="color:#d9d9d9">
+						<a class="flex-c-m p-lr-10 trans-04 tenhienthi" style="color:#d9d9d9" idUser="{{Auth::user()->manguoidung}}">
 							Chào bạn ({{Auth::user()->tenhienthi}}) 							
 						</a>
 						@if(Auth::user()->level!=0)

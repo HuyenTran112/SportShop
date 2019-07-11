@@ -142,16 +142,21 @@ Giỏ hàng
 							</div>
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
+							<?php
+								$idnguoidung = Auth::user()->manguoidung;
+								$thongtinKH=DB::table('khachhang')->where('makh','=',$idnguoidung)->first();
+							?>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" required placeholder="Họ và tên">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" value="{{$thongtinKH->tenkh}}">
+										<!-- <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" required placeholder="Họ và tên"> -->
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" required placeholder="Số điện thoại">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" value="{{$thongtinKH->sodt}}">
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="email" name="email" placeholder="expample@gmail.com">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="email" name="email" value="{{$thongtinKH->email}}">
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
@@ -159,7 +164,7 @@ Giỏ hàng
 									</div>
 
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" required placeholder="Số nhà, xã, huyện, tỉnh">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value="{{$thongtinKH->diachi}}">
 									</div>
 									<?php
 										$tinh = DB::table('phigiaohang')->get();
