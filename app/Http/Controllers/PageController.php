@@ -25,10 +25,11 @@ class PageController extends Controller
     public function getLoaiSp($maloaisp)
     {
         $loai=loaisanpham::all();
+        $tenloai=DB::table('loaisanpham')->where('maloaisp',$maloaisp)->first();
 		$sanpham=DB::table('sanpham')->where('trangthai','1')->paginate(4);
 		$sp_theoloai=DB::table('sanpham')->where('maloaisp',$maloaisp)->where('trangthai','1')->get();
 		$sp_khac=DB::table('sanpham')->where('maloaisp','!=',$maloaisp)->where('trangthai','1')->paginate(4);
-        return view('page.sanpham',compact('loai','sanpham','sp_theoloai','sp_khac'));
+        return view('page.sanpham',compact('loai','tenloai','sanpham','sp_theoloai','sp_khac'));
     }
 
 	public function getChiTiet(Request $req)
