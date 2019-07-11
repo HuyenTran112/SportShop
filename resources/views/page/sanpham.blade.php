@@ -17,7 +17,7 @@ Sản phẩm
 
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
-					Sản phẩm
+					{{$tenloai->tenloaisp}}
 				</h3>
 			</div>
 
